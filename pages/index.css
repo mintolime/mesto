@@ -16,8 +16,8 @@
   background-color: #2a2c2f;
   color: #fff;
   margin: 0 auto;
-  padding: 28px 19px 36px; 
-  box-sizing: border-box;
+  /* padding: 28px 19px 36px;
+  box-sizing: border-box; */
 }
 
 /* *{
@@ -50,6 +50,7 @@
 @media screen and (min-width: 720px) {
   .profile {
     flex-direction: row;
+    justify-content: flex-start;
   }
 }
 
@@ -57,6 +58,34 @@
   border-radius: 50%;
   width: 120px;
   height: 120px;
+  margin: 4px 27px;
+  object-fit: cover;
+}
+
+.profile__content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* max-width: 282px; */
+  text-align: center;
+}
+
+@media screen and (min-width: 720px) {
+  .profile__content {
+    text-align: start;
+  }
+}
+
+.profile__icon-redact {
+  height: 18px;
+  width: 18px;
+}
+
+@media screen and (min-width: 720px) {
+  .profile__icon-redact {
+    height: 24px;
+    width: 24px;
+  }
 }
 
 .profile__name {
@@ -65,9 +94,16 @@
   font-weight: 500;
   font-size: 27px;
   line-height: 33px;
-  text-align: center;
   margin: 0;
   padding: 23px 0 14px;
+}
+
+@media screen and (min-width: 720px) {
+  .profile__name {
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+  }
 }
 
 .profile__info {
@@ -79,12 +115,26 @@
   margin: 0;
 }
 
+@media screen and (min-width: 720px) {
+  .profile__info {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
 .button-add {
   border: 2px solid #ffffff;
   border-radius: 2px;
   background-color: #2a2c2f;
   margin: 36px 0;
   padding: 17px 134px;
+}
+
+@media screen and (min-width: 720px) {
+  .button-add {
+    padding: 14px 64px;
+    /*задает размер кнопки*/
+  }
 }
 
 /* .button-add__icon {
@@ -127,6 +177,9 @@
   font-size: 24px;
   line-height: 29px;
   padding-left: 21px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .cards__image {
