@@ -1,0 +1,143 @@
+@import url('../vendor/normalize.css');
+@import url('../vendor/fonts/fonts.css');
+
+/* НЕ ЗАБЫВАТЬ ПРО КАВЫЧКИ В ИМПОРТЕ */
+.root {
+  width: 100%;
+  max-width: 880px;
+  min-width: 320px;
+  font-family: "Inter", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  background-color: #2A2C2F;
+  color: #fff;
+  margin: 0 auto;
+  /* padding: 28px 19px 36px; */
+}
+*{
+  border: 2px rgb(255, 209, 25) solid;
+}
+
+.header {
+  display: flex;
+  justify-content: start;
+  border-bottom: 1px solid #545454;
+  padding-left: 28px;
+  padding-bottom: 28px;
+}
+
+.header__logo {
+  width: 142px;
+  height: 33px;
+}
+
+.main {
+  margin: 37px 0 67px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (min-width: 720px) {
+  .profile {
+  flex-direction: row;
+}
+}
+.profile__photo {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+
+.profile__name {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  margin: 0;
+  padding: 23px 0 14px;
+}
+
+.profile__info {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0;
+}
+
+.button-add {
+  border: 2px solid #FFFFFF;
+  border-radius: 2px;
+  background-color: #2A2C2F;
+  margin: 36px 0;
+  padding: 17px 134px;
+}
+
+/* .button-add__icon {
+  
+} */
+
+.cards {
+  min-width: 288px;
+  display: grid;
+}
+
+.cards__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  row-gap: 20px;
+  justify-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+/* @media screen and (min-width: 767px) {
+
+  .cards__list {
+    grid-template-columns:;
+  }
+
+} */
+
+.cards__item {
+  background-color: #fff;
+  border-radius: 10px;
+  color: #000;
+}
+
+.cards__title {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  padding-left: 21px;
+}
+
+.cards__image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.footer{
+  display: flex;
+}
+.footer__copyright {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #545454;
+}
