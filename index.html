@@ -9,26 +9,31 @@
 </head>
 
 <body class="root">
+<!-- HEADER -->
   <header class="header">
     <img class="header__logo" src="./images/header-logo.svg" alt="логотип шапки">
   </header>
   <main class="main">
     <!-- PROFILE -->
     <section class="profile">
-      <img class="profile__photo" src="./images/image-profile.jpg" alt="фото профиля">
+      <img class="profile__photo" src="./images/image-profile.png" alt="фото профиля">
       <div class="profile__content">
-        <h1 class="profile__name">Жак-Ив Кусто <img class="profile__icon-redact" src="./images/icon/icon-edit.png" alt=""></h1>
+        <h1 class="profile__name">Жак-Ив Кусто </h1>
+         <button class="button button-edit"> <!--<img class="profile__icon-redact" src="./images/icon/icon-edit.png" alt=""> --></button>
         <p class="profile__info">Исследователь океана</p>
-        
       </div>
-      <button class="button-add"><img class="button-add__icon" src="./images/icon/icon-add.png" alt="добавить"></button>
+      <button class="button button-add">
+      <!-- <img class="button-add__icon" src="./images/icon/icon-add.png" alt="добавить"> -->
+      </button>
     </section>
     <!-- CARDS -->
     <section class="cards">
       <ul class="cards__list">
         <li class="cards__item">
           <img class="cards__image" src="./images/carachaevsk.jpg" alt="Карачаевск">
-          <h2 class="cards__title">Карачаевск <img src="./images/icon/icon-like.svg" alt="поставить лайк"></h2>
+          <h2 class="cards__title">Карачаевск</h2>
+          <div class="cards__like cards__like_active"> <img src="./images/icon/icon-like.svg" alt="поставить лайк"> </div>
+
           
         </li>
         <li class="cards__item">
@@ -54,9 +59,27 @@
       </ul>
     </section>
   </main>
+  <!-- FOOTER -->
   <footer class="footer">
     <p class="footer__copyright">&copy; Mesto Russia</p>
   </footer>
+  <!-- POPUP -->
+      <section class="popup">
+      <div class="popup__container">
+      <form class="form__edit">
+        <h3 class="form__header">Редактировать профиль</h3>
+        <fieldset class="form__fieldset">
+          <input class="form__input" type="text" aria-label="имя" placeholder="Имя" >
+          <!-- <span class="form__input-error"></span> -->
+          <input class="form__input" type="text" id="profile-caption" aria-label="подпись" placeholder="Подпись">
+          <!-- <span class="form__input-error" id=></span> -->
+          <button class="form__save-button popup__save-button">Сохранить</button>
+        </fieldset>
+        <button type="reset" class="popup__close-button popup-edit__close-button" aria-label="закрыть форму"></button>
+      </form>
+      </div>
+    </section>
+  </div>
 </body>
 
 </html>
