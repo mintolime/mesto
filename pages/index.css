@@ -1,23 +1,8 @@
 @import url('../vendor/normalize.css');
 @import url('../vendor/fonts/fonts.css');
-
+@import url('../blocks/root/root.css');
 /* НЕ ЗАБЫВАТЬ ПРО КАВЫЧКИ В ИМПОРТЕ */
-.root {
-  width: 100%;
-  max-width: 880px;
-  min-width: 320px;
-  font-family: "Inter", sans-serif;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  background-color: #000;
-  color: #fff;
-  margin: 0 auto;
-  padding: 28px 0 60px;
-}
+
 
 /* *{
   border: 2px rgb(255, 209, 25) solid;
