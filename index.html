@@ -1,10 +1,11 @@
+<!DOCTYPE html>
 <html lang="ru">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
+  <script defer src="./pages/index.js"></script>
   <title>Mesto</title>
 </head>
 
@@ -26,39 +27,37 @@
     </button>
   </section>
   <!-- CARDS -->
-  <section class="cards">
+  <section class="cards" aria-label="галерея пользователя">
     <ul class="cards__list">
       <li class="cards__item">
         <img class="cards__image" src="./images/carachaevsk.jpg" alt="Карачаевск">
-        <h2 class="cards__title">Карачаевск</h2>
-        <button class="button button__cards-like"></button>
-
-
+        <p class="cards__title">Карачаевск</p>
+        <button class="button button_cards-like"></button>
       </li>
       <li class="cards__item">
         <img class="cards__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
-        <h2 class="cards__title">Гора Эльбрус</h2>
-        <button class="button button__cards-like"></button>
+        <p class="cards__title">Гора Эльбрус</p>
+        <button class="button button_cards-like"></button>
       </li>
       <li class="cards__item">
         <img class="cards__image" src="./images/dombai.jpg" alt="Домбай">
-        <h2 class="cards__title">Домбай</h2>
-        <button class="button button__cards-like"></button>
+        <p class="cards__title">Домбай</p>
+        <button class="button button_cards-like"></button>
       </li>
       <li class="cards__item">
         <img class="cards__image" src="./images/carachaevsk.jpg" alt="Карачаевск">
-        <h2 class="cards__title">Карачаевск</h2>
-        <button class="button button__cards-like"></button>
+        <p class="cards__title">Карачаевск</p>
+        <button class="button button_cards-like"></button>
       </li>
       <li class="cards__item">
         <img class="cards__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
-        <h2 class="cards__title">Гора Эльбрус</h2>
-        <button class="button button__cards-like"></button>
+        <p class="cards__title">Гора Эльбрус</p>
+        <button class="button button_cards-like"></button>
       </li>
       <li class="cards__item">
         <img class="cards__image" src="./images/dombai.jpg" alt="Домбай">
-        <h2 class="cards__title">Домбай</h2>
-        <button class="button button__cards-like"></button>
+        <p class="cards__title">Домбай</p>
+        <button class="button button_cards-like"></button>
       </li>
     </ul>
   </section>
@@ -71,20 +70,19 @@
   <!-- POPUP -->
   <section class="popup">
     <div class="popup__container">
-      <form class="form__edit">
-        <h3 class="form__title">Редактировать профиль</h3>
+      <form class="form">
+        <h2 class="form__title">Редактировать профиль</h2>
         <fieldset class="form__inner">
           <input class="form__input" type="text" aria-label="имя" placeholder="Ваше имя">
           <input class="form__input" type="text" aria-label="подпись" placeholder="О себе">
-          <!-- <span class="form__input-error" id=></span> -->
         </fieldset>
-        <button class="button form__save-button popup__save-button">Сохранить</button>
-        <button type="reset" class=" button popup__close-button popup-edit__close-button"
+        <button class="button button_save-form">Сохранить</button>
+        <button type="reset" class=" button button_close-popup"
           aria-label="кнопка закрытия"></button>
       </form>
     </div>
   </section>
-  </div>
+  
 </body>
 
 </html>
