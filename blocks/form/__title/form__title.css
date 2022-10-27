@@ -1,0 +1,18 @@
+.form__title {
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000;
+  margin: 0;
+  align-self: flex-start;
+  padding-bottom: 25px;
+  /*отступ нижкий + 50px gap*/
+}
+
+@media screen and (min-width: 720px) {
+  .form__title {
+    font-size: 24px;
+    line-height: 29px;
+    padding-bottom: 0;
+  }
+}

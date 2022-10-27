@@ -1,0 +1,11 @@
+.popup {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(99, 97, 97, 0.5);
+  align-items: center;
+  justify-content: center;
+}

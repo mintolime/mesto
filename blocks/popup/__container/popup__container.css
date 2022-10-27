@@ -1,0 +1,7 @@
+.popup__container {
+  min-height: 320px;
+  border-radius: 10px;
+  padding: 50px;
+  /*доп.пространтсво для кнопки close*/
+  box-sizing: border-box;
+}

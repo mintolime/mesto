@@ -1,0 +1,19 @@
+.form__input {
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  border: 0;
+  border-bottom: 1px solid #000;
+  opacity: 0.2;
+  color: #000;
+  font-family: inherit;
+  padding-bottom: 13px;
+}
+
+
+.form__input:focus {
+  /* outline: 3px rgb(86, 85, 91) solid; */
+  border: 2px rgb(86, 85, 91) solid;
+  /*стили для обводки импута*/
+}
