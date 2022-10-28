@@ -1,7 +1,7 @@
-const profileEditBtn = document.querySelector('.button-edit');
+const profileEditBtn = document.querySelector('.button_profile-edit');
 const popup = document.querySelector('.popup');
 const popupForm = document.querySelector('.form');
-const openPopupBtn = document.querySelector('.button-edit');
+const openPopupBtn = document.querySelector('.button_profile-edit');
 const closePopupBtn = document.querySelector('.button_close-popup');
 const profileName = document.querySelector('.profile__name');
 const formInputName = document.querySelector('.form__input_text_name');
@@ -20,7 +20,6 @@ popup.addEventListener('click', function closePopup() {
 });
 
 // работа с формами
-
 profileEditBtn.addEventListener('click', function addValue() {
   formInputName.value = profileName.textContent;
   formAboutUser.value = profileAboutUser.textContent;

@@ -1,0 +1,14 @@
+.button_profile-add {
+  background: url('../../../images/icon/icon-add.png') no-repeat center;
+  border-radius: 2px;
+  padding: 17px 134px;
+}
+
+@media screen and (min-width: 720px) {
+  .button_profile-add {
+    padding: 14px 64px;
+    /*задает размер кнопки*/
+    margin-left: auto;
+    /*выравнивание кнопки по правому краю*/
+  }
+}

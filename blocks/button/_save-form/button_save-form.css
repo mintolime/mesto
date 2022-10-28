@@ -1,0 +1,13 @@
+.button_save-form {
+  color: #fff;
+  border-radius: 2px;
+  padding: 14px 84px;
+  transition: 0.3s ease;
+}
+
+@media screen and (min-width: 720px) {
+  .button_save-form {
+    padding-right: 124px;
+    padding-left: 124px;
+  }
+}
