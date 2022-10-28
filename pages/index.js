@@ -1,18 +1,36 @@
-let POPUP_ACTIVE_CLASS = 'popup_active';
-let popup = document.querySelector('.popup');
-let popupForm = document.querySelector('.form');
-let openPopupBtn = document.querySelector('.button-edit');
-let likeCardsBtn = document.querySelector('.button_cards-like');
-let closePopupBtn = document.querySelector('.button_close-popup');
+const profileEditBtn = document.querySelector('.button-edit');
+const popup = document.querySelector('.popup');
+const popupForm = document.querySelector('.form');
+const openPopupBtn = document.querySelector('.button-edit');
+const closePopupBtn = document.querySelector('.button_close-popup');
+const profileName = document.querySelector('.profile__name');
+const formInputName = document.querySelector('.form__input_text_name');
+const profileAboutUser = document.querySelector('.profile__info');
+const formAboutUser = document.querySelector('.form__input_text_about');
 
-
-openPopupBtn.addEventListener('click', () => {
-  popup.classList.add(POPUP_ACTIVE_CLASS);
+// открытие и закрытие попапа
+openPopupBtn.addEventListener('click', function openPopup() {
+  popup.classList.add('popup_opened')
 });
 
-popup.addEventListener('click', (event) => {
-  if(!popupForm.contains(event.target) || event.target === closePopupBtn){
-    popup.classList.remove(POPUP_ACTIVE_CLASS);
+popup.addEventListener('click', function closePopup() {
+  if (!popupForm.contains(event.target) || event.target === closePopupBtn) {
+    popup.classList.remove('popup_opened');
   }
 });
+
+// работа с формами
+
+profileEditBtn.addEventListener('click', function addValue() {
+  formInputName.value = profileName.textContent;
+  formAboutUser.value = profileAboutUser.textContent;
+});
+
+popupForm.addEventListener('submit', function changeTextProfile(form) {
+  form.preventDefault();
+  profileName.textContent = formInputName.value;
+  profileAboutUser.textContent = formAboutUser.value;
+  popup.classList.remove('popup_opened');
+});
+
 
