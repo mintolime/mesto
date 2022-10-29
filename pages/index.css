@@ -20,7 +20,7 @@
 @import url('../blocks/footer/__copyright/footer__copyright.css');
 /* POPUP */
 @import url('../blocks/popup/popup.css');
-@import url('../blocks/popup/popup_opened.css');
+@import url('../blocks/popup/_opened/popup_opened.css');
 @import url('../blocks/popup/__container/popup__container.css');
 /*FORM*/
 @import url('../blocks/form/form.css');
