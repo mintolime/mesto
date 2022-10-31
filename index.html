@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
-  <title>Mesto</title>
+  <title>Место</title>
 </head>
 
 <body class="root">
@@ -19,10 +20,10 @@
       <img class="profile__photo" src="./images/image-profile.png" alt="фото профиля">
       <div class="profile__content">
         <h1 class="profile__name">Жак-Ив Кусто </h1>
-        <button class="button button_profile-edit"></button>
+        <button class="button button_type_edit"></button>
         <p class="profile__info">Исследователь океана</p>
       </div>
-      <button class="button button_profile-add"></button>
+      <button class="button button_type_add" type="button"></button>
     </section>
     <!-- CARDS -->
     <section class="cards" aria-label="галерея пользователя">
@@ -30,32 +31,32 @@
         <li class="cards__item">
           <img class="cards__image" src="./images/carachaevsk.jpg" alt="Карачаевск">
           <h2 class="cards__title">Карачаевск</h2>
-          <button class="button button_cards-like"></button>
+          <button class="button button_type_like" type="button"></button>
         </li>
         <li class="cards__item">
           <img class="cards__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
           <h2 class="cards__title">Гора Эльбрус</h2>
-          <button class="button button_cards-like"></button>
+          <button class="button button_type_like" type="button"></button>
         </li>
         <li class="cards__item">
           <img class="cards__image" src="./images/dombai.jpg" alt="Домбай">
           <h2 class="cards__title">Домбай</h2>
-          <button class="button button_cards-like"></button>
+          <button class="button button_type_like" type="button"></button>
         </li>
         <li class="cards__item">
           <img class="cards__image" src="./images/carachaevsk.jpg" alt="Карачаевск">
           <h2 class="cards__title">Карачаевск</h2>
-          <button class="button button_cards-like"></button>
+          <button class="button button_type_like" type="button"></button>
         </li>
         <li class="cards__item">
           <img class="cards__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
           <h2 class="cards__title">Гора Эльбрус</h2>
-          <button class="button button_cards-like"></button>
+          <button class="button button_type_like" type="button"></button>
         </li>
         <li class="cards__item">
           <img class="cards__image" src="./images/dombai.jpg" alt="Домбай">
           <h2 class="cards__title">Домбай</h2>
-          <button class="button button_cards-like"></button>
+          <button class="button button_type_like" type="button"></button>
         </li>
       </ul>
     </section>
@@ -68,17 +69,20 @@
   <!-- POPUP -->
   <section class="popup">
     <div class="popup__container">
-      <form class="form">
+      <form name="formPopup" class="form">
         <h3 class="form__title">Редактировать профиль</h3>
         <fieldset class="form__inner">
-          <input class="form__input  form__input_text_name" type="text" aria-label="имя" placeholder="Ваше имя">
-          <input class="form__input form__input_text_about" type="text" aria-label="подпись" placeholder="О себе">
+          <input class="form__input  form__input_text_name" name="name" type="text" aria-label="имя"
+            placeholder="Ваше имя">
+          <input class="form__input form__input_text_about" name="about" type="text" aria-label="подпись"
+            placeholder="О себе">
         </fieldset>
-        <button class="button button_save-form">Сохранить</button>
-        <button type="reset" class=" button button_close-popup"></button>
+        <button class="button button_type_save" type="submit">Сохранить</button>
+        <button type="button" class=" button button_type_close"></button>
       </form>
     </div>
   </section>
   <script src="./pages/index.js"></script>
 </body>
+
 </html>

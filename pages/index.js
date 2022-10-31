@@ -1,35 +1,36 @@
-const profileEditBtn = document.querySelector('.button_profile-edit');
 const popup = document.querySelector('.popup');
 const popupForm = document.querySelector('.form');
-const openPopupBtn = document.querySelector('.button_profile-edit');
-const closePopupBtn = document.querySelector('.button_close-popup');
+const openPopupBtn = document.querySelector('.button_type_edit');
+const closePopupBtn = document.querySelector('.button_type_close');
 const profileName = document.querySelector('.profile__name');
 const formInputName = document.querySelector('.form__input_text_name');
 const profileAboutUser = document.querySelector('.profile__info');
 const formAboutUser = document.querySelector('.form__input_text_about');
 
-// открытие и закрытие попапа
-openPopupBtn.addEventListener('click', function openPopup() {
+// сначала объявляем все переменные, затем описываем функции, в самом конце устанавливаем события.
+function openPopup() {
   popup.classList.add('popup_opened')
-});
+};
 
-popup.addEventListener('click', function closePopup() {
+function closePopup() {
   if (!popupForm.contains(event.target) || event.target === closePopupBtn) {
     popup.classList.remove('popup_opened');
   }
-});
+};
 
-// работа с формами
-profileEditBtn.addEventListener('click', function addValue() {
+function addValue() {
   formInputName.value = profileName.textContent;
   formAboutUser.value = profileAboutUser.textContent;
-});
+  openPopup();
+};
 
-popupForm.addEventListener('submit', function changeTextProfile(form) {
-  form.preventDefault();
+function changeTextProfile(evt) {
+  evt.preventDefault();
   profileName.textContent = formInputName.value;
   profileAboutUser.textContent = formAboutUser.value;
-  popup.classList.remove('popup_opened');
-});
+  closePopup();
+};
 
-
+popup.addEventListener('submit', changeTextProfile);
+openPopupBtn.addEventListener('click', addValue);
+popup.addEventListener('click', closePopup);

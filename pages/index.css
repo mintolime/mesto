@@ -29,10 +29,10 @@
 @import url('../blocks/form/__inner/form__inner.css');
 /*BUTTONS*/
 @import url('../blocks/button/button.css');
-@import url('../blocks/button/_profile-add/button_profile-add.css');
-@import url('../blocks/button/_profile-edit/button_profile-edit.css');
-@import url('../blocks/button/_cards-like/button_cards-like.css');
-@import url('../blocks/button/_close-popup/button_close-popup.css');
-@import url('../blocks/button/_save-form/button_save-form.css');
+@import url('../blocks/button/_type/button_type_add.css');
+@import url('../blocks/button/_type/button_type_edit.css');
+@import url('../blocks/button/_type/button_type_like.css');
+@import url('../blocks/button/_type/button_type_close.css');
+@import url('../blocks/button/_type/button_type_save.css');
 
 /* @import url('../blocks'); шаблон*/
