@@ -1,5 +1,4 @@
 const popup = document.querySelector('.popup');
-const saveForm = document.querySelector('.button_save-form');
 const popupForm = document.querySelector('.form');
 const openPopupBtn = document.querySelector('.button_profile-edit');
 const closePopupBtn = document.querySelector('.button_close-popup');
@@ -9,11 +8,11 @@ const profileAboutUser = document.querySelector('.profile__info');
 const formAboutUser = document.querySelector('.form__input_text_about');
 
 // сначала объявляем все переменные, затем описываем функции, в самом конце устанавливаем события.
-function openPopup() {
+ function openPopup() {
   popup.classList.add('popup_opened')
 };
 
-function closePopup() {
+ function closePopup() {
   if (!popupForm.contains(event.target) || event.target === closePopupBtn) {
     popup.classList.remove('popup_opened');
   }
@@ -22,16 +21,16 @@ function closePopup() {
 function addValue() {
   formInputName.value = profileName.textContent;
   formAboutUser.value = profileAboutUser.textContent;
-  openPopup();
 };
 
 function changeTextProfile(evt) {
   evt.preventDefault();
   profileName.textContent = formInputName.value;
   profileAboutUser.textContent = formAboutUser.value;
-  closePopup();
+  popup.classList.remove('popup_opened');
 };
 
-saveForm.addEventListener('submit', changeTextProfile);
+openPopupBtn.addEventListener('click',openPopup);
+popup.addEventListener('click',closePopup);
 openPopupBtn.addEventListener('click', addValue);
-popup.addEventListener('click', closePopup);
+popupForm.addEventListener('submit', changeTextProfile);
