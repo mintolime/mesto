@@ -1,6 +1,6 @@
 .profile__content {
   padding-top: 23px;
-  padding-bottom: 36px;
+  padding-bottom: 30px;
   text-align: center;
   gap: 10px 14px;
   display: grid;
@@ -13,7 +13,7 @@
 
 @media screen and (min-width: 720px) {
   .profile__content {
-    padding-bottom: 0;
+    padding: 0;
     text-align: start;
   }
 }

@@ -1,7 +1,7 @@
 .button_type_edit {
   background: url('../../../images/icon/icon-edit.png') no-repeat center;
-  background-size: cover;
-  border: 0;
+  background-size: inherit;
+  /* border: 0; */
   grid-area: edit-button;
   height: 18px;
   width: 18px;

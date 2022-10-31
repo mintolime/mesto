@@ -11,7 +11,6 @@
 
 @media screen and (min-width: 720px) {
   .button_type_close {
-    top: -45px;
     right: -45px;
     width: 32px;
     height: 32px;

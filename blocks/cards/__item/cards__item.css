@@ -1,6 +1,7 @@
 .cards__item {
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   border-radius: 10px;
   color: #000;
-  position: relative;
 }

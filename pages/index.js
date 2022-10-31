@@ -8,11 +8,11 @@ const profileAboutUser = document.querySelector('.profile__info');
 const formAboutUser = document.querySelector('.form__input_text_about');
 
 // сначала объявляем все переменные, затем описываем функции, в самом конце устанавливаем события.
- function openPopup() {
+function openPopup() {
   popup.classList.add('popup_opened')
 };
 
- function closePopup() {
+function closePopup() {
   if (!popupForm.contains(event.target) || event.target === closePopupBtn) {
     popup.classList.remove('popup_opened');
   }
@@ -30,8 +30,8 @@ function changeTextProfile(evt) {
   popup.classList.remove('popup_opened');
 };
 
-openPopupBtn.addEventListener('click',openPopup);
-popup.addEventListener('click',closePopup);
+openPopupBtn.addEventListener('click', openPopup);
+popup.addEventListener('click', closePopup);
 openPopupBtn.addEventListener('click', addValue);
 popupForm.addEventListener('submit', changeTextProfile);
 
