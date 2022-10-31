@@ -17,3 +17,7 @@
     height: 32px;
   }
 }
+
+.button_type_close:hover {
+  opacity: .8;
+}
