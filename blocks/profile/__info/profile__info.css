@@ -1,11 +1,16 @@
 .profile__info {
-  font-family: "Inter";
-  font-style: normal;
+  max-width: 294px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
   margin: 0;
   grid-area: info;
+  max-width: 294px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 @media screen and (min-width: 720px) {

@@ -1,13 +1,13 @@
 .cards__list {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
-  row-gap: 20px;
-  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-@media screen and (min-width:720px) {
+@media screen and (min-width:920px) {
   .cards__list {
     gap: 20px 17px;
   }

@@ -1,11 +1,11 @@
 .main {
   display: grid;
   row-gap: 47px;
-  margin: 37px 0 67px;
+  margin: 38px 0 47px;
 }
 
 @media screen and (min-width: 720px) {
   .main {
-    margin-top: 45px;
+     margin: 36px 0 67px;
   }
 }

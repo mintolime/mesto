@@ -1,19 +1,20 @@
 .profile__name {
-  font-family: "Inter";
-  font-style: normal;
+  max-width: 294px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-weight: 500;
   font-size: 27px;
   line-height: 33px;
   margin: 0;
   grid-area: name;
-   padding-left: 15px;
+  padding-left: 15px;
 }
 
 @media screen and (min-width: 720px) {
   .profile__name {
-    font-weight: 500;
     font-size: 42px;
     line-height: 48px;
-     padding-left: 18px;
+    padding-left: 0;
   }
 }

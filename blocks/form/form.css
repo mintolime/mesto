@@ -1,19 +1,11 @@
 .form {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
-  box-sizing: border-box;
+  gap: 30px;
+  /* box-sizing: border-box;
   background: #FFFFFF;
   padding: 25px 22px;
-  border-radius: 10px;
+  border-radius: 10px; */
   margin: 0;
-}
-
-@media screen and (min-width: 720px) {
-  .form {
-    max-width: 430px;
-    padding: 34px 36px 30px 36px;
-  }
 }

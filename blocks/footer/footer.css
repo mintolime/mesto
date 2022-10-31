@@ -1,15 +1,7 @@
 .footer {
-  width: calc(100% - 38px);
+  width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0 19px;
+  align-items: flex-start;
   box-sizing: border-box;
-}
-
-@media screen and (min-width: 720px) {
-  .footer {
-    width: calc(100% - 20px);
-    padding-left: 10px;
-    padding-right: 10px;
-  }
 }

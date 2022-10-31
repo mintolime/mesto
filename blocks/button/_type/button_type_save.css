@@ -1,4 +1,9 @@
 .button_type_save {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  width: 100%;
   color: #fff;
   border-radius: 2px;
   padding: 14px 84px;
@@ -9,5 +14,7 @@
   .button_type_save {
     padding-right: 124px;
     padding-left: 124px;
+    font-size: 18px;
+    line-height: 22px;
   }
 }

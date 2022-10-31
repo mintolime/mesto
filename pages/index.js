@@ -13,9 +13,7 @@ function openPopup() {
 };
 
 function closePopup() {
-  if (!popupForm.contains(event.target) || event.target === closePopupBtn) {
-    popup.classList.remove('popup_opened');
-  }
+  popup.classList.remove('popup_opened')
 };
 
 function addValue() {
@@ -27,11 +25,11 @@ function changeTextProfile(evt) {
   evt.preventDefault();
   profileName.textContent = formInputName.value;
   profileAboutUser.textContent = formAboutUser.value;
-  popup.classList.remove('popup_opened');
+  closePopup();
 };
 
 openPopupBtn.addEventListener('click', openPopup);
-popup.addEventListener('click', closePopup);
+closePopupBtn.addEventListener('click', closePopup);
 openPopupBtn.addEventListener('click', addValue);
 popupForm.addEventListener('submit', changeTextProfile);
 
