@@ -1,4 +1,4 @@
-.button_close-popup {
+.button_type_close {
   background: url('../../../images/icon/icon-close.png');
   background-size: cover;
   border: none;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (min-width: 720px) {
-  .button_close-popup {
+  .button_type_close {
     top: -45px;
     right: -45px;
     width: 32px;
