@@ -1,6 +1,5 @@
 .button_type_like {
   background: url('../../../images/icon/icon-like.svg') no-repeat center;
-  background-size: contain;
   background-size: 22px 19px;
   width: 30px;
   height: 25px;
@@ -14,7 +13,5 @@
 
 /* todo после удалить, через js стилизовать активный класс */
 .button_type_like:focus {
-  width: 30px;
-  height: 25px;
   background-image: url('../../../images/icon/icon-like-black.svg');
 }
