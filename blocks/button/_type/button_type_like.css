@@ -13,5 +13,6 @@
 
 /* todo после удалить, через js стилизовать активный класс */
 .button_type_like:focus {
-  background-image: url('../../../images/icon/icon-like-black.svg');
+  background-image: url('../../../images/icon/icon-like-blk.svg');
+  background-size: cover;
 }
