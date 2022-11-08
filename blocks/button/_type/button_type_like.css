@@ -3,12 +3,12 @@
   background-size: 22px 19px;
   width: 28px;
   height: 25px;
-  transition: 0.5s;
+  transition: 0.s;
 }
 
 .button_type_like:hover {
   opacity: .5;
-  background-size: 25px 22px;
+ transform: scale(1.1);
 }
 
 /* todo после удалить, через js стилизовать активный класс */

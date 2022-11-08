@@ -6,7 +6,32 @@ const profileName = document.querySelector('.profile__name');
 const formInputName = document.querySelector('.form__input_text_name');
 const profileAboutUser = document.querySelector('.profile__info');
 const formAboutUser = document.querySelector('.form__input_text_about');
-
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 // сначала объявляем все переменные, затем описываем функции, в самом конце устанавливаем события.
 function openPopup() {
   popup.classList.add('popup_opened')
@@ -32,5 +57,4 @@ openPopupBtn.addEventListener('click', openPopup);
 closePopupBtn.addEventListener('click', closePopup);
 openPopupBtn.addEventListener('click', addValue);
 popupForm.addEventListener('submit', changeTextProfile);
-
 
