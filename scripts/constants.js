@@ -14,5 +14,6 @@ const formInputName = document.querySelector('.form__input_text_name');
 const profileAboutUser = document.querySelector('.form__input_text_about');
 const formAboutUser = document.querySelector('.form__input_text_about');
 //CARD
+const cardTemplate = document.querySelector('#card-template').content.querySelector('.card__list');
 const cardInputName = document.querySelector('#nameCard');
 const cardImglink = document.querySelector('#linkCard');

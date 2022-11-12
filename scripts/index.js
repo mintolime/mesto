@@ -7,8 +7,21 @@ function closePopup(element) {
   element.classList.remove('popup_opened')
 };
 
+const createCard = (dataCard) =>{
+  const newCard = cardTemplate.cloneNode(true);
 
-//likeBtn.addEventListener('click', (evt) => evt.target.classList.toggle('button_type_like_active'));
+   const title = newCard.querySelector('.cards__title');
+   title.textContent = dataCard.title;
+
+  const image = newCard.querySelector('.cards__image');
+   img.src = dataCard.src;
+   img.alt = dataCard.title;
+
+likeBtn.addEventListener('click', (evt) => evt.target.classList.toggle('button_type_like_active'));
+
+   return newCard;
+}
+
 
 function addValue() {
   formInputName.value = profileName.textContent;
@@ -22,9 +35,13 @@ function changeTextProfile(evt) {
   closePopup(popupProfile);
 };
 
+
+
+
 addPopupBtn.addEventListener('click', () => openPopup(popupCard));
 openPopupBtn.addEventListener('click', () => openPopup(popupProfile));
 closePopupBtn.addEventListener('click', closePopup(popup));
 openPopupBtn.addEventListener('click', addValue);
 popupForm.addEventListener('submit', changeTextProfile);
+
 
