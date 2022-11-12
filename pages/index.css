@@ -38,3 +38,7 @@
 @import url('../blocks/button/_type/button_type_save.css');
 
 /* @import url('../blocks'); шаблон*/
+.fugure {
+  width: 75vw;
+  height: 75vh;
+}
