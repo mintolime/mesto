@@ -19,11 +19,13 @@ const createCard = (dataCard) => {
   const title = newCard.querySelector('.cards__title');
   title.textContent = dataCard.title;
 
-  const image = newCard.querySelector('.cards__image');
-  //  img.src = dataCard.src;
-  //  img.alt = dataCard.title;
+  const img = newCard.querySelector('.cards__image');
+  //title.textContent = dataCard.title;
 
- // likeBtn.addEventListener('click', (evt) => evt.target.classList.toggle('button_type_like_active'));
+  // img.src = dataCard.src;
+  // img.alt = dataCard.title;
+
+  // likeBtn.addEventListener('click', (evt) => evt.target.classList.toggle('button_type_like_active'));
   //deleteBtn.addEventListener('click', (evt) => 
   //evt.target.closest('.cards__item').remove());
 
@@ -34,8 +36,16 @@ const renderCard = (dataCard) => {
   cardContainer.prepend(createCard(dataCard))
 };
 
-initialCards.forEach((dataCard) => {
-  renderCard(dataCard);
+initialCards.forEach((element) => {
+  const cardElement = cardTemplate.cloneNode(true);
+
+  cardElement.querySelector('.cards__title').textContent = element.name;
+  cardElement.querySelector('.cards__image').src = element.link;
+  cardElement.querySelector('.cards__image').alt = element.name;
+
+
+  cardContainer.append(cardElement);
+
 });
 
 
@@ -52,8 +62,8 @@ function changeTextProfile(evt) {
   evt.preventDefault();
   profileName.textContent = formInputName.value;
   profileAboutUser.textContent = formAboutUser.value;
- // renderCard({name: evt.target.imput});
- //imput.value = '';
+  // renderCard({name: evt.target.imput});
+  //imput.value = '';
   closePopup(popupProfile);
 };
 
