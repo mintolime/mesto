@@ -32,9 +32,9 @@ const createCard = (dataCard) => {
   return newCard;
 }
 
-const renderCard = (dataCard) => {
-  cardContainer.prepend(createCard(dataCard))
-};
+function renderCard(container, item) {
+  container.prepend(item);
+}
 
 initialCards.forEach((element) => {
   const cardElement = cardTemplate.cloneNode(true);
@@ -42,8 +42,6 @@ initialCards.forEach((element) => {
   cardElement.querySelector('.cards__title').textContent = element.name;
   cardElement.querySelector('.cards__image').src = element.link;
   cardElement.querySelector('.cards__image').alt = element.name;
-
-
   cardContainer.append(cardElement);
 
 });
