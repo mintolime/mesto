@@ -7,7 +7,8 @@ const popupForm = document.querySelector('.form');
 const openPopupBtn = document.querySelector('.button_type_edit');
 const addPopupBtn = document.querySelector('.button_type_add');
 const closePopupBtn = document.querySelector('.button_type_close');
-
+const likeCardBtn = document.querySelector('.button_type_like');
+const deleteCardBtn = document.querySelector('.button_type_delete');
 //PROFILE
 const profileName = document.querySelector('.profile__name'); 
 const formInputName = document.querySelector('.form__input_text_name'); 

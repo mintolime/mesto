@@ -7,33 +7,32 @@ function closePopup(element) {
   element.classList.remove('popup_opened')
 };
 
-const handleDeleteCard = (event) => {
+const deleteCard = (event) => {
   event.target.closest('.cards__item').remove();
 }
-const handleBtnLike = (event) => {
+const likeCardActive = (event) => {
   event.target.closest('.cards__item').classList.toggle('.button_type_like_active');
 }
 //генерация карточки
 const createCard = (element) => {
   const cardTemplate = document.querySelector('#card-template').content;
   const newCard = cardTemplate.cloneNode(true);
-  const deleteCardBtn = newCard.querySelector('.button_type_close');
-  const likeBtn = newCard.querySelector('.button_type_like');
 
   newCard.querySelector('.cards__title').textContent = element.name;
   newCard.querySelector('.cards__image').src = element.link;
   newCard.querySelector('.cards__image').alt = element.name;
-
-
- 
+  newCard.querySelector(".button_type_delete").addEventListener('click', deleteCard);
+  newCard.querySelector(".button_type_like").addEventListener('click', likeCardActive);
+  //newCard.querySelector(".card__image").addEventListener('click', showCard);
+  //deleteCardBtn.addEventListener('click', deleteCard);
 
   return newCard;
 }
 
 //обработчик событий
-const handleSubmitAddForm = (event) => {
+const submitCardAdd = (event) => {
   event.preventDefault();
-  createCard({ name: input.value, link: input.value })
+  createCard()
   input.value = '';
 };
 
@@ -45,7 +44,7 @@ const renderCard = (element) => {
 };
 
 //рендер всех карточек
-popupForm.addEventListener("submit", handleSubmitAddForm);
+popupForm.addEventListener("submit", submitCardAdd);
 
 initialCards.forEach((element) => {
   renderCard(element)
@@ -65,8 +64,6 @@ function changeTextProfile(evt) {
   evt.preventDefault();
   profileName.textContent = formInputName.value;
   profileAboutUser.textContent = formAboutUser.value;
-  // renderCard({name: evt.target.imput});
-  //imput.value = '';
   closePopup(popupProfile);
 };
 
