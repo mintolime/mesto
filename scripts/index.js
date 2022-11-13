@@ -7,45 +7,44 @@ function closePopup(element) {
   element.classList.remove('popup_opened')
 };
 
-const deleteCard = (event) => event.target.closest('.cards__item').remove();
-const likeActive = (event) => event.target.classList.toggle('button_type_like_active');
-
-
 
 //генерация карточки
-const createCard = (element) => {
+const createCard = (name, img) => {
   const newCard = cardTemplate.cloneNode(true);
 
-  const title = newCard.querySelector('.cards__title');
-  const img = newCard.querySelector('.cards__image');
-  title.textContent = element.name;
-  img.src = element.link;
-  img.alt = element.name;
+  newCard.querySelector('.cards__title').textContent = name;
+  newCard.querySelector('.cards__image').src = img;
+  newCard.querySelector('.cards__image').alt = img;
   newCard.querySelector(".button_type_delete").addEventListener('click', deleteCard);
   newCard.querySelector(".button_type_like").addEventListener('click', likeActive);
+
   return newCard;
 }
+//действия кнопок внутри карточки
+const deleteCard = (event) => event.target.closest('.cards__item').remove();
+const likeActive = (event) => event.target.classList.toggle('button_type_like_active');
 
 //обработчик событий
 const submitCardAdd = (event) => {
   event.preventDefault();
-  renderCard({ name: input.value, link: input.value })
+  renderCard(cardContainer, createCard(cardInputName.value, cardImglink.value));
   input.value = '';
+  closePopup(popupCard)
 };
 
 
 
 //добавление карточки 
-const renderCard = (element) => {
-  cardContainer.prepend(createCard(element));
+const renderCard = (container, item) => {
+  container.prepend(item);
 };
 
 //рендер всех карточек
-formCard.addEventListener("submit", submitCardAdd);
 
-initialCards.forEach((element) => {
-  renderCard(element)
-});
+
+initialCards.forEach((element) => 
+  renderCard(cardContainer, createCard(element.name, element.link)));
+;
 
 
 
@@ -72,5 +71,5 @@ closePopupBtn.addEventListener('click', closePopup(popup));
 // deleteCardBtn.addEventListener('click', deleteCard);
 openPopupBtn.addEventListener('click', addValue);
 formProfile.addEventListener('submit', changeTextProfile);
-
+formCard.addEventListener("submit", submitCardAdd);
 
