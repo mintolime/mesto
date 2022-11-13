@@ -10,9 +10,13 @@ function closePopup(element) {
 const deleteCard = (event) => {
   event.target.closest('.cards__item').remove();
 }
-const likeCardActive = (event) => {
-  event.target.closest('.cards__item').classList.toggle('.button_type_like_active');
+const likeActive = (event) => {
+  event.target.classList.toggle('button_type_like_active');
 }
+//deleteCard.addEventListener('click', (event) => event.target.closest('.cards__item').remove());
+  //likeActive.addEventListener('click', (event) => event.target.classList.toggle('button_type_like_active'));
+
+
 //генерация карточки
 const createCard = (element) => {
   const cardTemplate = document.querySelector('#card-template').content;
@@ -22,7 +26,7 @@ const createCard = (element) => {
   newCard.querySelector('.cards__image').src = element.link;
   newCard.querySelector('.cards__image').alt = element.name;
   newCard.querySelector(".button_type_delete").addEventListener('click', deleteCard);
-  newCard.querySelector(".button_type_like").addEventListener('click', likeCardActive);
+  newCard.querySelector(".button_type_like").addEventListener('click', likeActive);
   //newCard.querySelector(".card__image").addEventListener('click', showCard);
   //deleteCardBtn.addEventListener('click', deleteCard);
 
@@ -44,7 +48,7 @@ const renderCard = (element) => {
 };
 
 //рендер всех карточек
-popupForm.addEventListener("submit", submitCardAdd);
+formCard.addEventListener("submit", submitCardAdd);
 
 initialCards.forEach((element) => {
   renderCard(element)
@@ -72,7 +76,7 @@ function changeTextProfile(evt) {
 
 addPopupBtn.addEventListener('click', () => openPopup(popupCard));
 openPopupBtn.addEventListener('click', () => openPopup(popupProfile));
-closePopupBtn.addEventListener('click', closePopup(popup));
+closePopupBtns.addEventListener('click', closePopup(popup));
 // deleteCardBtn.addEventListener('click', deleteCard);
 openPopupBtn.addEventListener('click', addValue);
 popupForm.addEventListener('submit', changeTextProfile);
