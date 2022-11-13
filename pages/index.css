@@ -44,7 +44,10 @@
   width: 75vw;
   height: 75vh;
 }
-
+.fugure__image {
+  object-fit: cover;
+  width: 100%;
+}
 .fugure_opened {
   display: flex;
 }
