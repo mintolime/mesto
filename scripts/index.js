@@ -11,40 +11,31 @@ function closePopup(element) {
 
 
 
-const deleteCard = (event) => {
-  event.target.closest('.cards__item').remove();
-}
 
-const createCard = (dataCard) =>{
+
+const createCard = (dataCard) => {
   const newCard = cardTemplate.cloneNode(true);
 
-   const title = newCard.querySelector('.cards__title');
-   title.textContent = dataCard.title;
+  const title = newCard.querySelector('.cards__title');
+  title.textContent = dataCard.title;
 
   const image = newCard.querySelector('.cards__image');
   //  img.src = dataCard.src;
   //  img.alt = dataCard.title;
 
-likeBtn.addEventListener('click', (evt) => evt.target.classList.toggle('button_type_like_active'));
+ // likeBtn.addEventListener('click', (evt) => evt.target.classList.toggle('button_type_like_active'));
+  //deleteBtn.addEventListener('click', (evt) => 
+  //evt.target.closest('.cards__item').remove());
 
-   return newCard;
+  return newCard;
 }
 
-const renderCard = (item) => {
-  cardContainer.innerAdjancentHTML('afterbegin',`
-        <li class="cards__item">
-          <img class="cards__image">
-          <div class="cards__inner">
-            <h2 class="cards__title">${initialCards.name}</h2>
-            <button class="button button_type_like" type="button"></button>
-          </div>
-          <button class="button button_type_delete"></button>
-        </li>
-  `)
+const renderCard = (dataCard) => {
+  cardContainer.prepend(createCard(dataCard))
 };
 
-initialCards.forEach((item) => {
-  renderCard(item);
+initialCards.forEach((dataCard) => {
+  renderCard(dataCard);
 });
 
 
@@ -61,6 +52,8 @@ function changeTextProfile(evt) {
   evt.preventDefault();
   profileName.textContent = formInputName.value;
   profileAboutUser.textContent = formAboutUser.value;
+ // renderCard({name: evt.target.imput});
+ //imput.value = '';
   closePopup(popupProfile);
 };
 
