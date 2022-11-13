@@ -7,43 +7,48 @@ function closePopup(element) {
   element.classList.remove('popup_opened')
 };
 
-
-
-
-
-
-
-const createCard = (dataCard) => {
+const handleDeleteCard = (event) => {
+  event.target.closest('.cards__item').remove();
+}
+const handleBtnLike = (event) => {
+  event.target.closest('.cards__item').classList.toggle('.button_type_like_active');
+}
+//генерация карточки
+const createCard = (element) => {
+  const cardTemplate = document.querySelector('#card-template').content;
   const newCard = cardTemplate.cloneNode(true);
+  const deleteCardBtn = newCard.querySelector('.button_type_close');
+  const likeBtn = newCard.querySelector('.button_type_like');
 
-  const title = newCard.querySelector('.cards__title');
-  title.textContent = dataCard.title;
+  newCard.querySelector('.cards__title').textContent = element.name;
+  newCard.querySelector('.cards__image').src = element.link;
+  newCard.querySelector('.cards__image').alt = element.name;
 
-  const img = newCard.querySelector('.cards__image');
-  //title.textContent = dataCard.title;
 
-  // img.src = dataCard.src;
-  // img.alt = dataCard.title;
-
-  // likeBtn.addEventListener('click', (evt) => evt.target.classList.toggle('button_type_like_active'));
-  //deleteBtn.addEventListener('click', (evt) => 
-  //evt.target.closest('.cards__item').remove());
+ 
 
   return newCard;
 }
 
-function renderCard(container, item) {
-  container.prepend(item);
-}
+//обработчик событий
+const handleSubmitAddForm = (event) => {
+  event.preventDefault();
+  createCard({ name: input.value, link: input.value })
+  input.value = '';
+};
+
+
+
+//добавление карточки 
+const renderCard = (element) => {
+  cardContainer.prepend(createCard(element));
+};
+
+//рендер всех карточек
+popupForm.addEventListener("submit", handleSubmitAddForm);
 
 initialCards.forEach((element) => {
-  const cardElement = cardTemplate.cloneNode(true);
-
-  cardElement.querySelector('.cards__title').textContent = element.name;
-  cardElement.querySelector('.cards__image').src = element.link;
-  cardElement.querySelector('.cards__image').alt = element.name;
-  cardContainer.append(cardElement);
-
+  renderCard(element)
 });
 
 

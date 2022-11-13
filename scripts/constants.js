@@ -7,15 +7,13 @@ const popupForm = document.querySelector('.form');
 const openPopupBtn = document.querySelector('.button_type_edit');
 const addPopupBtn = document.querySelector('.button_type_add');
 const closePopupBtn = document.querySelector('.button_type_close');
-const deleteCardBtn = document.querySelector('.button_type_close');
-const likeBtn = document.querySelector('.button_type_like');
+
 //PROFILE
 const profileName = document.querySelector('.profile__name'); 
 const formInputName = document.querySelector('.form__input_text_name'); 
 const profileAboutUser = document.querySelector('.profile__info'); 
 const formAboutUser = document.querySelector('.form__input_text_about');
 //CARD
-const cardTemplate = document.querySelector('#card-template').content;
 const cardInputName = document.querySelector('#nameCard');
 const cardImglink = document.querySelector('#linkCard');
 
