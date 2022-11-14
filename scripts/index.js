@@ -3,9 +3,20 @@ function openPopup(element) {
   element.classList.add('popup_opened')
 };
 
-function closePopup(popup) {
+function closePopup() {
   popup.classList.remove('popup_opened')
 };
+
+// popupForm.addEventListener('click', (event) => {
+//   let isOverlay = event.target.classList.contains('popup')
+//   let isClose = event.target.classList.contains('button_type_close')
+//   let isSave = event.target.classList.contains('button_type_save')
+
+//   if(isOverlay || isClose && isClose || isSave) {
+//     //closePopup(popupForm)
+//     console.log(event.target)
+//   }
+// })
 
 
 //генерация карточки
@@ -66,10 +77,10 @@ function changeTextProfile(evt) {
   closePopup(popupProfile);
 };
 
+popupImg.addEventListener('click', () => openPopup(popupImage));
 addPopupBtn.addEventListener('click', () => openPopup(popupCard));
 openPopupBtn.addEventListener('click', () => openPopup(popupProfile));
-closePopupBtn.addEventListener('click', closePopup(popup));
-// deleteCardBtn.addEventListener('click', deleteCard);
+closePopupBtn.addEventListener('click', closePopup(popupCard));
 openPopupBtn.addEventListener('click', addValue);
 formProfile.addEventListener('submit', changeTextProfile);
 formCard.addEventListener("submit", submitCardAdd);
