@@ -3,8 +3,8 @@ function openPopup(element) {
   element.classList.add('popup_opened')
 };
 
-function closePopup(element) {
-  element.classList.remove('popup_opened')
+function closePopup(popup) {
+  popup.classList.remove('popup_opened')
 };
 
 
@@ -27,8 +27,9 @@ const likeActive = (event) => event.target.classList.toggle('button_type_like_ac
 //обработчик событий
 const submitCardAdd = (event) => {
   event.preventDefault();
-  renderCard(cardContainer, createCard(cardInputName.value, cardImglink.value));
-  input.value = '';
+  renderCard(cardContainer, createCard(cardInputName.value, cardImgLink.value));
+  cardInputName.value = '';
+  cardImgLink.value = '';
   closePopup(popupCard)
 };
 
@@ -42,7 +43,7 @@ const renderCard = (container, item) => {
 //рендер всех карточек
 
 
-initialCards.forEach((element) => 
+initialCards.forEach((element) =>
   renderCard(cardContainer, createCard(element.name, element.link)));
 ;
 
