@@ -25,7 +25,7 @@ const infoFigure = document.querySelector('.figure__info');
 const initialCards = [
   {
     name: 'Санкт-Петербург',
-    link: 'https://images.unsplash.com/photo-1642250399033-ba2a24390f8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'
+    link: 'https://images.unsplash.com/photo-1642250399033-ba2a24390f8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80'
   },
   {
     name: 'Мурадым, Башкортостан',
