@@ -34,6 +34,7 @@ const createCard = (name, img) => {
     openPopup(popupImg);
     imgFigure.src = img;
     infoFigure.textContent = name;
+    popupImg.style.backgroundColor = 'rgb(0, 0, 0, .9)'; //затемнения фона попапа с картинкой
   };
 
   return newCard;

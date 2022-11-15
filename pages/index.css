@@ -63,9 +63,16 @@
 }
 
 .figure__image {
-  width: 75vw;
-  height: 75vh;
+  width: 100%;
+  /* width: 75vw; */
+  height: 55vh;
   object-fit: cover;
+}
+
+@media screen and (min-width: 720px) {
+  .figure__image {
+    height: 75vh;
+  }
 }
 
 .figure__info {
@@ -97,10 +104,4 @@
   height: 80%;
   padding: 0;
   background-color: transparent;
-}
-
- @media screen and (min-width: 720px) {
-  .popup_image {
-   
-  }
 }
