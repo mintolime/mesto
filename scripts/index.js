@@ -7,17 +7,16 @@ function closePopup() {
   popup.classList.remove('popup_opened')
 };
 
-// popupForm.addEventListener('click', (event) => {
-//   let isOverlay = event.target.classList.contains('popup')
-//   let isClose = event.target.classList.contains('button_type_close')
-//   let isSave = event.target.classList.contains('button_type_save')
+popup.addEventListener('click', (event) => {
+  let isOverlay = event.target.classList.contains('popup')
+  let isClose = event.target.classList.contains('button_type_close')
+  let isSave = event.target.classList.contains('button_type_save')
 
-//   if(isOverlay || isClose && isClose || isSave) {
-//     //closePopup(popupForm)
-//     console.log(event.target)
-//   }
-// })
-
+  if (isOverlay || isClose && isClose || isSave) {
+    closePopup(popup)
+    console.log(event.target)
+  }
+})
 
 //генерация карточки
 const createCard = (name, img) => {
@@ -28,6 +27,15 @@ const createCard = (name, img) => {
   newCard.querySelector('.cards__image').alt = img;
   newCard.querySelector(".button_type_delete").addEventListener('click', deleteCard);
   newCard.querySelector(".button_type_like").addEventListener('click', likeActive);
+  newCard.querySelector(".cards__image").addEventListener('click', openImg);
+
+
+  function openImg() {
+    openPopup(popupImg);
+    imgFigure.src = img;
+    infoFigure.alt = name.textContent;
+    //console.log(img)
+  };
 
   return newCard;
 }
@@ -52,15 +60,7 @@ const renderCard = (container, item) => {
 };
 
 //рендер всех карточек
-
-
-initialCards.forEach((element) =>
-  renderCard(cardContainer, createCard(element.name, element.link)));
-;
-
-
-
-
+initialCards.forEach((element) => renderCard(cardContainer, createCard(element.name, element.link)));
 
 
 
@@ -74,13 +74,13 @@ function changeTextProfile(evt) {
   evt.preventDefault();
   profileName.textContent = formInputName.value;
   profileAboutUser.textContent = formAboutUser.value;
-  closePopup(popupProfile);
+  //closePopup(popupProfile);
 };
 
-popupImg.addEventListener('click', () => openPopup(popupImage));
+
 addPopupBtn.addEventListener('click', () => openPopup(popupCard));
 openPopupBtn.addEventListener('click', () => openPopup(popupProfile));
-closePopupBtn.addEventListener('click', closePopup(popupCard));
+//closePopupBtn.addEventListener('click', () => closePopup());
 openPopupBtn.addEventListener('click', addValue);
 formProfile.addEventListener('submit', changeTextProfile);
 formCard.addEventListener("submit", submitCardAdd);

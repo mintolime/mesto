@@ -38,20 +38,43 @@
 @import url('../blocks/button/_type/button_type_save.css');
 
 /* @import url('../blocks'); шаблон*/
-.fugure {
-  display: none;
+
+/* .popup_image {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, .5);
+  align-items: center;
   justify-content: center;
+  visibility: visible;
+
+} */
+.figure {
+  display: flex;
+  
+  align-items: center;
+  justify-content: center;
+}
+.figure__image {
+  object-fit: cover;
   width: 75vw;
   height: 75vh;
 }
-.fugure__image {
-  object-fit: cover;
-  width: 100%;
-}
-.fugure_opened {
+.figure_opened {
   display: flex;
 }
-
+.figure_info{
+    background-color: transparent;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #fff;
+}
 .button_type_delete {
   background-image: url('../images/icon/icon-delete.svg');
   background-color: rgba(255, 255, 255, 0);
