@@ -72,8 +72,6 @@ const submitCardAdd = (event) => {
   closePopup(popupCard)
 };
 
-
-
 //добавление карточки 
 const renderCard = (container, item) => {
   container.prepend(item);
@@ -82,9 +80,6 @@ const renderCard = (container, item) => {
 //рендер всех карточек
 initialCards.forEach((element) => renderCard(cardContainer, createCard(element.name, element.link)));
 
-
-
-//НЕ ТРОГАТЬ
 function addValue() {
   formInputName.value = profileName.textContent;
   formAboutUser.value = profileAboutUser.textContent;
@@ -96,7 +91,6 @@ function changeTextProfile(evt) {
   profileAboutUser.textContent = formAboutUser.value;
   //closePopup(popupProfile);
 };
-
 
 addPopupBtn.addEventListener('click', () => openPopup(popupCard));
 openPopupBtn.addEventListener('click', () => openPopup(popupProfile));
