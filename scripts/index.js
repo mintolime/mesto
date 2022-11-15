@@ -1,23 +1,43 @@
-
+//универсальные функции
 function openPopup(element) {
   element.classList.add('popup_opened')
 };
 
-function closePopup() {
-  popup.classList.remove('popup_opened')
+function closePopup(element) {
+  element.classList.remove('popup_opened')
 };
 
-popup.addEventListener('click', (event) => {
+//функции открытия попапов
+popupProfile.addEventListener('click', (event) => {
   let isOverlay = event.target.classList.contains('popup')
   let isClose = event.target.classList.contains('button_type_close')
   let isSave = event.target.classList.contains('button_type_save')
 
   if (isOverlay || isClose && isClose || isSave) {
-    closePopup(popup)
+    closePopup(popupProfile)
     console.log(event.target)
   }
 })
 
+popupImg.addEventListener('click', (event) => {
+  let isOverlay = event.target.classList.contains('popup')
+  let isClose = event.target.classList.contains('button_type_close')
+
+  if (isOverlay || isClose && isClose || isSave) {
+    closePopup(popupImg)
+    console.log(event.target)
+  }
+})
+
+popupCard.addEventListener('click', (event) => {
+  let isOverlay = event.target.classList.contains('popup')
+  let isClose = event.target.classList.contains('button_type_close')
+
+  if (isOverlay || isClose && isClose || isSave) {
+    closePopup(popupCard)
+    console.log(event.target)
+  }
+})
 //генерация карточки
 const createCard = (name, img) => {
   const newCard = cardTemplate.cloneNode(true);
