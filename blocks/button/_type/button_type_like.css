@@ -3,7 +3,7 @@
   background-size: 22px 19px;
   width: 28px;
   height: 25px;
-  transition: 0.s;
+  transition: 0.5s;
 }
 
 .button_type_like:hover {
