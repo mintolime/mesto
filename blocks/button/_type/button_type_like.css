@@ -11,8 +11,3 @@
  transform: scale(1.1);
 }
 
-/* todo после удалить, через js стилизовать активный класс */
-.button_type_like_active {
-  background: url('../../../images/icon/icon-like-blk.svg');
-  background-size: cover; 
-} 

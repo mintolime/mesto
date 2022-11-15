@@ -25,83 +25,23 @@
 @import url('../blocks/popup/__title/popup__title.css');
 @import url('../blocks/popup/_opened/popup_opened.css');
 @import url('../blocks/popup/__container/popup__container.css');
+@import url('../blocks/popup/__container/_image/popup__container_image.css');
 /*FORM*/
 @import url('../blocks/form/form.css');
 @import url('../blocks/form/__input/form__input.css');
 @import url('../blocks/form/__inner/form__inner.css');
+/*FIGURE*/
+@import url('../blocks/figure/figure.css');
+@import url('../blocks/figure/__image/figure__image.css');
+@import url('../blocks/figure/__info/figure__info.css');
 /*BUTTONS*/
 @import url('../blocks/button/button.css');
 @import url('../blocks/button/_type/button_type_add.css');
 @import url('../blocks/button/_type/button_type_edit.css');
 @import url('../blocks/button/_type/button_type_like.css');
+@import url('../blocks/button/_type/button_type_like_active.css');
 @import url('../blocks/button/_type/button_type_close.css');
 @import url('../blocks/button/_type/button_type_save.css');
+@import url('../blocks/button/_type/button_type_delete.css');
 
 /* @import url('../blocks'); шаблон*/
-
-/* .popup_image {
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, .5);
-  align-items: center;
-  justify-content: center;
-  visibility: visible;
-
-} */
-.figure {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  flex-direction: column;
-
-}
-
-.figure__image {
-  width: 100%;
-  /* width: 75vw; */
-  height: 55vh;
-  object-fit: cover;
-}
-
-@media screen and (min-width: 720px) {
-  .figure__image {
-    height: 75vh;
-  }
-}
-
-.figure__info {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  color: #fff;
-  padding-top: 10px;
-  align-self: flex-start;
-}
-
-.button_type_delete {
-  background-image: url('../images/icon/icon-delete.svg');
-  background-color: rgba(255, 255, 255, 0);
-  width: 18px;
-  height: 19px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-.button_type_delete:hover {
-  opacity: .6;
-}
-
-.popup__container_image {
-  max-width: 100%;
-  width: 80%;
-  height: 80%;
-  padding: 0;
-  background-color: transparent;
-}
