@@ -34,7 +34,6 @@ const createCard = (name, img) => {
     openPopup(popupImg);
     imgFigure.src = img;
     infoFigure.textContent = name;
-    //console.log(img)
   };
 
   return newCard;
@@ -80,7 +79,6 @@ function changeTextProfile(evt) {
 
 addPopupBtn.addEventListener('click', () => openPopup(popupCard));
 openPopupBtn.addEventListener('click', () => openPopup(popupProfile));
-//closePopupBtn.addEventListener('click', () => closePopup());
 openPopupBtn.addEventListener('click', addValue);
 formProfile.addEventListener('submit', changeTextProfile);
 formCard.addEventListener("submit", submitCardAdd);
