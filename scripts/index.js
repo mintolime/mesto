@@ -33,7 +33,7 @@ const createCard = (name, img) => {
   function openImg() {
     openPopup(popupImg);
     imgFigure.src = img;
-    infoFigure.alt = name.textContent;
+    infoFigure.textContent = name;
     //console.log(img)
   };
 

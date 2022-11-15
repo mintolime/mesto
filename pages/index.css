@@ -55,25 +55,25 @@
 
 } */
 .figure {
+  width: 100%;
   display: flex;
-  
+  margin: 0;
+  padding: 0;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
 .figure__image {
   object-fit: cover;
-  width: 75vw;
-  height: 75vh;
+  width: 100%;
 }
-.figure_opened {
-  display: flex;
-}
-.figure_info{
-    background-color: transparent;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  color: #fff;
+
+.figure__info{
+ font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+color: #fff;
+/* color: rgb(10, 10, 10); */
+align-self: flex-start;
 }
 .button_type_delete {
   background-image: url('../images/icon/icon-delete.svg');
@@ -86,4 +86,10 @@
 }
 .button_type_delete:hover{
   opacity: .6;
+}
+.popup__container_image {
+      width: 75vw;
+    height: 75vh;
+  padding: 0;
+  background-color: transparent;
 }
