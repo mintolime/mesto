@@ -6,6 +6,12 @@ function openPopup(element) {
 function closePopup(element) {
   element.classList.remove('popup_opened')
 };
+function resizeCard() {
+  if (cardContainer.lenght < 3) {
+    console.log('hi')
+  }
+};
+resizeCard()
 
 //функции открытия попапов
 popupProfile.addEventListener('click', (event) => {
@@ -15,7 +21,6 @@ popupProfile.addEventListener('click', (event) => {
 
   if (isOverlay || isClose && isClose || isSave) {
     closePopup(popupProfile)
-    console.log(event.target)
   }
 })
 
@@ -25,7 +30,6 @@ popupImg.addEventListener('click', (event) => {
 
   if (isOverlay || isClose && isClose || isSave) {
     closePopup(popupImg)
-    console.log(event.target)
   }
 })
 
@@ -35,16 +39,18 @@ popupCard.addEventListener('click', (event) => {
 
   if (isOverlay || isClose && isClose || isSave) {
     closePopup(popupCard)
-    console.log(event.target)
   }
 })
 //генерация карточки
 const createCard = (name, img) => {
   const newCard = cardTemplate.cloneNode(true);
 
-  newCard.querySelector('.cards__title').textContent = name;
-  newCard.querySelector('.cards__image').src = img;
-  newCard.querySelector('.cards__image').alt = img;
+  const title = newCard.querySelector('.cards__title');
+  title.textContent = name;
+  const image = newCard.querySelector('.cards__image');
+  image.src = img;
+  image.alt = name;
+
   newCard.querySelector(".button_type_delete").addEventListener('click', deleteCard);
   newCard.querySelector(".button_type_like").addEventListener('click', likeActive);
   newCard.querySelector(".cards__image").addEventListener('click', openImg);
