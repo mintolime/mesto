@@ -65,8 +65,8 @@ const likeActive = (event) => event.target.classList.toggle('button_type_like_ac
 const submitCardAdd = (event) => {
   event.preventDefault();
   renderCard(cardContainer, createCard(cardInputName.value, cardImgLink.value));
-  popupForm.reset()
-  closePopup(popupCard)
+  popupForm.reset();
+  closePopup(popupCard);
 };
 //рендер всех карточек
 const renderCard = (container, item) => {
