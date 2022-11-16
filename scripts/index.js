@@ -45,14 +45,16 @@ popupCard.addEventListener('click', (event) => {
 const createCard = (name, img) => {
   const newCard = cardTemplate.cloneNode(true);
 
+  const likeBtn = newCard.querySelector('.button_type_like');
+  const deleteBtn = newCard.querySelector('.button_type_delete');
   const title = newCard.querySelector('.cards__title');
   title.textContent = name;
   const image = newCard.querySelector('.cards__image');
   image.src = img;
   image.alt = name;
-
-  newCard.querySelector(".button_type_delete").addEventListener('click', deleteCard);
-  newCard.querySelector(".button_type_like").addEventListener('click', likeActive);
+ 
+  deleteBtn.addEventListener('click', deleteCard);
+  likeBtn.addEventListener('click', likeActive);
   newCard.querySelector(".cards__image").addEventListener('click', openImg);
 
 
