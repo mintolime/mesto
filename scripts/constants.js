@@ -1,11 +1,11 @@
 //POPUP
+const popups = document.querySelectorAll('.popup');
 const popupCard = document.querySelector('.popup_add-card');
 const popupProfile = document.querySelector('.popup_edit-profile');
 const popupImg = document.querySelector('.popup_image');
 //BUTTON
 const openPopupBtn = document.querySelector('.button_type_edit');
 const addPopupBtn = document.querySelector('.button_type_add');
-const closePopupBtn = document.querySelectorAll('.button_type_close');
 //PROFILE
 const formProfile = document.querySelector('#formProfile');
 const profileName = document.querySelector('.profile__name'); 

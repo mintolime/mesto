@@ -1,46 +1,35 @@
 //универсальные функции
-function openPopup(element) {
-  element.classList.add('popup_opened')
+function openPopup(popup) {
+  popup.classList.add('popup_opened')
 };
 
-function closePopup(element) {
-  element.classList.remove('popup_opened')
+function closePopup(popup) {
+  popup.classList.remove('popup_opened')
 };
-function resizeCard() {
-  if (cardContainer.lenght < 3) {
-    console.log('hi')
-  }
+//функции ввода
+function addValue() {
+  formInputName.value = profileName.textContent;
+  formAboutUser.value = profileAboutUser.textContent;
 };
-resizeCard()
 
-//функции открытия попапов
-popupProfile.addEventListener('click', (event) => {
-  let isOverlay = event.target.classList.contains('popup')
-  let isClose = event.target.classList.contains('button_type_close')
-  let isSave = event.target.classList.contains('button_type_save')
+function changeTextProfile(evt) {
+  evt.preventDefault();
+  profileName.textContent = formInputName.value;
+  profileAboutUser.textContent = formAboutUser.value;
+  closePopup(popupProfile);
+};
 
-  if (isOverlay || isClose && isClose || isSave) {
-    closePopup(popupProfile)
-  }
-})
+//закрытие попапов
+popups.forEach((popup) => {
+  popup.addEventListener("click", function (event) {
+    const isOverlay = event.target.classList.contains('popup')
+    const isClose = event.target.classList.contains('button_type_close')
+    if (isOverlay || isClose && isClose) {
+      closePopup(popup);
+    }
+  });
+});
 
-popupImg.addEventListener('click', (event) => {
-  let isOverlay = event.target.classList.contains('popup')
-  let isClose = event.target.classList.contains('button_type_close')
-
-  if (isOverlay || isClose && isClose || isSave) {
-    closePopup(popupImg)
-  }
-})
-
-popupCard.addEventListener('click', (event) => {
-  let isOverlay = event.target.classList.contains('popup')
-  let isClose = event.target.classList.contains('button_type_close')
-
-  if (isOverlay || isClose && isClose || isSave) {
-    closePopup(popupCard)
-  }
-})
 //генерация карточки
 const createCard = (name, img) => {
   const newCard = cardTemplate.cloneNode(true);
@@ -52,7 +41,7 @@ const createCard = (name, img) => {
   const image = newCard.querySelector('.cards__image');
   image.src = img;
   image.alt = name;
- 
+
   deleteBtn.addEventListener('click', deleteCard);
   likeBtn.addEventListener('click', likeActive);
   newCard.querySelector(".cards__image").addEventListener('click', openImg);
@@ -71,7 +60,7 @@ const createCard = (name, img) => {
 const deleteCard = (event) => event.target.closest('.cards__item').remove();
 const likeActive = (event) => event.target.classList.toggle('button_type_like_active');
 
-//обработчик событий
+//добавление карточки 
 const submitCardAdd = (event) => {
   event.preventDefault();
   renderCard(cardContainer, createCard(cardInputName.value, cardImgLink.value));
@@ -79,30 +68,19 @@ const submitCardAdd = (event) => {
   cardImgLink.value = '';
   closePopup(popupCard)
 };
-
-//добавление карточки 
+//рендер всех карточек
 const renderCard = (container, item) => {
   container.prepend(item);
 };
 
-//рендер всех карточек
 initialCards.forEach((element) => renderCard(cardContainer, createCard(element.name, element.link)));
 
-function addValue() {
-  formInputName.value = profileName.textContent;
-  formAboutUser.value = profileAboutUser.textContent;
-};
-
-function changeTextProfile(evt) {
-  evt.preventDefault();
-  profileName.textContent = formInputName.value;
-  profileAboutUser.textContent = formAboutUser.value;
-  //closePopup(popupProfile);
-};
-
+//обработчики событий
 addPopupBtn.addEventListener('click', () => openPopup(popupCard));
-openPopupBtn.addEventListener('click', () => openPopup(popupProfile));
-openPopupBtn.addEventListener('click', addValue);
+openPopupBtn.addEventListener('click', () => {
+  openPopup(popupProfile);
+  addValue();
+});
 formProfile.addEventListener('submit', changeTextProfile);
 formCard.addEventListener("submit", submitCardAdd);
 
