@@ -1,6 +1,5 @@
 //POPUP
 const popups = document.querySelectorAll('.popup');
-const popupForm = document.querySelector('.form');
 const popupCard = document.querySelector('.popup_add-card');
 const popupProfile = document.querySelector('.popup_edit-profile');
 const popupImg = document.querySelector('.popup_image');
