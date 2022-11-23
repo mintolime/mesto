@@ -46,7 +46,6 @@ const createCard = (name, img) => {
   likeBtn.addEventListener('click', likeActive);
   newCard.querySelector(".cards__image").addEventListener('click', openImg);
 
-
   function openImg() {
     openPopup(popupImg);
     imgFigure.src = img;
