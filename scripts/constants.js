@@ -7,6 +7,9 @@ const popupImg = document.querySelector('.popup_image');
 const openPopupBtn = document.querySelector('.button_type_edit');
 const addPopupBtn = document.querySelector('.button_type_add');
 //PROFILE
+const formElement = document.querySelector('.form');
+const formInput = formElement.querySelector('.form__input');
+const formError = formElement.querySelector('.form__input-error');
 const formProfile = document.querySelector('#formProfile');
 const profileName = document.querySelector('.profile__name'); 
 const formInputName = document.querySelector('.form__input_text_name'); 

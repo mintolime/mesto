@@ -11,15 +11,15 @@
 }
 
 .form__input:focus {
-  border: 2px rgb(167, 167, 171) solid;
-  /*стили для обводки импута*/
+  border: 2px rgba(214, 214, 214, 0.432) solid;
+  /* стили для обводки импута */
 }
 .form__input:valid {
-  border: 2px rgb(89, 255, 33) solid;
+  border: 6px rgb(89, 255, 33) solid;
   /*стили для обводки импута*/
 }
 
 .form__input:invalid {
-  border: 2px rgb(255, 4, 4) solid;
+  border: 6px rgb(255, 4, 4) solid;
   /*стили для обводки импута*/
 }

@@ -19,6 +19,52 @@ function changeTextProfile(evt) {
   closePopup(popupProfile);
 };
 
+
+const showError = (input, errorMessage) => {
+  input.classList.add('form__input_type_error');
+  formError.textContent = errorMessage;
+  formError.classList.add('form__input-error_active');
+  // 2. Установите errorMessage в качестве значения textContent для formError.
+  // 3. Добавьте formError класс form__input-error_active.
+};
+
+const hideError = (input) => {
+  input.classList.remove('form__input_type_error');
+    formError.classList.remove('form__input-error_active');
+    formError.textContent = '';
+
+  // 1. Удалите активный класс ошибки c formError.
+  // 2. Очистите свойство textContent элемента formError.
+};
+
+formElement.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+});
+
+const checkInputValidity = () => {
+  if((!formInput.validity.valid)){
+    showError(formInput, formInput.validationMessage/* 4. Передайте сообщение об ошибке. */);
+  }
+  else{
+    hideError(formInput)
+  }
+};
+
+
+formElement.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+});
+
+formInput.addEventListener('input', function () {
+  checkInputValidity();
+});
+
+const setEventListeners = (formElement) => {
+  const inputList = Array.from()
+}
+
+
+
 //закрытие попапов
 popups.forEach((popup) => {
   popup.addEventListener('click', function (evt) {
