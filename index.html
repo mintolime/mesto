@@ -43,9 +43,9 @@
       <form id="formProfile" class="form">
         <fieldset class="form__inner">
           <input class="form__input  form__input_text_name" id="nameUser" type="text" aria-label="имя"
-            placeholder="Ваше имя">
+            placeholder="Ваше имя" minlength="2" maxlength="40" required>
           <input class="form__input form__input_text_about" id="aboutUser" type="text" aria-label="подпись"
-            placeholder="О себе">
+            placeholder="О себе" minlength="2" maxlength="200" required>
         </fieldset>
         <button class="button button_type_save" type="submit">Сохранить</button>
       </form>
@@ -58,10 +58,10 @@
       <h3 class="popup__title">Новое место</h3>
       <form id="formCard" class="form">
         <fieldset class="form__inner">
-          <input class="form__input  form__input_text_name" id="nameCard" type="text" aria-label="имя"
-            placeholder="Название">
-          <input class="form__input form__input_text_about" id="linkCard" type="text" aria-label="подпись"
-            placeholder="Ссылка на картинку">
+          <input class="form__input  form__input_text_name" id="nameCard" type="text" aria-label="Наименование"
+            placeholder="Название" minlength="1" maxlength="30" required>
+          <input class="form__input form__input_text_about" id="linkCard" type="url" aria-label="подпись"
+            placeholder="Ссылка на картинку" required>
         </fieldset>
         <button class="button button_type_save" type="submit">Создать</button>
       </form>
