@@ -32,11 +32,10 @@ popups.forEach((popup) => {
   popup.addEventListener('keydown', function (evt) {
     if (evt.key === 'Escape') {
        closePopup(popup);
-      // console.log(event.key)
     }
   });
-});
 
+});
 
 //генерация карточки
 const createCard = (name, img) => {
