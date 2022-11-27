@@ -32,7 +32,7 @@ popups.forEach((popup) => {
 
 document.addEventListener('keydown', (evt) => {
   const popupOpen = document.querySelector('.popup_opened');
-  if (evt.key === "Escape" || popupOpen) {
+  if (evt.key === "Escape" && popupOpen) {
     closePopup(popupOpen);
   }
 });
@@ -67,7 +67,7 @@ const createCard = (name, img) => {
 const deleteCard = (evt) => evt.target.closest('.cards__item').remove();
 const likeActive = (evt) => evt.target.classList.toggle('button_type_like_active');
 
-//добавление карточки 
+//добавление карточки
 const submitCardAdd = (evt) => {
   evt.preventDefault();
   renderCard(cardContainer, createCard(cardInputName.value, cardImgLink.value));
