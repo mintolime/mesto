@@ -31,7 +31,7 @@ popups.forEach((popup) => {
   //можно сократить?
   popup.addEventListener('keydown', function (evt) {
     if (evt.key === 'Escape') {
-       closePopup(popup);
+      closePopup(popup);
     }
   });
 
