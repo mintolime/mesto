@@ -42,14 +42,19 @@ formElement.addEventListener('submit', function (evt) {
 });
 
 const checkInputValidity = () => {
-  if((!formInput.validity.valid)){
+  if((!formInput.validity.valid || formInput === '')){
     showError(formInput, formInput.validationMessage/* 4. Передайте сообщение об ошибке. */);
   }
   else{
     hideError(formInput)
   }
 };
-
+function hasInvalidInput(inputList){
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  })
+  
+}
 
 formElement.addEventListener('submit', function (evt) {
   evt.preventDefault();
@@ -60,8 +65,36 @@ formInput.addEventListener('input', function () {
 });
 
 const setEventListeners = (formElement) => {
-  const inputList = Array.from()
-}
+  const inputList = Array.from(formElement.querySelectorAll('.form__input'));
+ // const buttonElement = formElement.querySelector('.button_type_save');
+
+  // чтобы проверить состояние кнопки в самом начале
+  //toggleButtonState(inputList, buttonElement);
+
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function () {
+      checkInputValidity(formElement, inputElement);
+      // чтобы проверять его при изменении любого из полей
+      //toggleButtonState(inputList, buttonElement);
+    });
+  });
+};
+
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll('.form'));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+      setEventListeners(formElement);
+    });
+    const fieldsetList = Array.from(formElement.querySelectorAll('.form__inner'));
+     fieldsetList.forEach((fieldSet) => {setEventListeners(fieldSet);});
+    
+  });
+};
+
+enableValidation();
+
 
 
 
