@@ -40,13 +40,14 @@
   <section class="popup popup_edit-profile">
     <div class="popup__container">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form id="formProfile" class="form">
+      <form id="formProfile" class="form" novalidate>
         <fieldset class="form__inner">
           <input class="form__input  form__input_text_name" id="nameUser" type="text" aria-label="имя"
             placeholder="Ваше имя" minlength="2" maxlength="40" required>
+            <span class='form__input-error' id='form_input-error-name'>Вы пропустили это поле.</span>
           <input class="form__input form__input_text_about" id="aboutUser" type="text" aria-label="подпись"
             placeholder="О себе" minlength="2" maxlength="200" required>
-            <span class='form__input-error' id='form-input-error'>Вы пропустили это поле.</span>
+            <span class='form__input-error' id='form_input-error-about'>Вы пропустили это поле.</span>
         </fieldset>
         <button class="button button_type_save" type="submit">Сохранить</button>
       </form>
@@ -57,12 +58,14 @@
   <section class="popup popup_add-card" aria-label="добавление карточек">
     <div class="popup__container">
       <h3 class="popup__title">Новое место</h3>
-      <form id="formCard" class="form">
+      <form id="formCard" class="form" novalidate>
         <fieldset class="form__inner">
           <input class="form__input  form__input_text_name" id="nameCard" type="text" aria-label="Наименование"
             placeholder="Название" minlength="1" maxlength="30" required>
+            <span class='form__input-error' id='form_input-error-name'>Вы пропустили это поле.</span>
           <input class="form__input form__input_text_about" id="linkCard" type="url" aria-label="подпись"
             placeholder="Ссылка на картинку" required>
+            <span class='form__input-error' id='form_input-error-link'>Введите адрес сайта.</span>
         </fieldset>
         <button class="button button_type_save" type="submit">Создать</button>
       </form>
