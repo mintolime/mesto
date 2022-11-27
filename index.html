@@ -42,12 +42,12 @@
       <h3 class="popup__title">Редактировать профиль</h3>
       <form name="formProfile" class="form" novalidate>
         <fieldset class="form__inner">
-          <input class="form__input  form__input_text_name" name="nameUser" type="text" aria-label="имя"
+          <input class="form__input  form__input_text_name " name="nameUser" type="text" id="input-name" aria-label="имя"
             placeholder="Ваше имя" minlength="2" maxlength="40" required>
-            <span class='form__input-error' id='form_name-error'></span>
-          <input class="form__input form__input_text_about" name="aboutUser" type="text" aria-label="подпись"
+            <span class='form__input-error input-name-error'></span>
+          <input class="form__input form__input_text_about" name="aboutUser" type="text" id="input-about" aria-label="подпись"
             placeholder="О себе" minlength="2" maxlength="200" required>
-            <span class='form__input-error' id='form_about-error'></span>
+            <span class='form__input-error input-about-error'></span>
         </fieldset>
         <button class="button button_type_save" type="submit">Сохранить</button>
       </form>
@@ -60,12 +60,12 @@
       <h3 class="popup__title">Новое место</h3>
       <form name="formCard" class="form" novalidate>
         <fieldset class="form__inner">
-          <input class="form__input  form__input_text_name" name="nameCard" type="text" aria-label="Наименование"
+          <input class="form__input  form__input_text_name" name="nameCard" type="text"  id="input-name-card" aria-label="Наименование"
             placeholder="Название" minlength="1" maxlength="30" required>
-            <span class='form__input-error' id='form_input-error-name'></span>
-          <input class="form__input form__input_text_about" name="linkCard" type="url" aria-label="подпись"
+            <span class='form__input-error input-name-error' ></span>
+          <input class="form__input form__input_text_about" name="linkCard" type="url" id="input-link"   aria-label="подпись"
             placeholder="Ссылка на картинку" required>
-            <span class='form__input-error' id='form_input-error-link'></span>
+            <span class='form__input-error input-link-error'></span>
         </fieldset>
         <button class="button button_type_save" type="submit">Создать</button>
       </form>
