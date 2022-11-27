@@ -7,5 +7,14 @@ enableValidation({
   submitButtonSelector: '.button_type_save',
   inactiveButtonClass: 'button_disabled',
   inputErrorClass: 'form__input-error',
-  errorClass: 'form__input-error_active'}); 
+  errorClass: 'form__input-error_active'
+});
 
+
+function closeOnEsc(evt) {
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+};
+
+  formSelector.addEventListener('keydown', closeOnEsc);

@@ -45,7 +45,10 @@
 @import url('../blocks/button/_type/button_type_delete.css');
 
 /* @import url('../blocks'); шаблон*/
-.button_disabled {}
+.button_disabled {
+    background-color: #f1f1f1;
+  cursor: default;
+}
 
 .form__input-error {
     display: block;

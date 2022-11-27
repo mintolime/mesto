@@ -28,13 +28,13 @@ popups.forEach((popup) => {
       closePopup(popup);
     }
   });
-  //можно сократить?
-  popup.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  });
+});
 
+document.addEventListener('keydown', (evt) => {
+  const popupOpen = document.querySelector('.popup_opened');
+  if (evt.key === "Escape" || popupOpen) {
+    closePopup(popupOpen);
+  }
 });
 
 //генерация карточки
