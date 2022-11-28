@@ -10,10 +10,4 @@
   padding-bottom: 13px;
 }
 
-.form__input:valid {
-  border-bottom: 1px rgba(149, 221, 126, 0.783) solid;
-}
 
-.form__input:invalid {
-  border-bottom: 1px solid #FF0000;
-}
