@@ -1,26 +1,28 @@
 
-// const enableValidation = {
-//   formSelector: '.form',
-//   inputSelector: '.form__input',
-//   submitButtonSelector: '.button_type_save',
-//   inactiveButtonClass: 'button_disabled',
-//   inputErrorClass: 'form__input-error',
-//   errorClass: 'form__input-error_active',
-// };
-
+const enableValidation = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.button_type_save',
+  inactiveButtonClass: 'button_disabled',
+  inputErrorClass: 'form__input-error',
+  errorClass: 'form__input-error_active',
+};
+const { formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass } = enableValidation;
+console.log(enableValidation);
 //показываем ошибку
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage,inputErrorClass,errorClass) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('form__input_type_error');
+  inputElement.classList.add(inputErrorClass);
   inputElement.style.borderBottom = '1px #FF0000 solid'; //изменение цвета валидации
   errorElement.textContent = errorMessage;
-  errorElement.classList.add('form__input-error_active');
+  errorElement.classList.add(errorClass);
 };
+
 //скрываем ошибку
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement,inputErrorClass,errorClass) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('form__input_type_error');
-  errorElement.classList.remove('form__input-error_active');
+  inputElement.classList.remove(inputErrorClass);
+  errorElement.classList.remove(errorClass);
   errorElement.textContent = '';
 };
 
@@ -40,31 +42,31 @@ function hasInvalidInput(inputList) {
 
 };
 //функция отключения кнопки
-function toggleButtonState(inputList, buttonElement) {
+function toggleButtonState(inputList, buttonElement,inactiveButtonClass) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('button_disable');
+    buttonElement.classList.add(inactiveButtonClass);
 
   } else {
-    buttonElement.classList.remove('button_disable');
+    buttonElement.classList.remove(inactiveButtonClass);
   }
 };
 
 
 const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-  const buttonElement = formElement.querySelector('.button_type_save');
-  toggleButtonState(inputList, buttonElement);
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  const buttonElement = formElement.querySelector(submitButtonSelector);
+  toggleButtonState(inputList, buttonElement,inactiveButtonClass); //нужно ли довавлять класс как аргумент?
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);
+      toggleButtonState(inputList, buttonElement,inactiveButtonClass);
     });
   });
 };
 
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.form'));
+const isValid = () => {
+  const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
@@ -72,4 +74,5 @@ const enableValidation = () => {
     setEventListeners(formElement);
   });
 };
-enableValidation()
+
+isValid(enableValidation);
