@@ -29,6 +29,7 @@
 /*FORM*/
 @import url('../blocks/form/form.css');
 @import url('../blocks/form/__input/form__input.css');
+@import url('../blocks/form/__input/form__input-error.css');
 @import url('../blocks/form/__inner/form__inner.css');
 /*FIGURE*/
 @import url('../blocks/figure/figure.css');
@@ -43,5 +44,8 @@
 @import url('../blocks/button/_type/button_type_close.css');
 @import url('../blocks/button/_type/button_type_save.css');
 @import url('../blocks/button/_type/button_type_delete.css');
-
+@import url('../blocks/button/_type/button_type_disable.css');
 /* @import url('../blocks'); шаблон*/
+
+
+

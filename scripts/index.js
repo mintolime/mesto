@@ -21,13 +21,20 @@ function changeTextProfile(evt) {
 
 //закрытие попапов
 popups.forEach((popup) => {
-  popup.addEventListener("click", function (event) {
-    const isOverlay = event.target.classList.contains('popup')
-    const isClose = event.target.classList.contains('button_type_close')
+  popup.addEventListener('click', function (evt) {
+    const isOverlay = evt.target.classList.contains('popup')
+    const isClose = evt.target.classList.contains('button_type_close')
     if (isOverlay || isClose && isClose) {
       closePopup(popup);
     }
   });
+});
+
+document.addEventListener('keydown', (evt) => {
+  const popupOpen = document.querySelector('.popup_opened');
+  if (evt.key === "Escape" && popupOpen) {
+    closePopup(popupOpen);
+  }
 });
 
 //генерация карточки
@@ -46,7 +53,6 @@ const createCard = (name, img) => {
   likeBtn.addEventListener('click', likeActive);
   newCard.querySelector(".cards__image").addEventListener('click', openImg);
 
-
   function openImg() {
     openPopup(popupImg);
     imgFigure.src = img;
@@ -58,20 +64,18 @@ const createCard = (name, img) => {
   return newCard;
 }
 //действия кнопок внутри карточки
-const deleteCard = (event) => event.target.closest('.cards__item').remove();
-const likeActive = (event) => event.target.classList.toggle('button_type_like_active');
+const deleteCard = (evt) => evt.target.closest('.cards__item').remove();
+const likeActive = (evt) => evt.target.classList.toggle('button_type_like_active');
 
-//добавление карточки 
-const submitCardAdd = (event) => {
-  event.preventDefault();
+//добавление карточки
+const submitCardAdd = (evt) => {
+  evt.preventDefault();
   renderCard(cardContainer, createCard(cardInputName.value, cardImgLink.value));
   formCard.reset()
   closePopup(popupCard)
 };
 //рендер всех карточек
-const renderCard = (container, item) => {
-  container.prepend(item);
-};
+const renderCard = (container, item) => container.prepend(item);
 
 initialCards.forEach((element) => renderCard(cardContainer, createCard(element.name, element.link)));
 
