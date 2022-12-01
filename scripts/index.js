@@ -1,11 +1,22 @@
 //универсальные функции
 function openPopup(popup) {
   popup.classList.add('popup_opened')
+  document.addEventListener('keydown', closePopupEsc);
 };
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened')
+  document.removeEventListener('keydown', closePopupEsc);
 };
+
+//закрытие попапа по кнопке Esc
+function closePopupEsc(evt) {
+  if (evt.key === "Escape") {
+    const openPopupOverlay = document.querySelector('.popup_opened');
+    closePopup(openPopupOverlay);
+  }
+};
+
 //функции ввода
 function addValue() {
   formInputName.value = profileName.textContent;
@@ -30,12 +41,7 @@ popups.forEach((popup) => {
   });
 });
 
-document.addEventListener('keydown', (evt) => {
-  const popupOpen = document.querySelector('.popup_opened');
-  if (evt.key === "Escape" && popupOpen) {
-    closePopup(popupOpen);
-  }
-});
+
 
 //генерация карточки
 const createCard = (name, img) => {
@@ -56,9 +62,9 @@ const createCard = (name, img) => {
   function openImg() {
     openPopup(popupImg);
     imgFigure.src = img;
-    imgFigure.alt = img;
+    imgFigure.alt = name;
     infoFigure.textContent = name;
-    popupImg.style.backgroundColor = 'rgb(0, 0, 0, .9)'; //затемнения фона попапа с картинкой
+    //popupImg.style.backgroundColor = 'rgb(0, 0, 0, .9)'; //затемнения фона попапа с картинкой
   };
 
   return newCard;
