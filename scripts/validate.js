@@ -15,6 +15,7 @@ const showInputError = (formElement, inputElement, errorMessage, enableValidatio
   inputElement.classList.add(inputErrorClass);
   inputElement.style.borderBottom = '1px #FF0000 solid'; //добавление нижней рамки при ошибке, через CSS пропадают буквы
   errorElement.textContent = errorMessage;
+
 };
 
 //скрываем ошибку
@@ -24,7 +25,7 @@ const hideInputError = (formElement, inputElement) => {
   errorElement.textContent = '';
 };
 
-//проверяем валидность импута и форм, далее выводим ошибку 
+//проверяем валидность импута и форм, далее выводим ошибку
 const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
@@ -40,7 +41,7 @@ function hasInvalidInput(inputList) {
   });
 };
 
-//функция отключения кнопки, присваивание ей классов 
+//функция отключения кнопки, присваивание ей классов
 function toggleButtonState(inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(inactiveButtonClass);
