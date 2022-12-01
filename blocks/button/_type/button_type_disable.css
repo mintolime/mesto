@@ -1,7 +1,7 @@
 .button_type_disable {
   border: 1px solid #000000;
   border-radius: 2px;
-  background-color: #E5E5E5;
+  background-color: #fff;
   color: #000;
   cursor: default;
   pointer-events: none;
