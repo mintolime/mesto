@@ -7,15 +7,11 @@ const validationConfig = {
   errorClass: 'form__input-error_active',
 };
 
-//обьявление новых переменный и присваивание значений на основе значений свойств объекта
-// const { formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass } = enableValidation;
-
 //показываем ошибку
 const showInputError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(config.inputErrorClass);
   errorElement.classList.add(config.errorClass);
-  //inputElement.style.borderBottom = '1px #FF0000 solid'; //добавление нижней рамки при ошибке, через CSS пропадают буквы
   errorElement.textContent = errorMessage;
 };
 
@@ -57,12 +53,12 @@ function toggleButtonState(inputList, buttonElement, config) {
 const setEventListeners = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
-  toggleButtonState(inputList, buttonElement,config);
+  toggleButtonState(inputList, buttonElement, config);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
       checkInputValidity(formElement, inputElement, config);
-      toggleButtonState(inputList, buttonElement,config);
+      toggleButtonState(inputList, buttonElement, config);
     });
   });
 };

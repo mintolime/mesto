@@ -23,7 +23,6 @@ const openPopupBtn = document.querySelector('.button_type_edit');
 const addPopupBtn = document.querySelector('.button_type_add');
 const saveCardBtn = formCard.querySelector('.button_type_save');
 
-
 const initialCards = [
   {
     name: 'Санкт-Петербург',

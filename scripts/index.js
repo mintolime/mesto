@@ -37,7 +37,6 @@ popups.forEach((popup) => {
     const isClose = evt.target.classList.contains('button_type_close')
     if (isOverlay || isClose && isClose) {
       closePopup(popup);
-
     }
   });
 });
@@ -81,6 +80,7 @@ const submitCardAdd = (evt) => {
   formCard.reset()
   closePopup(popupCard)
 };
+
 //рендер всех карточек
 const renderCard = (container, item) => container.prepend(item);
 
@@ -93,6 +93,7 @@ openPopupBtn.addEventListener('click', () => {
   openPopup(popupProfile);
   fillPopupProfileInput();
 });
+
 formProfile.addEventListener('submit', changeTextProfile);
 formCard.addEventListener("submit", submitCardAdd);
 
