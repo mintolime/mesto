@@ -21,7 +21,6 @@ const infoFigure = document.querySelector('.figure__info');
 //BUTTON
 const openPopupBtn = document.querySelector('.button_type_edit');
 const addPopupBtn = document.querySelector('.button_type_add');
-const saveProfileBtn = formProfile.querySelector('.button_type_save');
 const saveCardBtn = formCard.querySelector('.button_type_save');
 
 

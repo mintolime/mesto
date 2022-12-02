@@ -77,7 +77,7 @@ const likeActive = (evt) => evt.target.classList.toggle('button_type_like_active
 //добавление карточки
 const submitCardAdd = (evt) => {
   evt.preventDefault();
-  //saveCardBtn.disabled = true;
+  saveCardBtn.classList.add(inactiveButtonClass); //дезейбл для кнопки при повторном добавлении карточки
   renderCard(cardContainer, createCard(cardInputName.value, cardImgLink.value));
   formCard.reset()
   closePopup(popupCard)
@@ -89,9 +89,9 @@ initialCards.forEach((element) => renderCard(cardContainer, createCard(element.n
 
 //обработчики событий
 addPopupBtn.addEventListener('click', () => openPopup(popupCard));
+
 openPopupBtn.addEventListener('click', () => {
   openPopup(popupProfile);
-  //saveProfileBtn.disabled = false;
   fillPopupProfileInput();
 });
 formProfile.addEventListener('submit', changeTextProfile);
