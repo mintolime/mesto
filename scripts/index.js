@@ -33,9 +33,7 @@ function changeTextProfile(evt) {
 //закрытие попапов
 popups.forEach((popup) => {
   popup.addEventListener('click', function (evt) {
-    const isOverlay = evt.target.classList.contains('popup')
-    const isClose = evt.target.classList.contains('button_type_close')
-    if (isOverlay || isClose && isClose) {
+    if (evt.target.classList.contains('popup') || evt.target.classList.contains('button_type_close')) {
       closePopup(popup);
     }
   });
