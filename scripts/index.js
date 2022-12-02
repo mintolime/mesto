@@ -37,11 +37,10 @@ popups.forEach((popup) => {
     const isClose = evt.target.classList.contains('button_type_close')
     if (isOverlay || isClose && isClose) {
       closePopup(popup);
+
     }
   });
 });
-
-
 
 //генерация карточки
 const createCard = (name, img) => {
@@ -77,7 +76,7 @@ const likeActive = (evt) => evt.target.classList.toggle('button_type_like_active
 //добавление карточки
 const submitCardAdd = (evt) => {
   evt.preventDefault();
-  //saveCardBtn.classList.add(inactiveButtonClass); //дезейбл для кнопки при повторном добавлении карточки
+  saveCardBtn.classList.add('button_type_disable'); //дезейбл для кнопки при повторном добавлении карточки
   renderCard(cardContainer, createCard(cardInputName.value, cardImgLink.value));
   formCard.reset()
   closePopup(popupCard)
