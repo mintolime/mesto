@@ -3,9 +3,6 @@ const popups = document.querySelectorAll('.popup');
 const popupCard = document.querySelector('.popup_add-card');
 const popupProfile = document.querySelector('.popup_edit-profile');
 const popupImg = document.querySelector('.popup_image');
-//BUTTON
-const openPopupBtn = document.querySelector('.button_type_edit');
-const addPopupBtn = document.querySelector('.button_type_add');
 //PROFILE
 const formProfile = document.querySelector('[name="formProfile"]');
 const profileName = document.querySelector('.profile__name');
@@ -21,6 +18,12 @@ const cardInputName = document.querySelector('[name="nameCard"]');
 const cardImgLink = document.querySelector('[name="linkCard"]');
 const imgFigure = document.querySelector('.figure__image');
 const infoFigure = document.querySelector('.figure__info');
+//BUTTON
+const openPopupBtn = document.querySelector('.button_type_edit');
+const addPopupBtn = document.querySelector('.button_type_add');
+const saveProfileBtn = formProfile.querySelector('.button_type_save');
+const saveCardBtn = formCard.querySelector('.button_type_save');
+
 
 const initialCards = [
   {

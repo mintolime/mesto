@@ -18,7 +18,7 @@ function closePopupEsc(evt) {
 };
 
 //функции ввода
-function addValue() {
+function fillPopupProfileInput() {
   formInputName.value = profileName.textContent;
   formAboutUser.value = profileAboutUser.textContent;
 };
@@ -61,6 +61,7 @@ const createCard = (name, img) => {
 
   function openImg() {
     openPopup(popupImg);
+    popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
     imgFigure.src = img;
     imgFigure.alt = name;
     infoFigure.textContent = name;
@@ -76,6 +77,7 @@ const likeActive = (evt) => evt.target.classList.toggle('button_type_like_active
 //добавление карточки
 const submitCardAdd = (evt) => {
   evt.preventDefault();
+  //saveCardBtn.disabled = true;
   renderCard(cardContainer, createCard(cardInputName.value, cardImgLink.value));
   formCard.reset()
   closePopup(popupCard)
@@ -89,7 +91,8 @@ initialCards.forEach((element) => renderCard(cardContainer, createCard(element.n
 addPopupBtn.addEventListener('click', () => openPopup(popupCard));
 openPopupBtn.addEventListener('click', () => {
   openPopup(popupProfile);
-  addValue();
+  //saveProfileBtn.disabled = false;
+  fillPopupProfileInput();
 });
 formProfile.addEventListener('submit', changeTextProfile);
 formCard.addEventListener("submit", submitCardAdd);
