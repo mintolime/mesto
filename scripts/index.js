@@ -1,24 +1,26 @@
 //универсальные функции
 function openPopup(popup) {
   popup.classList.add('popup_opened')
-  document.addEventListener('keydown', closePopupEsc);
+  document.addEventListener('keydown', closePopupByEsc);
 };
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened')
-  document.removeEventListener('keydown', closePopupEsc);
+  document.removeEventListener('keydown', closePopupByEsc);
 };
 
 //закрытие попапа по кнопке Esc
-function closePopupEsc(evt) {
+function closePopupByEsc(evt) {
   if (evt.key === "Escape") {
     const openPopupOverlay = document.querySelector('.popup_opened');
     closePopup(openPopupOverlay);
   }
 };
 
+
+
 //функции ввода
-function fillPopupProfileInput() {
+function fillPopupProfileInputs() {
   formInputName.value = profileName.textContent;
   formAboutUser.value = profileAboutUser.textContent;
 };
@@ -72,7 +74,7 @@ const likeActive = (evt) => evt.target.classList.toggle('button_type_like_active
 //добавление карточки
 const submitCardAdd = (evt) => {
   evt.preventDefault();
-  saveCardBtn.classList.add('button_type_disable'); //дезейбл для кнопки при повторном добавлении карточки
+  //disableSubmitButton(saveCardBtn,e ); //дезейбл для кнопки при повторном добавлении карточки
   renderCard(cardContainer, createCard(cardInputName.value, cardImgLink.value));
   formCard.reset()
   closePopup(popupCard)
@@ -88,7 +90,7 @@ addPopupBtn.addEventListener('click', () => openPopup(popupCard));
 
 openPopupBtn.addEventListener('click', () => {
   openPopup(popupProfile);
-  fillPopupProfileInput();
+  fillPopupProfileInputs();
 });
 
 formProfile.addEventListener('submit', changeTextProfile);
