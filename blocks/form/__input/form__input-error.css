@@ -7,9 +7,9 @@
   min-height: 30px;
   padding: 0;
   margin: 0;
-  border-bottom: 0;
+  border: 0;
 }
 
 .form__input-error_active {
-  border-top: 1px #ff0000 solid;
+  border-bottom: 1px #ff0000 solid;
 }
