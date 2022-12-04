@@ -48,12 +48,13 @@ function toggleButtonState(inputList, buttonElement, config) {
   }
 };
 
+//функции состояния кнопок
 function disableSubmitButton(buttonElement, inactiveButtonClass) {
   buttonElement.disabled = true;
   buttonElement.classList.add(inactiveButtonClass);
 };
 
-function enableSubmitButton (buttonElement, inactiveButtonClass) {
+function enableSubmitButton(buttonElement, inactiveButtonClass) {
   buttonElement.disabled = false;
   buttonElement.classList.remove(inactiveButtonClass);
 };
@@ -62,7 +63,7 @@ function enableSubmitButton (buttonElement, inactiveButtonClass) {
 function resetErrorForm(popupElement) {
   const inputList = Array.from(popupElement.querySelectorAll('.form__input'));
   inputList.forEach((inputElement) => {
-    hideInputError(popupElement, inputElement, {inputErrorClass: 'form__input-error'});
+    hideInputError(popupElement, inputElement, { inputErrorClass: 'form__input-error' });
   });
 };
 

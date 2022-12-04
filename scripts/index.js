@@ -17,8 +17,6 @@ function closePopupByEsc(evt) {
   }
 };
 
-
-
 //функции ввода
 function fillPopupProfileInputs() {
   formInputName.value = profileName.textContent;
@@ -74,7 +72,6 @@ const likeActive = (evt) => evt.target.classList.toggle('button_type_like_active
 //добавление карточки
 const submitCardAdd = (evt) => {
   evt.preventDefault();
-  //disableSubmitButton(saveCardBtn, enableValidation); //дезейбл для кнопки при повторном добавлении карточки
   renderCard(cardContainer, createCard(cardInputName.value, cardImgLink.value));
   formCard.reset()
   closePopup(popupCard)
