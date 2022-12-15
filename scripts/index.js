@@ -40,31 +40,32 @@ popups.forEach((popup) => {
 });
 
 //генерация карточки
-const createCard = (name, img) => {
-  const newCard = cardTemplate.cloneNode(true);
+// const createCard = (name, img) => {
+//   const newCard = cardTemplate.cloneNode(true);
 
-  const likeBtn = newCard.querySelector('.button_type_like');
-  const deleteBtn = newCard.querySelector('.button_type_delete');
-  const title = newCard.querySelector('.cards__title');
-  title.textContent = name;
-  const image = newCard.querySelector('.cards__image');
-  image.src = img;
-  image.alt = name;
+//   const likeBtn = newCard.querySelector('.button_type_like');
+//   const deleteBtn = newCard.querySelector('.button_type_delete');
+//   const title = newCard.querySelector('.cards__title');
+//   title.textContent = name;
+//   const image = newCard.querySelector('.cards__image');
+//   image.src = img;
+//   image.alt = name;
 
-  deleteBtn.addEventListener('click', deleteCard);
-  likeBtn.addEventListener('click', likeActive);
-  newCard.querySelector(".cards__image").addEventListener('click', openImg);
+//   deleteBtn.addEventListener('click', deleteCard);
+//   likeBtn.addEventListener('click', likeActive);
+//   newCard.querySelector(".cards__image").addEventListener('click', openImg);
 
-  function openImg() {
-    openPopup(popupImg);
-    popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
-    imgFigure.src = img;
-    imgFigure.alt = name;
-    infoFigure.textContent = name;
-  };
+//   function openImg() {
+//     openPopup(popupImg);
+//     popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
+//     imgFigure.src = img;
+//     imgFigure.alt = name;
+//     infoFigure.textContent = name;
+//   };
 
-  return newCard;
-}
+//   return newCard;
+// }
+
 //действия кнопок внутри карточки
 const deleteCard = (evt) => evt.target.closest('.cards__item').remove();
 const likeActive = (evt) => evt.target.classList.toggle('button_type_like_active');
@@ -80,7 +81,7 @@ const submitCardAdd = (evt) => {
 //рендер всех карточек
 const renderCard = (container, item) => container.prepend(item);
 
-initialCards.forEach((element) => renderCard(cardContainer, createCard(element.name, element.link)));
+// initialCards.forEach((element) => renderCard(cardContainer, createCard(element.name, element.link)));
 
 //обработчики событий
 addPopupBtn.addEventListener('click', () => {
