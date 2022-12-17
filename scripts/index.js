@@ -79,7 +79,7 @@ const submitCardAdd = (evt) => {
 };
 
 //рендер всех карточек
-const renderCard = (container, item) => container.prepend(item);
+// const renderCard = (container, item) => container.prepend(item);
 
 // initialCards.forEach((element) => renderCard(cardContainer, createCard(element.name, element.link)));
 

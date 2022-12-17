@@ -16,15 +16,29 @@ class Card {
 
   generateCard() {
     this._element = this._getTemplate();
+    this._setEventListeners();
 
     this._element.querySelector('.cards__image').src = this._image;
     this._element.querySelector('.cards__image').alt = this._name;
     this._element.querySelector('.cards__title').textContent = this._name;
-    console.log(this._element)
+
+    //console.log(this._element)
     return this._element;
   }
-
-
+  _setEventListeners() {
+    this._element.querySelector('.button_type_like').addEventListener('click', () => {
+      this._handleLikeClick();
+    });
+     this._element.querySelector('.button_type_delete').addEventListener('click', () => {
+      this._handleLikeDelete()
+    });
+  }
+  _handleLikeClick() {
+    this._element.querySelector('.button_type_like').classList.toggle('button_type_like_active');
+  }
+_handleLikeDelete() {
+    this._element.querySelector('.button_type_delete').closest('.cards__item').remove();
+  }
 }
 
 initialCards.forEach((item) => {
