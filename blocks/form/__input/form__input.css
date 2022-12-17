@@ -4,14 +4,8 @@
   font-size: 14px;
   line-height: 17px;
   border: 0;
-  border-bottom: 1px solid rgba(0, 0 , 0, .2);
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
   color: #000;
   font-family: inherit;
   padding-bottom: 13px;
-}
-
-.form__input:focus {
-  /* outline: 3px rgb(86, 85, 91) solid; */
-  border: 2px rgb(167, 167, 171) solid;
-  /*стили для обводки импута*/
 }

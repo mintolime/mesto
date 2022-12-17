@@ -40,58 +40,63 @@
   <section class="popup popup_edit-profile">
     <div class="popup__container">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form id="formProfile" class="form">
+      <form name="formProfile" class="form" novalidate>
         <fieldset class="form__inner">
-          <input class="form__input  form__input_text_name" id="nameUser" type="text" aria-label="имя"
-            placeholder="Ваше имя">
-          <input class="form__input form__input_text_about" id="aboutUser" type="text" aria-label="подпись"
-            placeholder="О себе">
+          <input class="form__input  form__input_text_name " name="nameUser" type="text" id="input-name"
+            aria-label="имя" placeholder="Ваше имя" minlength="2" maxlength="40" required>
+          <span class='form__input-error input-name-error'></span>
+          <input class="form__input form__input_text_about" name="aboutUser" type="text" id="input-about"
+            aria-label="подпись" placeholder="О себе" minlength="2" maxlength="200" required>
+          <span class='form__input-error input-about-error'></span>
         </fieldset>
-        <button class="button button_type_save" type="submit">Сохранить</button>
+        <button class="button button_type_save" type="submit" disabled>Сохранить</button>
       </form>
       <button type="button" class=" button button_type_close"></button>
     </div>
   </section>
 
-  <section class="popup popup_add-card">
+  <section class="popup popup_add-card" aria-label="добавление карточек">
     <div class="popup__container">
       <h3 class="popup__title">Новое место</h3>
-      <form id="formCard" class="form">
+      <form name="formCard" class="form" novalidate>
         <fieldset class="form__inner">
-          <input class="form__input  form__input_text_name" id="nameCard" type="text" aria-label="имя"
-            placeholder="Название">
-          <input class="form__input form__input_text_about" id="linkCard" type="text" aria-label="подпись"
-            placeholder="Ссылка на картинку">
+          <input class="form__input  form__input_text_name" name="nameCard" type="text" id="input-name-card"
+            aria-label="Наименование" placeholder="Название" minlength="2" maxlength="30" required>
+          <span class='form__input-error input-name-card-error'></span>
+          <input class="form__input form__input_text_about" name="linkCard" type="url" id="input-link"
+            aria-label="подпись" placeholder="Ссылка на картинку" required>
+          <span class='form__input-error input-link-error'></span>
         </fieldset>
-        <button class="button button_type_save" type="submit">Сохранить</button>
+        <button class="button button_type_save" type="submit" disabled>Создать</button>
       </form>
       <button type="button" class=" button button_type_close"></button>
     </div>
-  </section> 
+  </section>
 
-  <section class="popup popup_image">
+  <section class="popup popup_image" aria-label="фотографии карточек">
     <div class="popup__container popup__container_image ">
       <figure class="figure">
-        <img  class="figure__image">
+        <img class="figure__image" src="#" alt="#">
         <figcaption class="figure__info"></figcaption>
       </figure>
       <button type="button" class=" button button_type_close"></button>
     </div>
   </section>
 
-    <template id="card-template"> 
-        <li class="cards__item">
-          <img class="cards__image" src="" alt="">
-          <div class="cards__inner">
-            <h2 class="cards__title"></h2>
-            <button class="button button_type_like" type="button"></button>
-          </div>
-          <button class="button button_type_delete"></button>
-        </li>
+  <template id="card-template">
+    <li class="cards__item">
+      <img class="cards__image" src="#" alt="#">
+      <div class="cards__inner">
+        <h2 class="cards__title"></h2>
+        <button class="button button_type_like" type="button"></button>
+      </div>
+      <button class="button button_type_delete"></button>
+    </li>
   </template>
-   <script src="./scripts/constants.js"></script>
+  <script src="./scripts/elements.js"></script>
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/Card.js"></script>
+  <!-- <script src="./scripts/validate.js"></script> -->
 </body>
 
 </html>
-  </section>

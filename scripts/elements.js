@@ -1,34 +1,32 @@
-const popup = document.querySelector('.popup');
+//POPUP
+const popups = document.querySelectorAll('.popup');
 const popupCard = document.querySelector('.popup_add-card');
 const popupProfile = document.querySelector('.popup_edit-profile');
 const popupImg = document.querySelector('.popup_image');
-const popupForm = document.querySelector('.form');
-
-//BUTTON
-const openPopupBtn = document.querySelector('.button_type_edit');
-const addPopupBtn = document.querySelector('.button_type_add');
-const closePopupBtn = document.querySelectorAll('.button_type_close');
-const submitBtn = document.querySelectorAll('.button_type_save');
 //PROFILE
-const formProfile = document.querySelector('#formProfile');
-const profileName = document.querySelector('.profile__name'); 
-const formInputName = document.querySelector('.form__input_text_name'); 
-const profileAboutUser = document.querySelector('.profile__info'); 
+const formProfile = document.querySelector('[name="formProfile"]');
+const profileName = document.querySelector('.profile__name');
+const formInputName = document.querySelector('.form__input_text_name');
+const profileAboutUser = document.querySelector('.profile__info');
 const formAboutUser = document.querySelector('.form__input_text_about');
 //CARD
 const cardTemplate = document.querySelector('#card-template').content;
 const cardContainer = document.querySelector('.cards__list');
 const cardImg = document.querySelector('.cards__image');
-const formCard = document.querySelector('#formCard');
-const cardInputName = document.querySelector('#nameCard');
-const cardImgLink = document.querySelector('#linkCard');
+const formCard = document.querySelector('[name="formCard"]');
+const cardInputName = document.querySelector('[name="nameCard"]');
+const cardImgLink = document.querySelector('[name="linkCard"]');
 const imgFigure = document.querySelector('.figure__image');
 const infoFigure = document.querySelector('.figure__info');
+//BUTTON
+const openPopupBtn = document.querySelector('.button_type_edit');
+const addPopupBtn = document.querySelector('.button_type_add');
+const saveCardBtn = formCard.querySelector('.button_type_save');
 
 const initialCards = [
   {
     name: 'Санкт-Петербург',
-    link: 'https://images.unsplash.com/photo-1642250399033-ba2a24390f8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'
+    link: 'https://images.unsplash.com/photo-1642250399033-ba2a24390f8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80'
   },
   {
     name: 'Мурадым, Башкортостан',
@@ -50,4 +48,4 @@ const initialCards = [
     name: 'Байкал',
     link: 'https://images.unsplash.com/photo-1552735855-557bdba3961a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1889&q=80'
   }
-]; 
+];
