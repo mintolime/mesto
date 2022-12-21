@@ -86,14 +86,14 @@ const submitCardAdd = (evt) => {
 //обработчики событий
 addPopupBtn.addEventListener('click', () => {
   openPopup(popupCard);
-  disableSubmitButton(saveCardBtn, 'button_type_disable');
-  resetErrorForm(popupCard);
+  // disableSubmitButton(saveCardBtn, 'button_type_disable');
+  // resetErrorForm(popupCard);
 });
 
 openPopupBtn.addEventListener('click', () => {
   openPopup(popupProfile);
-  disableSubmitButton(saveCardBtn, 'button_type_disable');
-  resetErrorForm(popupProfile);
+  // disableSubmitButton(saveCardBtn, 'button_type_disable');
+  // resetErrorForm(popupProfile);
   fillPopupProfileInputs();
 });
 
