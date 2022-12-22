@@ -1,8 +1,8 @@
 export default class Card {
-  constructor(link, name) {
+  constructor(link, name, openPopup) {
     this._name = name;
     this._image = link;
-
+    this.openPopup = openPopup;
   }
   _getTemplate() {
     const cardElement = document
@@ -23,12 +23,14 @@ export default class Card {
     return this._newCard;
   }
   _setData() {
+
     this._newCard.querySelector('.cards__image').src = this._image;
     this._newCard.querySelector('.cards__image').alt = this._name;
     this._newCard.querySelector('.cards__title').textContent = this._name;
     document.querySelector('.figure__image').src = this._image
     document.querySelector('.figure__info').textContent = this._name;
     document.querySelector('.figure__info').alt = this._name; //нужно переместить в файл elements , либо сделать более лаконично! пока работает
+
   }
 
   _setEventListeners() {
@@ -44,8 +46,9 @@ export default class Card {
     this._newCard = null;
   }
   _openPopupImg() {
-    openPopup(popupImg);
+    this.openPopup(this._popupImg);
     //console.log(popupImg)
     popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
   }
 }
+
