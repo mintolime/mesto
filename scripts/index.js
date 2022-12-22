@@ -39,7 +39,6 @@ popups.forEach((popup) => {
   });
 });
 
-
 //генерация карточки
 // const createCard = (name, img) => {
 //   const newCard = cardTemplate.cloneNode(true);
@@ -100,4 +99,5 @@ openPopupBtn.addEventListener('click', () => {
 
 formProfile.addEventListener('submit', changeTextProfile);
 formCard.addEventListener("submit", submitCardAdd);
+
 

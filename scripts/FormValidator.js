@@ -7,7 +7,7 @@ const validationConfig = {
   errorClass: 'form__input-error',
 };
 class FormValidator {
-  constructor(config, formElement) {
+  constructor(formElement,config) {
     this._config = config;
     this._formElement = formElement;
   }
@@ -38,7 +38,7 @@ class FormValidator {
 
   //валидность импутов для функционала кнопки
   _hasInvalidInput() {
-    return inputList.some((inputElement) => {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   };
@@ -53,25 +53,24 @@ class FormValidator {
   };
 
   //функции состояния кнопок
-  disableSubmitButton() {
-    this.buttonElement.disabled = true;
-    this.buttonElement.classList.add(this._config.inactiveButtonClass);
+  _disableSubmitButton() {
+    this._buttonElement.disabled = true;
+    this._buttonElement.classList.add(this._config.inactiveButtonClass);
   };
 
-  enableSubmitButton() {
-    this.buttonElement.disabled = false;
-    this.buttonElement.classList.remove(inactiveButtonClass);
+  _enableSubmitButton() {
+    this._buttonElement.disabled = false;
+    this._buttonElement.classList.remove(inactiveButtonClass);
   };
 
   _setEventListeners() {
     this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
     this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
-
     this._toggleButtonState();
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        this._checkInputValidity();
+        this._checkInputValidity(inputElement);
         this._toggleButtonState();
       });
     });
