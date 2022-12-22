@@ -1,7 +1,8 @@
-class Card {
+export default class Card {
   constructor(link, name) {
     this._name = name;
     this._image = link;
+
   }
   _getTemplate() {
     const cardElement = document
@@ -48,15 +49,3 @@ class Card {
     popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
   }
 }
-
-
-initialCards.forEach((item) => {
-  const card = new Card(item.link, item.name);
-  const cardElement = card.generateCard();
-
-  document.querySelector('.cards__list').prepend(cardElement);
-});
-// const renderCard = (card, cardContainer) => {
-//   //его код
-//   cardContainer.prepend(cardElement)
-// }

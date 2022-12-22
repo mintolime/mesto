@@ -1,3 +1,5 @@
+import {Card} from './Card.js'
+import {FormValidator} from './FormValidator.js'
 //универсальные функции
 function openPopup(popup) {
   popup.classList.add('popup_opened')
@@ -39,6 +41,15 @@ popups.forEach((popup) => {
   });
 });
 
+
+// const allFormsValidator = ()  => {
+//   const formList = Array.from(document.querySelectorAll('.form'));
+//   formList.forEach((formElement) => {
+//    formElement.enableValidation();
+
+//   });
+// };
+
 //генерация карточки
 // const createCard = (name, img) => {
 //   const newCard = cardTemplate.cloneNode(true);
@@ -70,10 +81,16 @@ popups.forEach((popup) => {
 // const deleteCard = (evt) => evt.target.closest('.cards__item').remove();
 // const likeActive = (evt) => evt.target.classList.toggle('button_type_like_active');
 
+initialCards.forEach((item) => {
+  const card = new Card(item.link, item.name);
+  const cardElement = card.generateCard();
+
+  document.querySelector('.cards__list').prepend(cardElement);
+});
 //добавление карточки
 const submitCardAdd = (evt) => {
   evt.preventDefault();
-  // renderCard(cardContainer, createCard(cardInputName.value, cardImgLink.value));
+  renderCard(cardContainer, ('.cards__list'));
   formCard.reset()
   closePopup(popupCard)
 };
@@ -82,6 +99,13 @@ const submitCardAdd = (evt) => {
 // const renderCard = (container, item) => container.prepend(item);
 
 // initialCards.forEach((element) => renderCard(cardContainer, createCard(element.name, element.link)));
+// const renderCard = (card, selector) => {
+//   const cardElement = card.generateCard();
+//   document.querySelector(selector).prepend(cardElement);
+// }
+
+// initialCards.forEach(item => renderCard(item, '.cards__list' ));
+// array.forEach(item => renderCard(item, '.elements__gallery'));
 
 //обработчики событий
 addPopupBtn.addEventListener('click', () => {
@@ -99,5 +123,4 @@ openPopupBtn.addEventListener('click', () => {
 
 formProfile.addEventListener('submit', changeTextProfile);
 formCard.addEventListener("submit", submitCardAdd);
-
 

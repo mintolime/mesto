@@ -1,12 +1,5 @@
-const validationConfig = {
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.button_type_save',
-  inactiveButtonClass: 'button_type_disable',
-  inputErrorClass: 'form__input-error_active',
-  errorClass: 'form__input-error',
-};
-class FormValidator {
+
+export default class FormValidator {
   constructor(formElement,config) {
     this._config = config;
     this._formElement = formElement;
@@ -60,7 +53,7 @@ class FormValidator {
 
   _enableSubmitButton() {
     this._buttonElement.disabled = false;
-    this._buttonElement.classList.remove(inactiveButtonClass);
+    this._buttonElement.classList.remove(this._config.inactiveButtonClass);
   };
 
   _setEventListeners() {

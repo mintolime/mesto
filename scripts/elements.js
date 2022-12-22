@@ -23,6 +23,14 @@ const openPopupBtn = document.querySelector('.button_type_edit');
 const addPopupBtn = document.querySelector('.button_type_add');
 const saveCardBtn = formCard.querySelector('.button_type_save');
 
+const validationConfig = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.button_type_save',
+  inactiveButtonClass: 'button_type_disable',
+  inputErrorClass: 'form__input-error_active',
+  errorClass: 'form__input-error',
+};
 
 const initialCards = [
   {
