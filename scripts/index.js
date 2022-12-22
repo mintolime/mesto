@@ -39,6 +39,7 @@ popups.forEach((popup) => {
   });
 });
 
+
 //генерация карточки
 // const createCard = (name, img) => {
 //   const newCard = cardTemplate.cloneNode(true);
@@ -67,13 +68,13 @@ popups.forEach((popup) => {
 // }
 
 //действия кнопок внутри карточки
-const deleteCard = (evt) => evt.target.closest('.cards__item').remove();
-const likeActive = (evt) => evt.target.classList.toggle('button_type_like_active');
+// const deleteCard = (evt) => evt.target.closest('.cards__item').remove();
+// const likeActive = (evt) => evt.target.classList.toggle('button_type_like_active');
 
 //добавление карточки
 const submitCardAdd = (evt) => {
   evt.preventDefault();
-  renderCard(cardContainer, createCard(cardInputName.value, cardImgLink.value));
+  // renderCard(cardContainer, createCard(cardInputName.value, cardImgLink.value));
   formCard.reset()
   closePopup(popupCard)
 };
@@ -86,14 +87,14 @@ const submitCardAdd = (evt) => {
 //обработчики событий
 addPopupBtn.addEventListener('click', () => {
   openPopup(popupCard);
-  disableSubmitButton(saveCardBtn, 'button_type_disable');
-  resetErrorForm(popupCard);
+  // disableSubmitButton(saveCardBtn, 'button_type_disable');
+  // resetErrorForm(popupCard);
 });
 
 openPopupBtn.addEventListener('click', () => {
   openPopup(popupProfile);
-  disableSubmitButton(saveCardBtn, 'button_type_disable');
-  resetErrorForm(popupProfile);
+  // disableSubmitButton(saveCardBtn, 'button_type_disable');
+  // resetErrorForm(popupProfile);
   fillPopupProfileInputs();
 });
 

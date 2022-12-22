@@ -56,4 +56,7 @@ initialCards.forEach((item) => {
 
   document.querySelector('.cards__list').prepend(cardElement);
 });
-
+// const renderCard = (card, cardContainer) => {
+//   //его код
+//   cardContainer.prepend(cardElement)
+// }

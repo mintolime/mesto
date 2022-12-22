@@ -8,55 +8,55 @@ const validationConfig = {
 };
 
 //показываем ошибку
-const showInputError = (formElement, inputElement, errorMessage, config) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(config.inputErrorClass);
-  errorElement.classList.add(config.errorClass);
-  errorElement.textContent = errorMessage;
-};
+// const showInputError = (formElement, inputElement, errorMessage, config) => {
+//   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+//   inputElement.classList.add(config.inputErrorClass);
+//   errorElement.classList.add(config.errorClass);
+//   errorElement.textContent = errorMessage;
+// };
 
-//скрываем ошибку
-const hideInputError = (formElement, inputElement, config) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove(config.inputErrorClass);
-  errorElement.textContent = '';
-};
+// //скрываем ошибку
+// const hideInputError = (formElement, inputElement, config) => {
+//   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+//   inputElement.classList.remove(config.inputErrorClass);
+//   errorElement.textContent = '';
+// };
 
 //проверяем валидность импута и форм, далее выводим ошибку
-const checkInputValidity = (formElement, inputElement, config) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage, config);
-  } else {
-    hideInputError(formElement, inputElement, config);
-  }
-};
+// const checkInputValidity = (formElement, inputElement, config) => {
+//   if (!inputElement.validity.valid) {
+//     showInputError(formElement, inputElement, inputElement.validationMessage, config);
+//   } else {
+//     hideInputError(formElement, inputElement, config);
+//   }
+// };
 
 //валидность импутов для функционала кнопки
-function hasInvalidInput(inputList) {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
-};
+// function hasInvalidInput(inputList) {
+//   return inputList.some((inputElement) => {
+//     return !inputElement.validity.valid;
+//   });
+// };
 
 //функция отключения кнопки, присваивание ей классов
-function toggleButtonState(inputList, buttonElement, config) {
-  if (hasInvalidInput(inputList)) {
-    disableSubmitButton(buttonElement, config.inactiveButtonClass);
-  } else {
-    enableSubmitButton(buttonElement, config.inactiveButtonClass);
-  }
-};
+// function toggleButtonState(inputList, buttonElement, config) {
+//   if (hasInvalidInput(inputList)) {
+//     disableSubmitButton(buttonElement, config.inactiveButtonClass);
+//   } else {
+//     enableSubmitButton(buttonElement, config.inactiveButtonClass);
+//   }
+// };
 
 //функции состояния кнопок
-function disableSubmitButton(buttonElement, inactiveButtonClass) {
-  buttonElement.disabled = true;
-  buttonElement.classList.add(inactiveButtonClass);
-};
+// function disableSubmitButton(buttonElement, inactiveButtonClass) {
+//   buttonElement.disabled = true;
+//   buttonElement.classList.add(inactiveButtonClass);
+// };
 
-function enableSubmitButton(buttonElement, inactiveButtonClass) {
-  buttonElement.disabled = false;
-  buttonElement.classList.remove(inactiveButtonClass);
-};
+// function enableSubmitButton(buttonElement, inactiveButtonClass) {
+//   buttonElement.disabled = false;
+//   buttonElement.classList.remove(inactiveButtonClass);
+// };
 
 //cброс ошибки в форме
 function resetErrorForm(popupElement) {
