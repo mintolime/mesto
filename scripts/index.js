@@ -1,5 +1,31 @@
-import {Card} from './Card.js'
-import {FormValidator} from './FormValidator.js'
+import Card from './Card.js'
+import FormValidator from './FormValidator.js'
+import { initialCards } from './data-card.js'
+import { validationConfig } from './data-validation.js'
+import {
+  popups,
+  popupCard,
+  popupProfile,
+  popupImg,
+  formProfile,
+  profileName,
+  formInputName,
+  profileAboutUser,
+  formAboutUser,
+  cardTemplate,
+  cardContainer,
+  cardImg,
+  formCard,
+  cardInputName,
+  cardImgLink,
+  imgFigure,
+  openPopupBtn,
+  addPopupBtn,
+  saveCardBtn,
+} from './constants.js'
+
+
+
 //универсальные функции
 function openPopup(popup) {
   popup.classList.add('popup_opened')
@@ -123,4 +149,5 @@ openPopupBtn.addEventListener('click', () => {
 
 formProfile.addEventListener('submit', changeTextProfile);
 formCard.addEventListener("submit", submitCardAdd);
+
 
