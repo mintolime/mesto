@@ -19,6 +19,7 @@ import {
   cardInputName,
   cardImgLink,
   imgFigure,
+  infoFigure,
   openPopupBtn,
   addPopupBtn,
   saveCardBtn,
@@ -92,30 +93,24 @@ popups.forEach((popup) => {
 //   likeBtn.addEventListener('click', likeActive);
 //   newCard.querySelector(".cards__image").addEventListener('click', openImg);
 
-//   function openImg() {
-//     openPopup(popupImg);
-//     popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
-//     imgFigure.src = img;
-//     imgFigure.alt = name;
-//     infoFigure.textContent = name;
-//   };
+  function openImg(name,img) {
+    openPopup(popupImg);
+    popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
+    imgFigure.src = img;
+    imgFigure.alt = name;
+    infoFigure.textContent = name;
+  };
 
 //   return newCard;
 // }
 
-//   function openImg() {
-//     openPopup(popupImg);
-//     popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
-//     imgFigure.src = img;
-//     imgFigure.alt = name;
-//     infoFigure.textContent = name;
-//   };
+
 //действия кнопок внутри карточки
 // const deleteCard = (evt) => evt.target.closest('.cards__item').remove();
 // const likeActive = (evt) => evt.target.classList.toggle('button_type_like_active');
 
 initialCards.forEach((item) => {
-  const card = new Card(item.link, item.name,openPopup);
+  const card = new Card(item.link, item.name,imgFigure, infoFigure,openImg );
   const cardElement = card.generateCard();
 
   document.querySelector('.cards__list').prepend(cardElement);

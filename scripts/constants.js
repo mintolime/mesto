@@ -41,6 +41,7 @@ export {
   cardInputName,
   cardImgLink,
   imgFigure,
+  infoFigure,
   openPopupBtn,
   addPopupBtn,
   saveCardBtn,
