@@ -152,4 +152,8 @@ openPopupBtn.addEventListener('click', () => {
 formProfile.addEventListener('submit', changeTextProfile);
 formCard.addEventListener("submit", submitCardAdd);
 
+const validationFormPopupEdit = new FormValidator(formProfile,validationConfig); 
+validationFormPopupEdit.enableValidation();
 
+const validationFormPopupAdd = new FormValidator( formCard,validationConfig); 
+validationFormPopupAdd.enableValidation();
