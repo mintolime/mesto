@@ -124,7 +124,7 @@ const submitCardAdd = (evt) => {
 };
 
 //рендер всех карточек
-// const renderCard = (container, item) => container.prepend(item);
+const renderCard = (container, item) => container.prepend(item);
 
 // initialCards.forEach((element) => renderCard(cardContainer, createCard(element.name, element.link)));
 // const renderCard = (card, selector) => {
@@ -138,14 +138,15 @@ const submitCardAdd = (evt) => {
 //обработчики событий
 addPopupBtn.addEventListener('click', () => {
   openPopup(popupCard);
+  validationFormPopupAdd.disableSubmitButton(saveCardBtn);
   // disableSubmitButton(saveCardBtn, 'button_type_disable');
-  // resetErrorForm(popupCard);
+  validationFormPopupAdd.resetErrorForm();
 });
 
 openPopupBtn.addEventListener('click', () => {
   openPopup(popupProfile);
-  // disableSubmitButton(saveCardBtn, 'button_type_disable');
-  // resetErrorForm(popupProfile);
+  validationFormPopupEdit.disableSubmitButton(saveCardBtn);
+  validationFormPopupAdd.resetErrorForm();
   fillPopupProfileInputs();
 });
 
