@@ -146,7 +146,7 @@ addPopupBtn.addEventListener('click', () => {
 openPopupBtn.addEventListener('click', () => {
   openPopup(popupProfile);
   validationFormPopupEdit.disableSubmitButton(saveCardBtn);
-  validationFormPopupAdd.resetErrorForm();
+  validationFormPopupEdit.resetErrorForm();
   fillPopupProfileInputs();
 });
 
