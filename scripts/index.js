@@ -12,9 +12,7 @@ import {
   formInputName,
   profileAboutUser,
   formAboutUser,
-  cardTemplate,
   cardContainer,
-  cardImg,
   formCard,
   cardInputName,
   cardImgLink,
@@ -24,8 +22,6 @@ import {
   addPopupBtn,
   saveCardBtn,
 } from './constants.js'
-
-
 
 //универсальные функции
 function openPopup(popup) {
@@ -100,7 +96,6 @@ const submitCardAdd = (evt) => {
   closePopup(popupCard)
 };
 
-
 //создания экзепмляра форм
 const validationFormPopupEdit = new FormValidator(formProfile, validationConfig);
 validationFormPopupEdit.enableValidation();
@@ -109,9 +104,7 @@ const validationFormPopupAdd = new FormValidator(formCard, validationConfig);
 validationFormPopupAdd.enableValidation();
 
 //отрисовка всех карточек
-initialCards.forEach((item) => {
-  createCard(item, '#card-template', imgFigure, infoFigure, openImg)
-});
+initialCards.forEach((item) => {createCard(item, '#card-template', imgFigure, infoFigure, openImg)});
 
 //обработчики событий
 addPopupBtn.addEventListener('click', () => {

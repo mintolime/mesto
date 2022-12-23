@@ -22,7 +22,7 @@ export default class Card {
     this._newCard = this._getTemplate();
     this._setEventListeners();
     this._setData();
-    //console.log(this._newCard)
+
     return this._newCard;
   }
 
@@ -41,14 +41,11 @@ export default class Card {
     this._newCard.querySelector('.cards__image').addEventListener('click', () => this._openImg(this._name, this._image));
   }
 
-  _handleLikeClick() {
-    this._newCard.querySelector('.button_type_like').classList.toggle('button_type_like_active');
-  }
+  _handleLikeClick() {this._newCard.querySelector('.button_type_like').classList.toggle('button_type_like_active');}
 
   _handleLikeDelete() {
     this._newCard.remove();
     this._newCard = null;
   }
-
 }
 

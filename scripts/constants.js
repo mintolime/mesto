@@ -10,9 +10,7 @@ const formInputName = document.querySelector('.form__input_text_name');
 const profileAboutUser = document.querySelector('.profile__info');
 const formAboutUser = document.querySelector('.form__input_text_about');
 //CARD
-const cardTemplate = document.querySelector('#card-template').content;
 const cardContainer = document.querySelector('.cards__list');
-const cardImg = document.querySelector('.cards__image');
 const formCard = document.querySelector('[name="formCard"]');
 const cardInputName = document.querySelector('[name="nameCard"]');
 const cardImgLink = document.querySelector('[name="linkCard"]');
@@ -22,7 +20,6 @@ const infoFigure = document.querySelector('.figure__info');
 const openPopupBtn = document.querySelector('.button_type_edit');
 const addPopupBtn = document.querySelector('.button_type_add');
 const saveCardBtn = formCard.querySelector('.button_type_save');
-
 
 export {
   popups,
@@ -34,9 +31,7 @@ export {
   formInputName,
   profileAboutUser,
   formAboutUser,
-  cardTemplate,
   cardContainer,
-  cardImg,
   formCard,
   cardInputName,
   cardImgLink,

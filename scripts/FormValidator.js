@@ -1,4 +1,3 @@
-
 export default class FormValidator {
   constructor(formElement, config) {
     this._config = config;
@@ -75,12 +74,7 @@ export default class FormValidator {
     });
   };
 
-
-
-
-
   enableValidation() {
     this._setEventListeners();
   }
 }
-// _validationFormAddCard = new FormValidator(settings, formAdd)
