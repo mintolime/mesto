@@ -77,29 +77,9 @@ popups.forEach((popup) => {
 //   });
 // };
 
-//генерация карточки
+//создание экземпляра карточки
 // const createCard = (name, img) => {
-//   const newCard = cardTemplate.cloneNode(true);
-
-//   const likeBtn = newCard.querySelector('.button_type_like');
-//   const deleteBtn = newCard.querySelector('.button_type_delete');
-//   const title = newCard.querySelector('.cards__title');
-//   title.textContent = name;
-//   const image = newCard.querySelector('.cards__image');
-//   image.src = img;
-//   image.alt = name;
-
-//   deleteBtn.addEventListener('click', deleteCard);
-//   likeBtn.addEventListener('click', likeActive);
-//   newCard.querySelector(".cards__image").addEventListener('click', openImg);
-
-  function openImg(name,img) {
-    openPopup(popupImg);
-    popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
-    imgFigure.src = img;
-    imgFigure.alt = name;
-    infoFigure.textContent = name;
-  };
+// const cardPopupAdd = new Card(link, name, imgFigure, infoFigure, openImg);
 
 //   return newCard;
 // }
@@ -109,8 +89,17 @@ popups.forEach((popup) => {
 // const deleteCard = (evt) => evt.target.closest('.cards__item').remove();
 // const likeActive = (evt) => evt.target.classList.toggle('button_type_like_active');
 
+
+function openImg(name, img) {
+  openPopup(popupImg);
+  popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
+  imgFigure.src = img;
+  imgFigure.alt = name;
+  infoFigure.textContent = name;
+};
+
 initialCards.forEach((item) => {
-  const card = new Card(item.link, item.name,imgFigure, infoFigure,openImg );
+  const card = new Card(item, '#card-template', imgFigure, infoFigure, openImg);
   const cardElement = card.generateCard();
 
   document.querySelector('.cards__list').prepend(cardElement);
@@ -153,8 +142,8 @@ openPopupBtn.addEventListener('click', () => {
 formProfile.addEventListener('submit', changeTextProfile);
 formCard.addEventListener("submit", submitCardAdd);
 
-const validationFormPopupEdit = new FormValidator(formProfile,validationConfig); 
+const validationFormPopupEdit = new FormValidator(formProfile, validationConfig);
 validationFormPopupEdit.enableValidation();
 
-const validationFormPopupAdd = new FormValidator( formCard,validationConfig); 
+const validationFormPopupAdd = new FormValidator(formCard, validationConfig);
 validationFormPopupAdd.enableValidation();

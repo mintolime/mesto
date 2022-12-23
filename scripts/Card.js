@@ -1,7 +1,8 @@
 export default class Card {
-  constructor(link, name, imgFigure, infoFigure, openImg) {
-    this._name = name;
-    this._image = link;
+  constructor(data, templateSelector, imgFigure, infoFigure, openImg) {
+    this._name = data.name;
+    this._image = data.link;
+    this._templateSelector = templateSelector;
     this._imgFigure = imgFigure;
     this._infoFigure = infoFigure;
     this._openImg = openImg;
@@ -9,7 +10,7 @@ export default class Card {
   
   _getTemplate() {
     const cardElement = document
-      .querySelector('#card-template')
+      .querySelector(this._templateSelector)
       .content
       .querySelector('.cards__item')
       .cloneNode(true);
