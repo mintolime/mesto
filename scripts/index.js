@@ -18,9 +18,9 @@ import {
   cardImgLink,
   imgFigure,
   infoFigure,
-  openPopupBtn,
-  addPopupBtn,
-  saveCardBtn,
+  popupProfileOpenButton,
+  popupProfileAddButton,
+  popupProfileSaveButton,
 } from './constants.js'
 
 //универсальные функции
@@ -37,8 +37,8 @@ function closePopup(popup) {
 //закрытие попапа по кнопке Esc
 function closePopupByEsc(evt) {
   if (evt.key === "Escape") {
-    const openPopupOverlay = document.querySelector('.popup_opened');
-    closePopup(openPopupOverlay);
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
 };
 
@@ -107,15 +107,15 @@ validationFormPopupAdd.enableValidation();
 initialCards.forEach((item) => {createCard(item, '#card-template', imgFigure, infoFigure, openImg)});
 
 //обработчики событий
-addPopupBtn.addEventListener('click', () => {
+popupProfileAddButton.addEventListener('click', () => {
   openPopup(popupCard);
-  validationFormPopupAdd.disableSubmitButton(saveCardBtn);
+  validationFormPopupAdd.disableSubmitButton(popupProfileSaveButton);
   validationFormPopupAdd.resetErrorForm();
 });
 
-openPopupBtn.addEventListener('click', () => {
+popupProfileOpenButton.addEventListener('click', () => {
   openPopup(popupProfile);
-  validationFormPopupEdit.disableSubmitButton(saveCardBtn);
+  validationFormPopupEdit.disableSubmitButton(popupProfileSaveButton);
   validationFormPopupEdit.resetErrorForm();
   fillPopupProfileInputs();
 });

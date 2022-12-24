@@ -7,7 +7,7 @@ export default class Card {
     this._infoFigure = infoFigure;
     this._openImg = openImg;
   }
-  
+
   _getTemplate() {
     const cardElement = document
       .querySelector(this._templateSelector)
@@ -27,9 +27,13 @@ export default class Card {
   }
 
   _setData() {
-    this._newCard.querySelector('.cards__image').src = this._image;
-    this._newCard.querySelector('.cards__image').alt = this._name;
-    this._newCard.querySelector('.cards__title').textContent = this._name;
+    const cardImg = this._newCard.querySelector('.cards__image');
+    const cardTitle = this._newCard.querySelector('.cards__title');
+    //данные для карточек
+    cardImg.src = this._image;
+    cardImg.alt = this._name;
+    cardTitle.textContent = this._name;
+    //данные карточек попапа
     this._imgFigure.src = this._image;
     this._imgFigure.alt = this._name;
     this._infoFigure.textContent = this._name;
@@ -41,7 +45,7 @@ export default class Card {
     this._newCard.querySelector('.cards__image').addEventListener('click', () => this._openImg(this._name, this._image));
   }
 
-  _handleLikeClick() {this._newCard.querySelector('.button_type_like').classList.toggle('button_type_like_active');}
+  _handleLikeClick() { this._newCard.querySelector('.button_type_like').classList.toggle('button_type_like_active'); }
 
   _handleLikeDelete() {
     this._newCard.remove();

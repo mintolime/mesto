@@ -1,3 +1,4 @@
+//спасибо за ревью 
 //POPUP
 const popups = document.querySelectorAll('.popup');
 const popupCard = document.querySelector('.popup_add-card');
@@ -17,9 +18,9 @@ const cardImgLink = document.querySelector('[name="linkCard"]');
 const imgFigure = document.querySelector('.figure__image');
 const infoFigure = document.querySelector('.figure__info');
 //BUTTON
-const openPopupBtn = document.querySelector('.button_type_edit');
-const addPopupBtn = document.querySelector('.button_type_add');
-const saveCardBtn = formCard.querySelector('.button_type_save');
+const popupProfileOpenButton = document.querySelector('.button_type_edit');
+const popupProfileAddButton = document.querySelector('.button_type_add');
+const popupProfileSaveButton = formCard.querySelector('.button_type_save');
 
 export {
   popups,
@@ -37,7 +38,7 @@ export {
   cardImgLink,
   imgFigure,
   infoFigure,
-  openPopupBtn,
-  addPopupBtn,
-  saveCardBtn,
+  popupProfileOpenButton,
+  popupProfileAddButton,
+  popupProfileSaveButton,
 };
