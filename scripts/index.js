@@ -72,7 +72,7 @@ function createCard(item, templateSelector, imgFigure, infoFigure, openImg) {
   cardContainer.prepend(cardElement);
 };
 
-//открытие попапа с картинкой 
+//открытие попапа с картинкой
 function openImg(name, img) {
   openPopup(popupImg);
   popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
@@ -96,6 +96,8 @@ const submitCardAdd = (evt) => {
   closePopup(popupCard)
 };
 
+const renderCard = new Section({data:items},cardListSelector);
+renderCard.renderItems();
 //создания экзепмляра форм
 const validationFormPopupEdit = new FormValidator(formProfile, validationConfig);
 validationFormPopupEdit.enableValidation();
