@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "Learning platform",
   "main": "index.js",
-  "scripts": {
-    "build": "rimraf dist && webpack",
-    "dev": "webpack serve"
-  },
+ "scripts": {
+  "build": "webpack --mode production",
+  "dev": "webpack serve"
+}, 
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mintolime/mesto.git"
