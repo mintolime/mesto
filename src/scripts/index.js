@@ -1,3 +1,4 @@
+import '../pages/index.css';
 import Card from './Card.js'
 import FormValidator from './FormValidator.js'
 import { initialCards } from './data-card.js'
@@ -72,7 +73,7 @@ function createCard(item, templateSelector, imgFigure, infoFigure, openImg) {
   cardContainer.prepend(cardElement);
 };
 
-//открытие попапа с картинкой 
+//открытие попапа с картинкой
 function openImg(name, img) {
   openPopup(popupImg);
   popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
