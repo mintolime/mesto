@@ -1,4 +1,4 @@
-//спасибо за ревью 
+//спасибо за ревью
 //POPUP
 const popups = document.querySelectorAll('.popup');
 const popupCard = document.querySelector('.popup_add-card');

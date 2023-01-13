@@ -23,17 +23,18 @@ import {
   popupProfileAddButton,
   popupProfileSaveButton,
 } from './constants.js'
+import Popup from './Popup.js'
 
 //универсальные функции
-function openPopup(popup) {
-  popup.classList.add('popup_opened')
-  document.addEventListener('keydown', closePopupByEsc);
-};
+// function openPopup(popup) {
+  // popup.classList.add('popup_opened')
+  // document.addEventListener('keydown', closePopupByEsc);
+// };
 
-function closePopup(popup) {
-  popup.classList.remove('popup_opened')
-  document.removeEventListener('keydown', closePopupByEsc);
-};
+// function closePopup(popup) {
+//   popup.classList.remove('popup_opened')
+//   document.removeEventListener('keydown', closePopupByEsc);
+// };
 
 //закрытие попапа по кнопке Esc
 function closePopupByEsc(evt) {
@@ -57,13 +58,13 @@ function changeTextProfile(evt) {
 };
 
 //закрытие попапов
-popups.forEach((popup) => {
-  popup.addEventListener('click', function (evt) {
-    if (evt.target.classList.contains('popup') || evt.target.classList.contains('button_type_close')) {
-      closePopup(popup);
-    }
-  });
-});
+// popups.forEach((popup) => {
+//   popup.addEventListener('click', function (evt) {
+//     if (evt.target.classList.contains('popup') || evt.target.classList.contains('button_type_close')) {
+//       closePopup(popup);
+//     }
+//   });
+// });
 
 // создание карточек в разметке
 // function createCard(item, templateSelector, imgFigure, infoFigure, openImg) {
@@ -82,6 +83,8 @@ function openImg(name, img) {
   infoFigure.textContent = name;
 };
 
+const newpopupCard = new Popup()
+
 //добавление карточки
 const submitCardAdd = (evt) => {
   evt.preventDefault();
@@ -97,7 +100,7 @@ const submitCardAdd = (evt) => {
   closePopup(popupCard)
 };
 
-//класс вставки разметки класса Card 
+//класс вставки разметки класса Card
 const sectionCard = new Section({
   items: initialCards,
   renderer: (item) => {
@@ -106,8 +109,8 @@ const sectionCard = new Section({
     sectionCard.addItem(cardElement)
   }
 }, cardContainer);
-
 sectionCard.renderItems();
+
 //создания экзепмляра форм
 const validationFormPopupEdit = new FormValidator(formProfile, validationConfig);
 validationFormPopupEdit.enableValidation();
