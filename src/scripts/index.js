@@ -27,15 +27,15 @@ import {
 import Popup from './Popup.js'
 
 //универсальные функции
-// function openPopup(popup) {
-  // popup.classList.add('popup_opened')
-  // document.addEventListener('keydown', closePopupByEsc);
-// };
+function openPopup(popup) {
+  popup.classList.add('popup_opened')
+  document.addEventListener('keydown', closePopupByEsc);
+};
 
-// function closePopup(popup) {
-//   popup.classList.remove('popup_opened')
-//   document.removeEventListener('keydown', closePopupByEsc);
-// };
+function closePopup(popup) {
+  popup.classList.remove('popup_opened')
+  document.removeEventListener('keydown', closePopupByEsc);
+};
 
 //закрытие попапа по кнопке Esc
 function closePopupByEsc(evt) {
@@ -84,7 +84,7 @@ function openImg(name, img) {
   infoFigure.textContent = name;
 };
 
-const newpopupCard = new Popup()
+// const newpopupCard = new Popup()
 
 //добавление карточки
 const submitCardAdd = (evt) => {
