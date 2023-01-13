@@ -1,3 +1,4 @@
+import Section from './Section.js'
 import Card from './Card.js'
 import FormValidator from './FormValidator.js'
 import { initialCards } from './data-card.js'
@@ -65,12 +66,12 @@ popups.forEach((popup) => {
 });
 
 // создание карточек в разметке
-function createCard(item, templateSelector, imgFigure, infoFigure, openImg) {
-  const card = new Card(item, templateSelector, imgFigure, infoFigure, openImg);
-  const cardElement = card.generateCard();
+// function createCard(item, templateSelector, imgFigure, infoFigure, openImg) {
+//   const card = new Card(item, templateSelector, imgFigure, infoFigure, openImg);
+//   const cardElement = card.generateCard();
 
-  cardContainer.prepend(cardElement);
-};
+//   cardContainer.prepend(cardElement);
+// };
 
 //открытие попапа с картинкой
 function openImg(name, img) {
@@ -84,20 +85,29 @@ function openImg(name, img) {
 //добавление карточки
 const submitCardAdd = (evt) => {
   evt.preventDefault();
-  createCard({
-    name: cardInputName.value,
-    link: cardImgLink.value
-  },
-    '#card-template',
-    imgFigure,
-    infoFigure,
-    openImg);
+  // createCard({
+  //   name: cardInputName.value,
+  //   link: cardImgLink.value
+  // },
+  //   '#card-template',
+  //   imgFigure,
+  //   infoFigure,
+  //   openImg);
   formCard.reset()
   closePopup(popupCard)
 };
 
-const renderCard = new Section({data:items},cardListSelector);
-renderCard.renderItems();
+//класс вставки разметки класса Card 
+const sectionCard = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, '#card-template', imgFigure, infoFigure, openImg);
+    const cardElement = card.generateCard();
+    sectionCard.addItem(cardElement)
+  }
+}, cardContainer);
+
+sectionCard.renderItems();
 //создания экзепмляра форм
 const validationFormPopupEdit = new FormValidator(formProfile, validationConfig);
 validationFormPopupEdit.enableValidation();
@@ -106,7 +116,7 @@ const validationFormPopupAdd = new FormValidator(formCard, validationConfig);
 validationFormPopupAdd.enableValidation();
 
 //отрисовка всех карточек
-initialCards.forEach((item) => {createCard(item, '#card-template', imgFigure, infoFigure, openImg)});
+//initialCards.forEach((item) => { createCard(item, '#card-template', imgFigure, infoFigure, openImg) });
 
 //обработчики событий
 popupProfileAddButton.addEventListener('click', () => {
