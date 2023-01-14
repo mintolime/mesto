@@ -1,4 +1,5 @@
 import Section from './Section.js'
+import Popup from './Popup.js'
 import Card from './Card.js'
 import FormValidator from './FormValidator.js'
 import { initialCards } from './data-card.js'
@@ -23,7 +24,7 @@ import {
   popupProfileAddButton,
   popupProfileSaveButton,
 } from './constants.js'
-import Popup from './Popup.js'
+
 
 //универсальные функции
 // function openPopup(popup) {
@@ -61,7 +62,7 @@ function changeTextProfile(evt) {
 // popups.forEach((popup) => {
 //   popup.addEventListener('click', function (evt) {
 //     if (evt.target.classList.contains('popup') || evt.target.classList.contains('button_type_close')) {
-//       closePopup(popup);
+//       // closePopup(popup);
 //     }
 //   });
 // });
@@ -84,8 +85,9 @@ function openImg(name, img) {
 };
 
 const popupnewCard = new Popup(popupCard)
-popupnewCard.fix()
+popupnewCard.setEventListeners()
 const popupnewProfile = new Popup(popupProfile)
+popupnewProfile.setEventListeners()
 
 //добавление карточки
 const submitCardAdd = (evt) => {
@@ -125,13 +127,13 @@ validationFormPopupAdd.enableValidation();
 
 //обработчики событий
 popupProfileAddButton.addEventListener('click', () => {
-  openPopup(popupCard);
+  popupnewCard.open();
   validationFormPopupAdd.disableSubmitButton(popupProfileSaveButton);
   validationFormPopupAdd.resetErrorForm();
 });
 
 popupProfileOpenButton.addEventListener('click', () => {
-  openPopup(popupProfile);
+  popupnewProfile.open();
   validationFormPopupEdit.disableSubmitButton(popupProfileSaveButton);
   validationFormPopupEdit.resetErrorForm();
   fillPopupProfileInputs();
