@@ -37,12 +37,12 @@ import Popup from './Popup.js'
 // };
 
 //закрытие попапа по кнопке Esc
-function closePopupByEsc(evt) {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
-  }
-};
+// function closePopupByEsc(evt) {
+//   if (evt.key === "Escape") {
+//     const openedPopup = document.querySelector('.popup_opened');
+//     closePopup(openedPopup);
+//   }
+// };
 
 //функции ввода
 function fillPopupProfileInputs() {
@@ -83,7 +83,9 @@ function openImg(name, img) {
   infoFigure.textContent = name;
 };
 
-const newpopupCard = new Popup()
+const popupnewCard = new Popup(popupCard)
+popupnewCard.fix()
+const popupnewProfile = new Popup(popupProfile)
 
 //добавление карточки
 const submitCardAdd = (evt) => {
