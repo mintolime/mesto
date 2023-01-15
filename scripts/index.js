@@ -84,14 +84,14 @@ function handleCardClick(name, img) {
 const popupnewCardImage = new PopupWithImage(popupImg)
 popupnewCardImage.setEventListeners();
 
-// const  popupNewFormCard = new PopupWithForm({popupSelector:formCard,
-// submitCardAdd: (newValies) =>{
-//    const cardElement = { name: newValies.cardInputName, link: newValies.cardImgLink };
-//    sectionCard.addItem(cardElement)
-//    popupNewFormCard.close()
-// }}
-// )
-// popupNewFormCard.setEventListeners()
+const  popupNewFormCard = new PopupWithForm({popupSelector:popupCard,
+submitCardAdd: (newValies) =>{
+   const cardElement = { name: newValies.cardInputName, link: newValies.cardImgLink };
+   sectionCard.addItem(cardElement)
+   popupNewFormCard.close()
+}}
+)
+popupNewFormCard.setEventListeners()
 
 const  popupNewFormProfile = new PopupWithForm({popupSelector: popupProfile,
 submitCardAdd: (newValies) =>{
@@ -149,7 +149,7 @@ validationFormPopupAdd.enableValidation();
 
 //обработчики событий
 popupProfileAddButton.addEventListener('click', () => {
-  popupnewCard.open();
+  popupNewFormCard.open();
   validationFormPopupAdd.disableSubmitButton(popupProfileSaveButton);
   validationFormPopupAdd.resetErrorForm();
 });
