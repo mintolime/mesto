@@ -1,7 +1,7 @@
 import Section from './Section.js'
 import Popup from './Popup.js'
 import PopupWithImage from './PopupWithImage.js'
-//import PopupWithForm from './PopupWithForm.js'
+import PopupWithForm from './PopupWithForm.js'
 import Card from './Card.js'
 import FormValidator from './FormValidator.js'
 import { initialCards } from './data-card.js'
@@ -77,10 +77,10 @@ function handleCardClick(name, img) {
    popupnewCardImage.open(name,img);
 };
 
-const popupnewCard = new Popup(popupCard)
-popupnewCard.setEventListeners()
-const popupnewProfile = new Popup(popupProfile)
-popupnewProfile.setEventListeners()
+// const popupnewCard = new Popup(popupCard)
+// popupnewCard.setEventListeners()
+// const popupnewProfile = new Popup(popupProfile)
+// popupnewProfile.setEventListeners()
 const popupnewCardImage = new PopupWithImage(popupImg)
 popupnewCardImage.setEventListeners();
 
@@ -92,6 +92,14 @@ popupnewCardImage.setEventListeners();
 // }}
 // )
 // popupNewFormCard.setEventListeners()
+
+const  popupNewFormProfile = new PopupWithForm({popupSelector: popupProfile,
+submitCardAdd: (newValies) =>{
+   userInfo.setUserInfo(newValies);
+   popupNewFormProfile.close();
+}}
+)
+popupNewFormProfile.setEventListeners()
 
 // function changeTextProfile(evt) {
 //   evt.preventDefault();
@@ -147,10 +155,9 @@ popupProfileAddButton.addEventListener('click', () => {
 });
 
 popupProfileOpenButton.addEventListener('click', () => {
-  popupnewProfile.open();
+  popupNewFormProfile.open();
   validationFormPopupEdit.disableSubmitButton(popupProfileSaveButton);
   validationFormPopupEdit.resetErrorForm();
-  fillPopupProfileInputs();
 });
 
 
