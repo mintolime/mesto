@@ -1,5 +1,6 @@
 import Section from './Section.js'
 import Popup from './Popup.js'
+import PopupWithImage from './PopupWithImage.js'
 import Card from './Card.js'
 import FormValidator from './FormValidator.js'
 import { initialCards } from './data-card.js'
@@ -55,7 +56,7 @@ function changeTextProfile(evt) {
   evt.preventDefault();
   profileName.textContent = formInputName.value;
   profileAboutUser.textContent = formAboutUser.value;
-  closePopup(popupProfile);
+  popupnewProfile.close();
 };
 
 //закрытие попапов
@@ -77,18 +78,18 @@ function changeTextProfile(evt) {
 
 //открытие попапа с картинкой
 function openImg(name, img) {
-  popupnewCardImage.open();
-  popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
-  imgFigure.src = img;
-  imgFigure.alt = name;
-  infoFigure.textContent = name;
+   popupnewCardImage.open(name,img);
+  // popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
+  // imgFigure.src = img;
+  // imgFigure.alt = name;
+  // infoFigure.textContent = name;
 };
 
 const popupnewCard = new Popup(popupCard)
 popupnewCard.setEventListeners()
 const popupnewProfile = new Popup(popupProfile)
 popupnewProfile.setEventListeners()
-const popupnewCardImage = new Popup(popupImg)
+const popupnewCardImage = new PopupWithImage(popupImg)
 popupnewCardImage.setEventListeners();
 //добавление карточки
 const submitCardAdd = (evt) => {
@@ -102,18 +103,19 @@ const submitCardAdd = (evt) => {
   //   infoFigure,
   //   openImg);
   formCard.reset()
-  closePopup(popupCard)
+  popupnewCard.close();
 };
 
 //класс вставки разметки класса Card
 const sectionCard = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '#card-template', imgFigure, infoFigure, openImg);
+    const card = new Card(item, '#card-template',openImg);
     const cardElement = card.generateCard();
     sectionCard.addItem(cardElement)
   }
 }, cardContainer);
+
 sectionCard.renderItems();
 
 //создания экзепмляра форм
@@ -139,6 +141,7 @@ popupProfileOpenButton.addEventListener('click', () => {
   validationFormPopupEdit.resetErrorForm();
   fillPopupProfileInputs();
 });
+
 
 formProfile.addEventListener('submit', changeTextProfile);
 formCard.addEventListener("submit", submitCardAdd);

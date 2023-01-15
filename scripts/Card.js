@@ -1,10 +1,8 @@
 export default class Card {
-  constructor(data, templateSelector, imgFigure, infoFigure, openImg) {
+  constructor(data, templateSelector,openImg) {
     this._name = data.name;
     this._image = data.link;
     this._templateSelector = templateSelector;
-    this._imgFigure = imgFigure;
-    this._infoFigure = infoFigure;
     this._openImg = openImg;
   }
 
@@ -33,10 +31,6 @@ export default class Card {
     cardImg.src = this._image;
     cardImg.alt = this._name;
     cardTitle.textContent = this._name;
-    //данные карточек попапа
-    this._imgFigure.src = this._image;
-    this._imgFigure.alt = this._name;
-    this._infoFigure.textContent = this._name;
   }
 
   _setEventListeners() {
