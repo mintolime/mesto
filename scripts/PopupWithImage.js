@@ -19,13 +19,4 @@ export default class PopupWithImage extends Popup {
     this._popup.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
  super.open();
   }
-
-  setEventListeners() {
-    super.setEventListeners()
-    this._popup.addEventListener('click', () => {
-      console.log(evt.target)
-      // this.open(this._imgFigure, this._imgFigure)
-      // super.fix()
-      });
-  }
 }

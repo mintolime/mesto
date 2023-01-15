@@ -77,7 +77,7 @@ function changeTextProfile(evt) {
 // };
 
 //открытие попапа с картинкой
-function openImg(name, img) {
+function handleCardClick(name, img) {
    popupnewCardImage.open(name,img);
   // popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
   // imgFigure.src = img;
@@ -110,7 +110,7 @@ const submitCardAdd = (evt) => {
 const sectionCard = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '#card-template',openImg);
+    const card = new Card(item, '#card-template',handleCardClick);
     const cardElement = card.generateCard();
     sectionCard.addItem(cardElement)
   }
