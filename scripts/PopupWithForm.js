@@ -5,18 +5,20 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this._submitCardAdd = submitCardAdd;
     this._inputList = this._popup.querySelectorAll('.form__input');
-    this._form = this._popup.querySelector('form[name]')
+    this._form = this._popup.querySelector('.form[name]')
   }
 
   _getInputValues() {
-    this._newValies = {}
-    this._inputList.forEach(inputElement => {
-      this._newValues[inputElement.name] = inputElement.value
-    });
+    this._newValies = {};
+    this._inputList.forEach(inputElement => { this._newValues[inputElement.name] = inputElement.value });
+
     return this._newValies
   }
 
   close() {
+    console.log(this._inputList)
+    // console.log(this._form)
+    // console.log(this._newValies)
     this._form.reset()
     super.close()
   }

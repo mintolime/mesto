@@ -1,3 +1,4 @@
+import UserInfo from './UserInfo.js'
 import Section from './Section.js'
 import Popup from './Popup.js'
 import PopupWithImage from './PopupWithImage.js'
@@ -28,59 +29,13 @@ import {
 } from './constants.js'
 
 
-//универсальные функции
-// function openPopup(popup) {
-  // popup.classList.add('popup_opened')
-  // document.addEventListener('keydown', closePopupByEsc);
-// };
-
-// function closePopup(popup) {
-//   popup.classList.remove('popup_opened')
-//   document.removeEventListener('keydown', closePopupByEsc);
-// };
-
-//закрытие попапа по кнопке Esc
-// function closePopupByEsc(evt) {
-//   if (evt.key === "Escape") {
-//     const openedPopup = document.querySelector('.popup_opened');
-//     closePopup(openedPopup);
-//   }
-// };
-
-//функции ввода
-// function fillPopupProfileInputs() {
-//   formInputName.value = profileName.textContent;
-//   formAboutUser.value = profileAboutUser.textContent;
-// };
-
-
-
-//закрытие попапов
-// popups.forEach((popup) => {
-//   popup.addEventListener('click', function (evt) {
-//     if (evt.target.classList.contains('popup') || evt.target.classList.contains('button_type_close')) {
-//       // closePopup(popup);
-//     }
-//   });
-// });
-
-// создание карточек в разметке
-// function createCard(item, templateSelector, imgFigure, infoFigure, openImg) {
-//   const card = new Card(item, templateSelector, imgFigure, infoFigure, openImg);
-//   const cardElement = card.generateCard();
-
-//   cardContainer.prepend(cardElement);
-// };
 
 //открытие попапа с картинкой
 function handleCardClick(name, img) {
    popupnewCardImage.open(name,img);
 };
 
-// const popupnewCard = new Popup(popupCard)
-// popupnewCard.setEventListeners()
-// const popupnewProfile = new Popup(popupProfile)
-// popupnewProfile.setEventListeners()
+const userInfo = new UserInfo(profileName, profileAboutUser);
 const popupnewCardImage = new PopupWithImage(popupImg)
 popupnewCardImage.setEventListeners();
 
