@@ -79,10 +79,6 @@ function changeTextProfile(evt) {
 //открытие попапа с картинкой
 function handleCardClick(name, img) {
    popupnewCardImage.open(name,img);
-  // popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
-  // imgFigure.src = img;
-  // imgFigure.alt = name;
-  // infoFigure.textContent = name;
 };
 
 const popupnewCard = new Popup(popupCard)
@@ -124,9 +120,6 @@ validationFormPopupEdit.enableValidation();
 
 const validationFormPopupAdd = new FormValidator(formCard, validationConfig);
 validationFormPopupAdd.enableValidation();
-
-//отрисовка всех карточек
-//initialCards.forEach((item) => { createCard(item, '#card-template', imgFigure, infoFigure, openImg) });
 
 //обработчики событий
 popupProfileAddButton.addEventListener('click', () => {
