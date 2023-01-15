@@ -77,7 +77,7 @@ function changeTextProfile(evt) {
 
 //открытие попапа с картинкой
 function openImg(name, img) {
-  openPopup(popupImg);
+  popupnewCardImage.open();
   popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
   imgFigure.src = img;
   imgFigure.alt = name;
@@ -88,7 +88,8 @@ const popupnewCard = new Popup(popupCard)
 popupnewCard.setEventListeners()
 const popupnewProfile = new Popup(popupProfile)
 popupnewProfile.setEventListeners()
-
+const popupnewCardImage = new Popup(popupImg)
+popupnewCardImage.setEventListeners();
 //добавление карточки
 const submitCardAdd = (evt) => {
   evt.preventDefault();
