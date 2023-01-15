@@ -1,6 +1,7 @@
 import Section from './Section.js'
 import Popup from './Popup.js'
 import PopupWithImage from './PopupWithImage.js'
+//import PopupWithForm from './PopupWithForm.js'
 import Card from './Card.js'
 import FormValidator from './FormValidator.js'
 import { initialCards } from './data-card.js'
@@ -47,17 +48,12 @@ import {
 // };
 
 //функции ввода
-function fillPopupProfileInputs() {
-  formInputName.value = profileName.textContent;
-  formAboutUser.value = profileAboutUser.textContent;
-};
+// function fillPopupProfileInputs() {
+//   formInputName.value = profileName.textContent;
+//   formAboutUser.value = profileAboutUser.textContent;
+// };
 
-function changeTextProfile(evt) {
-  evt.preventDefault();
-  profileName.textContent = formInputName.value;
-  profileAboutUser.textContent = formAboutUser.value;
-  popupnewProfile.close();
-};
+
 
 //закрытие попапов
 // popups.forEach((popup) => {
@@ -87,20 +83,40 @@ const popupnewProfile = new Popup(popupProfile)
 popupnewProfile.setEventListeners()
 const popupnewCardImage = new PopupWithImage(popupImg)
 popupnewCardImage.setEventListeners();
+
+// const  popupNewFormCard = new PopupWithForm({popupSelector:formCard,
+// submitCardAdd: (newValies) =>{
+//    const cardElement = { name: newValies.cardInputName, link: newValies.cardImgLink };
+//    sectionCard.addItem(cardElement)
+//    popupNewFormCard.close()
+// }}
+// )
+// popupNewFormCard.setEventListeners()
+
+// function changeTextProfile(evt) {
+//   evt.preventDefault();
+//   profileName.textContent = formInputName.value;
+//   profileAboutUser.textContent = formAboutUser.value;
+//   popupnewProfile.close();
+// };
+
 //добавление карточки
-const submitCardAdd = (evt) => {
-  evt.preventDefault();
-  // createCard({
-  //   name: cardInputName.value,
-  //   link: cardImgLink.value
-  // },
-  //   '#card-template',
-  //   imgFigure,
-  //   infoFigure,
-  //   openImg);
-  formCard.reset()
-  popupnewCard.close();
-};
+// const submitCardAdd = (evt) => {
+//   evt.preventDefault();
+//   sectionCard.addItem(cardInputName.value,cardImgLink.value)
+//   // createCard({
+//   //   name: cardInputName.value,
+//   //   link: cardImgLink.value
+//   // },
+//   //   '#card-template',
+//   //   imgFigure,
+//   //   infoFigure,
+//   //   openImg);
+//   // formCard.reset()
+//   popupnewCard.close();
+// };
+
+
 
 //класс вставки разметки класса Card
 const sectionCard = new Section({
@@ -121,6 +137,8 @@ validationFormPopupEdit.enableValidation();
 const validationFormPopupAdd = new FormValidator(formCard, validationConfig);
 validationFormPopupAdd.enableValidation();
 
+
+
 //обработчики событий
 popupProfileAddButton.addEventListener('click', () => {
   popupnewCard.open();
@@ -136,5 +154,5 @@ popupProfileOpenButton.addEventListener('click', () => {
 });
 
 
-formProfile.addEventListener('submit', changeTextProfile);
-formCard.addEventListener("submit", submitCardAdd);
+// formProfile.addEventListener('submit', changeTextProfile);
+// formCard.addEventListener("submit", submitCardAdd);
