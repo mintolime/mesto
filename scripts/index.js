@@ -28,32 +28,41 @@ import {
   popupProfileSaveButton,
 } from './constants.js'
 
-
-
+//функции создания карточки с использованием класса Сard 
+function createCard(item) {
+ const cardNew = new Card(item, '#card-template', handleCardClick);
+   return cardNew.generateCard();
+}
 //открытие попапа с картинкой
 function handleCardClick(name, img) {
-   popupnewCardImage.open(name,img);
+  popupnewCardImage.open(name, img);
 };
 
 const userInfo = new UserInfo(profileName, profileAboutUser);
 const popupnewCardImage = new PopupWithImage(popupImg)
 popupnewCardImage.setEventListeners();
 
-const  popupNewFormCard = new PopupWithForm({popupSelector:popupCard,
-submitCardAdd: (newValies) =>{
-   const cardElement = { name: newValies.cardInputName, link: newValies.cardImgLink };
-   sectionCard.addItem(cardElement)
-   popupNewFormCard.close()
-}}
+//создание карточек
+const popupNewFormCard = new PopupWithForm({
+  popupSelector: popupCard,
+  submitCardAdd: (formValues) => {
+    const cardItems = { name: cardInputName.value, link: cardImgLink.value };
+    sectionCard.addItem(createCard(cardItems))
+    console.log(cardItems)
+    popupNewFormCard.close()
+  }
+}
 )
 popupNewFormCard.setEventListeners()
 
-const  popupNewFormProfile = new PopupWithForm({popupSelector: popupProfile,
-submitCardAdd: (formValues) =>{
-   userInfo.setUserInfo(formValues);
-   console.log(formValues)
-   popupNewFormProfile.close();
-}}
+//создание формы 
+const popupNewFormProfile = new PopupWithForm({
+  popupSelector: popupProfile,
+  submitCardAdd: (formValues) => {
+    userInfo.setUserInfo(formValues);
+    popupNewFormProfile.close();
+  }
+}
 )
 popupNewFormProfile.setEventListeners()
 
@@ -86,9 +95,9 @@ popupNewFormProfile.setEventListeners()
 const sectionCard = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '#card-template',handleCardClick);
-    const cardElement = card.generateCard();
-    sectionCard.addItem(cardElement)
+    // const card = new Card(item, '#card-template', handleCardClick);
+    // const cardElement = card.generateCard();
+    sectionCard.addItem(createCard(item))
   }
 }, cardContainer);
 
