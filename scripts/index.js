@@ -49,8 +49,9 @@ submitCardAdd: (newValies) =>{
 popupNewFormCard.setEventListeners()
 
 const  popupNewFormProfile = new PopupWithForm({popupSelector: popupProfile,
-submitCardAdd: (newValies) =>{
-   userInfo.setUserInfo(newValies);
+submitCardAdd: (formValues) =>{
+   userInfo.setUserInfo(formValues);
+   console.log(formValues)
    popupNewFormProfile.close();
 }}
 )
