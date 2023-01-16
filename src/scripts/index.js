@@ -1,5 +1,11 @@
+<<<<<<< HEAD:src/scripts/index.js
 import '../pages/index.css';
+=======
+import UserInfo from './UserInfo.js'
+>>>>>>> dev-new-classes:scripts/index.js
 import Section from './Section.js'
+import PopupWithImage from './PopupWithImage.js'
+import PopupWithForm from './PopupWithForm.js'
 import Card from './Card.js'
 import FormValidator from './FormValidator.js'
 import { initialCards } from './data-card.js'
@@ -24,6 +30,7 @@ import {
   popupProfileAddButton,
   popupProfileSaveButton,
 } from './constants.js'
+<<<<<<< HEAD:src/scripts/index.js
 import Popup from './Popup.js'
 
 //универсальные функции
@@ -74,42 +81,60 @@ function changeTextProfile(evt) {
 
 //   cardContainer.prepend(cardElement);
 // };
+=======
+>>>>>>> dev-new-classes:scripts/index.js
 
+//функции создания карточки с использованием класса Сard 
+function createCard(item) {
+  const cardNew = new Card(item, '#card-template', handleCardClick);
+  return cardNew.generateCard();
+}
 //открытие попапа с картинкой
-function openImg(name, img) {
-  openPopup(popupImg);
-  popupImg.classList.add('popup__container_image-preview')//затемнения фона попапа с картинкой
-  imgFigure.src = img;
-  imgFigure.alt = name;
-  infoFigure.textContent = name;
+function handleCardClick(name, img) {
+  popupnewCardImage.open(name, img);
 };
 
+<<<<<<< HEAD:src/scripts/index.js
 // const newpopupCard = new Popup()
+=======
+//получение класса UserInfo
+const userInfo = new UserInfo(profileName, profileAboutUser);
+//получение класса PopupWithImage с попапом картинки 
+const popupnewCardImage = new PopupWithImage(popupImg)
+popupnewCardImage.setEventListeners();
+>>>>>>> dev-new-classes:scripts/index.js
 
-//добавление карточки
-const submitCardAdd = (evt) => {
-  evt.preventDefault();
-  // createCard({
-  //   name: cardInputName.value,
-  //   link: cardImgLink.value
-  // },
-  //   '#card-template',
-  //   imgFigure,
-  //   infoFigure,
-  //   openImg);
-  formCard.reset()
-  closePopup(popupCard)
-};
+//создание карточек
+const popupNewFormCard = new PopupWithForm({
+  popupSelector: popupCard,
+  submitCardAdd: () => {
+    const cardItems = { name: cardInputName.value, link: cardImgLink.value };
+    sectionCard.addItem(createCard(cardItems))
+    popupNewFormCard.close()
+  }
+}
+)
+popupNewFormCard.setEventListeners()
+
+//создание формы 
+const popupNewFormProfile = new PopupWithForm({
+  popupSelector: popupProfile,
+  submitCardAdd: (formValues) => {
+    userInfo.setUserInfo(formValues);
+    popupNewFormProfile.close();
+  }
+}
+)
+popupNewFormProfile.setEventListeners()
 
 //класс вставки разметки класса Card
 const sectionCard = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '#card-template', imgFigure, infoFigure, openImg);
-    const cardElement = card.generateCard();
-    sectionCard.addItem(cardElement)
+    sectionCard.addItem(createCard(item))
   }
 }, cardContainer);
+
 sectionCard.renderItems();
 
 //создания экзепмляра форм
@@ -119,22 +144,15 @@ validationFormPopupEdit.enableValidation();
 const validationFormPopupAdd = new FormValidator(formCard, validationConfig);
 validationFormPopupAdd.enableValidation();
 
-//отрисовка всех карточек
-//initialCards.forEach((item) => { createCard(item, '#card-template', imgFigure, infoFigure, openImg) });
-
 //обработчики событий
 popupProfileAddButton.addEventListener('click', () => {
-  openPopup(popupCard);
+  popupNewFormCard.open();
   validationFormPopupAdd.disableSubmitButton(popupProfileSaveButton);
   validationFormPopupAdd.resetErrorForm();
 });
 
 popupProfileOpenButton.addEventListener('click', () => {
-  openPopup(popupProfile);
+  popupNewFormProfile.open();
   validationFormPopupEdit.disableSubmitButton(popupProfileSaveButton);
   validationFormPopupEdit.resetErrorForm();
-  fillPopupProfileInputs();
 });
-
-formProfile.addEventListener('submit', changeTextProfile);
-formCard.addEventListener("submit", submitCardAdd);
