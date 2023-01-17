@@ -8,21 +8,16 @@ import FormValidator from '../components/FormValidator.js'
 import { initialCards } from '../utils/data-card.js'
 import { validationConfig } from '../utils/data-validation.js'
 import {
-  popups,
   popupCard,
   popupProfile,
   popupImg,
   formProfile,
   profileName,
-  formInputName,
   profileAboutUser,
-  formAboutUser,
   cardContainer,
   formCard,
   cardInputName,
   cardImgLink,
-  imgFigure,
-  infoFigure,
   popupProfileOpenButton,
   popupProfileAddButton,
   popupProfileSaveButton,
@@ -42,9 +37,8 @@ function handleCardClick(name, img) {
 const userInfo = new UserInfo(profileName, profileAboutUser);
 //получение класса PopupWithImage с попапом картинки
 const popupnewCardImage = new PopupWithImage(popupImg)
-popupnewCardImage.setEventListeners();
 
-//создание карточек
+//создание экземляра карточек
 const popupNewFormCard = new PopupWithForm({
   popupSelector: popupCard,
   submitCardAdd: () => {
@@ -55,8 +49,6 @@ const popupNewFormCard = new PopupWithForm({
 }
 )
 
-popupNewFormCard.setEventListeners()
-
 //создание формы
 const popupNewFormProfile = new PopupWithForm({
   popupSelector: popupProfile,
@@ -66,7 +58,6 @@ const popupNewFormProfile = new PopupWithForm({
   }
 }
 )
-popupNewFormProfile.setEventListeners()
 
 //класс вставки разметки класса Card
 const sectionCard = new Section({
@@ -76,14 +67,9 @@ const sectionCard = new Section({
   }
 }, cardContainer);
 
-sectionCard.renderItems();
-
 //создания экзепмляра форм
 const validationFormPopupEdit = new FormValidator(formProfile, validationConfig);
-validationFormPopupEdit.enableValidation();
-
 const validationFormPopupAdd = new FormValidator(formCard, validationConfig);
-validationFormPopupAdd.enableValidation();
 
 //обработчики событий
 popupProfileAddButton.addEventListener('click', () => {
@@ -97,3 +83,11 @@ popupProfileOpenButton.addEventListener('click', () => {
   validationFormPopupEdit.disableSubmitButton(popupProfileSaveButton);
   validationFormPopupEdit.resetErrorForm();
 });
+
+//вызовы всех функций 
+sectionCard.renderItems();
+popupnewCardImage.setEventListeners();
+popupNewFormProfile.setEventListeners();
+popupNewFormCard.setEventListeners();
+validationFormPopupAdd.enableValidation();
+validationFormPopupEdit.enableValidation();
