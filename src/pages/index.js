@@ -54,6 +54,7 @@ const popupNewFormCard = new PopupWithForm({
   }
 }
 )
+
 popupNewFormCard.setEventListeners()
 
 //создание формы
