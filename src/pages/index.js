@@ -1,12 +1,12 @@
 import '../pages/index.css'
-import UserInfo from './UserInfo.js'
-import Section from './Section.js'
-import PopupWithImage from './PopupWithImage.js'
-import PopupWithForm from './PopupWithForm.js'
-import Card from './Card.js'
-import FormValidator from './FormValidator.js'
-import { initialCards } from './data-card.js'
-import { validationConfig } from './data-validation.js'
+import UserInfo from '../components/UserInfo.js'
+import Section from '../components/Section.js'
+import PopupWithImage from '../components/PopupWithImage.js'
+import PopupWithForm from '../components/PopupWithForm.js'
+import Card from '../components/Card.js'
+import FormValidator from '../components/FormValidator.js'
+import { initialCards } from '../utils/data-card.js'
+import { validationConfig } from '../utils/data-validation.js'
 import {
   popups,
   popupCard,
@@ -26,7 +26,7 @@ import {
   popupProfileOpenButton,
   popupProfileAddButton,
   popupProfileSaveButton,
-} from './constants.js'
+} from '../utils/constants.js'
 
 //функции создания карточки с использованием класса Сard
 function createCard(item) {
