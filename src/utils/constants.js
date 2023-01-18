@@ -14,7 +14,6 @@ const cardImgLink = document.querySelector('[name="linkCard"]');
 //BUTTON
 const popupProfileOpenButton = document.querySelector('.button_type_edit');
 const popupProfileAddButton = document.querySelector('.button_type_add');
-const popupProfileSaveButton = formCard.querySelector('.button_type_save');
 
 export {
   popupCard,
@@ -29,5 +28,4 @@ export {
   cardImgLink,
   popupProfileOpenButton,
   popupProfileAddButton,
-  popupProfileSaveButton,
 };

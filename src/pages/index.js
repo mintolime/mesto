@@ -20,7 +20,6 @@ import {
   cardImgLink,
   popupProfileOpenButton,
   popupProfileAddButton,
-  popupProfileSaveButton,
 } from '../utils/constants.js'
 
 //функции создания карточки с использованием класса Сard
@@ -30,29 +29,29 @@ function createCard(item) {
 }
 //открытие попапа с картинкой
 function handleCardClick(name, img) {
-  popupnewCardImage.open(name, img);
+  popupNewCardImage.open(name, img);
 };
 
 //получение класса UserInfo
 const userInfo = new UserInfo(profileName, profileAboutUser);
 //получение класса PopupWithImage с попапом картинки
-const popupnewCardImage = new PopupWithImage(popupImg)
+const popupNewCardImage = new PopupWithImage(popupImg)
 
 //создание экземляра карточек
 const popupNewFormCard = new PopupWithForm({
   popupSelector: popupCard,
-  submitCardAdd: () => {
-    const cardItems = { name: cardInputName.value, link: cardImgLink.value };
-    sectionCard.addItem(createCard(cardItems))
+  submitCallback: ({cardInputName,cardImgLink }) => {
+    const cardItem = { name: cardInputName, link: cardImgLink };
+    sectionCard.addItem(createCard(cardItem))
     popupNewFormCard.close()
   }
 }
 )
 
-//создание формы
+//создание экземляра  формы
 const popupNewFormProfile = new PopupWithForm({
   popupSelector: popupProfile,
-  submitCardAdd: (formValues) => {
+  submitCallback: (formValues) => {
     userInfo.setUserInfo(formValues);
     popupNewFormProfile.close();
   }
@@ -73,20 +72,21 @@ const validationFormPopupAdd = new FormValidator(formCard, validationConfig);
 
 //обработчики событий
 popupProfileAddButton.addEventListener('click', () => {
+  // const {name, about} = userInfo.getUserInfo()
   popupNewFormCard.open();
-  validationFormPopupAdd.disableSubmitButton(popupProfileSaveButton);
-  validationFormPopupAdd.resetErrorForm();
+  validationFormPopupAdd.disableSubmitButton();
+  validationFormPopupAdd.resetErrorsForm();
 });
 
 popupProfileOpenButton.addEventListener('click', () => {
   popupNewFormProfile.open();
-  validationFormPopupEdit.disableSubmitButton(popupProfileSaveButton);
-  validationFormPopupEdit.resetErrorForm();
+  validationFormPopupEdit.disableSubmitButton();
+  validationFormPopupEdit.resetErrorsForm();
 });
 
-//вызовы всех функций 
+//вызовы всех функций
 sectionCard.renderItems();
-popupnewCardImage.setEventListeners();
+popupNewCardImage.setEventListeners();
 popupNewFormProfile.setEventListeners();
 popupNewFormCard.setEventListeners();
 validationFormPopupAdd.enableValidation();

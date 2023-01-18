@@ -30,7 +30,7 @@ export default class FormValidator {
     }
   };
 
-  resetErrorForm() {
+  resetErrorsForm() {
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
