@@ -12,7 +12,7 @@ module.exports = {
     publicPath: ''
   },
   mode: 'development',
-  devtool:'eval-source-map',
+  devtool: 'eval-source-map',
   devServer: {
     static: path.resolve(__dirname, './dist'), // путь, куда "смотрит" режим разработчика
     compress: true, // это ускорит загрузку в режиме разработки
@@ -34,8 +34,17 @@ module.exports = {
       // добавили правило для обработки файлов
       {
         // регулярное выражение, которое ищет все файлы с такими расширениями
-        test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
-        type: 'asset/resource'
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name].[hash][ext]',
+        }
+      }, {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name].[hash][ext]',
+        }
       },
       {
         // применять это правило только к CSS-файлам
@@ -44,11 +53,11 @@ module.exports = {
         // MiniCssExtractPlugin.loader и css-loader
         use: [MiniCssExtractPlugin.loader, {
           loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
+          options: {
+            importLoaders: 1
+          }
         },
-        'postcss-loader'
+          'postcss-loader'
         ]
       },
     ]
