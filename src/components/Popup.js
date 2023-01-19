@@ -21,12 +21,10 @@ export default class Popup {
     }
   }
 
-  fix() { console.log(`it's work`) }
-
   setEventListeners() {
     this._popup.addEventListener('click', (evt) => {
       if (evt.target.classList.contains('popup') || evt.target.classList.contains('button_type_close')) {
-        this.close(evt)
+        this.close()
       }
     });
   }
