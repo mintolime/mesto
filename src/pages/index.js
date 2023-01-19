@@ -12,12 +12,12 @@ import {
   popupProfile,
   popupImg,
   formProfile,
+  formInputName,
+  formAboutUser,
   profileName,
   profileAboutUser,
   cardContainer,
   formCard,
-  cardInputName,
-  cardImgLink,
   popupProfileEditButton,
   popupProfileAddButton,
 } from '../utils/constants.js'
@@ -75,9 +75,6 @@ popupProfileAddButton.addEventListener('click', () => {
   validationFormPopupAdd.disableSubmitButton();
   validationFormPopupAdd.resetErrorsForm();
 });
-
-const formInputName = document.querySelector('.form__input_text_name');
-const formAboutUser = document.querySelector('.form__input_text_about');
 
 popupProfileEditButton.addEventListener('click', () => {
  const profileInfo = userInfo.getUserInfo();
