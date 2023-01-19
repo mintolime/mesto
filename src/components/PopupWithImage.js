@@ -7,8 +7,6 @@ export default class PopupWithImage extends Popup {
     this._infoFigure = this._popupSelector.querySelector('.figure__info');
   }
 
-
-
   open(name, img) {
     //данные карточек попапа
     this._imgFigure.src = img;

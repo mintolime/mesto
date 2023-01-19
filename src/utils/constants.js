@@ -8,7 +8,6 @@ const profileName = document.querySelector('.profile__name');
 const profileAboutUser = document.querySelector('.profile__info');
 const formInputName = document.querySelector('.form__input_text_name');
 const formAboutUser = document.querySelector('.form__input_text_about');
-
 //CARD
 const cardContainer = document.querySelector('.cards__list');
 const formCard = document.querySelector('[name="formCard"]');

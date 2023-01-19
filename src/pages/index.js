@@ -22,7 +22,6 @@ import {
   popupProfileAddButton,
 } from '../utils/constants.js'
 
-
 //функции создания карточки с использованием класса Сard
 function createCard(item) {
   const cardNew = new Card(item, '#card-template', handleCardClick);
@@ -41,11 +40,11 @@ const popupNewCardImage = new PopupWithImage(popupImg)
 //создание экземляра карточек
 const popupNewFormCard = new PopupWithForm({
   popupSelector: popupCard,
-  submitCallback: ({nameCard, linkCard}) => {
-  const cardItem = { name: nameCard, link: linkCard };
-  sectionCard.addItem(createCard(cardItem))
-  popupNewFormCard.close()
-}
+  submitCallback: ({ nameCard, linkCard }) => {
+    const cardItem = { name: nameCard, link: linkCard };
+    sectionCard.addItem(createCard(cardItem))
+    popupNewFormCard.close()
+  }
 });
 
 //создание экземляра  формы
@@ -77,7 +76,7 @@ popupProfileAddButton.addEventListener('click', () => {
 });
 
 popupProfileEditButton.addEventListener('click', () => {
- const profileInfo = userInfo.getUserInfo();
+  const profileInfo = userInfo.getUserInfo();
   formInputName.value = profileInfo.nameUser;
   formAboutUser.value = profileInfo.aboutUser;
   popupNewFormProfile.open();
