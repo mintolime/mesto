@@ -12,12 +12,12 @@ import {
   popupProfile,
   popupImg,
   formProfile,
+  formInputName,
+  formAboutUser,
   profileName,
   profileAboutUser,
   cardContainer,
   formCard,
-  cardInputName,
-  cardImgLink,
   popupProfileEditButton,
   popupProfileAddButton,
 } from '../utils/constants.js'
@@ -41,11 +41,11 @@ const popupNewCardImage = new PopupWithImage(popupImg)
 //создание экземляра карточек
 const popupNewFormCard = new PopupWithForm({
   popupSelector: popupCard,
-  submitCallback: ({nameCard, linkCard}) => {
-  const cardItem = { name: nameCard, link: linkCard };
-  sectionCard.addItem(createCard(cardItem))
-  popupNewFormCard.close()
-}
+  submitCallback: ({ nameCard, linkCard }) => {
+    const cardItem = { name: nameCard, link: linkCard };
+    sectionCard.addItem(createCard(cardItem))
+    popupNewFormCard.close()
+  }
 });
 
 //создание экземляра  формы
@@ -76,11 +76,8 @@ popupProfileAddButton.addEventListener('click', () => {
   validationFormPopupAdd.resetErrorsForm();
 });
 
-const formInputName = document.querySelector('.form__input_text_name');
-const formAboutUser = document.querySelector('.form__input_text_about');
-
 popupProfileEditButton.addEventListener('click', () => {
- const profileInfo = userInfo.getUserInfo();
+  const profileInfo = userInfo.getUserInfo();
   formInputName.value = profileInfo.nameUser;
   formAboutUser.value = profileInfo.aboutUser;
   popupNewFormProfile.open();

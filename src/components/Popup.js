@@ -1,7 +1,7 @@
 export default class Popup {
   constructor(popupSelector) {
+    //не до конца понятен комментарий по поводу селектора. нужно задать  поиск в DOM через querySelector?
     this._popupSelector = popupSelector;
-    this._btnClose = this._popupSelector.querySelector('.button_type_close')
     this._handleEscClose = this._handleEscClose.bind(this);
   }
 
