@@ -6,6 +6,7 @@ const popupImg = document.querySelector('.popup_image');
 const formProfile = document.querySelector('[name="formProfile"]');
 const profileName = document.querySelector('.profile__name');
 const profileAboutUser = document.querySelector('.profile__info');
+
 //CARD
 const cardContainer = document.querySelector('.cards__list');
 const formCard = document.querySelector('[name="formCard"]');

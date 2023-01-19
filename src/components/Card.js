@@ -18,8 +18,8 @@ export default class Card {
 
   generateCard() {
     this._newCard = this._getTemplate();
-    this._setEventListeners();
     this._setData();
+    this._setEventListeners();
 
     return this._newCard;
   }

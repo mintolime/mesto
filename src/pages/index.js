@@ -41,13 +41,12 @@ const popupNewCardImage = new PopupWithImage(popupImg)
 //создание экземляра карточек
 const popupNewFormCard = new PopupWithForm({
   popupSelector: popupCard,
-  submitCallback: ({cardInputName,cardImgLink }) => {
-    const cardItem = { name: cardInputName, link: cardImgLink };
-    sectionCard.addItem(createCard(cardItem))
-    popupNewFormCard.close()
-  }
+  submitCallback: ({nameCard, linkCard}) => {
+  const cardItem = { name: nameCard, link: linkCard };
+  sectionCard.addItem(createCard(cardItem))
+  popupNewFormCard.close()
 }
-)
+});
 
 //создание экземляра  формы
 const popupNewFormProfile = new PopupWithForm({
@@ -56,8 +55,7 @@ const popupNewFormProfile = new PopupWithForm({
     userInfo.setUserInfo(formValues);
     popupNewFormProfile.close();
   }
-}
-)
+});
 
 //класс вставки разметки класса Card
 const sectionCard = new Section({
@@ -80,17 +78,12 @@ popupProfileAddButton.addEventListener('click', () => {
 
 const formInputName = document.querySelector('.form__input_text_name');
 const formAboutUser = document.querySelector('.form__input_text_about');
-function addValue() {
-  formInputName.value = profileName.textContent;
-  formAboutUser.value = profileAboutUser.textContent;
-};
 
 popupProfileEditButton.addEventListener('click', () => {
  const profileInfo = userInfo.getUserInfo();
   formInputName.value = profileInfo.nameUser;
   formAboutUser.value = profileInfo.aboutUser;
   popupNewFormProfile.open();
-  console.log(popupNewFormProfile)
   validationFormPopupEdit.disableSubmitButton();
   validationFormPopupEdit.resetErrorsForm();
 });
