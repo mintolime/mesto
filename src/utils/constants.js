@@ -12,7 +12,7 @@ const formCard = document.querySelector('[name="formCard"]');
 const cardInputName = document.querySelector('[name="nameCard"]');
 const cardImgLink = document.querySelector('[name="linkCard"]');
 //BUTTON
-const popupProfileOpenButton = document.querySelector('.button_type_edit');
+const popupProfileEditButton = document.querySelector('.button_type_edit');
 const popupProfileAddButton = document.querySelector('.button_type_add');
 
 export {
@@ -26,6 +26,6 @@ export {
   formCard,
   cardInputName,
   cardImgLink,
-  popupProfileOpenButton,
+  popupProfileEditButton,
   popupProfileAddButton,
 };

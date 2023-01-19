@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(data, templateSelector,handleCardClick) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._image = data.link;
     this._templateSelector = templateSelector;
@@ -25,12 +25,11 @@ export default class Card {
   }
 
   _setData() {
-    const cardImg = this._newCard.querySelector('.cards__image');
-    const cardTitle = this._newCard.querySelector('.cards__title');
     //данные для карточек
-    cardImg.src = this._image;
-    cardImg.alt = this._name;
-    cardTitle.textContent = this._name;
+    this._cardImg = this._newCard.querySelector('.cards__image');
+    this._newCard.querySelector('.cards__title').textContent = this._name;
+    this._cardImg.src = this._image;
+    this._cardImg.alt = this._name;
   }
 
   _setEventListeners() {

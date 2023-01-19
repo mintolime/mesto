@@ -18,9 +18,10 @@ import {
   formCard,
   cardInputName,
   cardImgLink,
-  popupProfileOpenButton,
+  popupProfileEditButton,
   popupProfileAddButton,
 } from '../utils/constants.js'
+
 
 //функции создания карточки с использованием класса Сard
 function createCard(item) {
@@ -72,14 +73,24 @@ const validationFormPopupAdd = new FormValidator(formCard, validationConfig);
 
 //обработчики событий
 popupProfileAddButton.addEventListener('click', () => {
-  // const {name, about} = userInfo.getUserInfo()
   popupNewFormCard.open();
   validationFormPopupAdd.disableSubmitButton();
   validationFormPopupAdd.resetErrorsForm();
 });
 
-popupProfileOpenButton.addEventListener('click', () => {
+const formInputName = document.querySelector('.form__input_text_name');
+const formAboutUser = document.querySelector('.form__input_text_about');
+function addValue() {
+  formInputName.value = profileName.textContent;
+  formAboutUser.value = profileAboutUser.textContent;
+};
+
+popupProfileEditButton.addEventListener('click', () => {
+ const profileInfo = userInfo.getUserInfo();
+  formInputName.value = profileInfo.nameUser;
+  formAboutUser.value = profileInfo.aboutUser;
   popupNewFormProfile.open();
+  console.log(popupNewFormProfile)
   validationFormPopupEdit.disableSubmitButton();
   validationFormPopupEdit.resetErrorsForm();
 });

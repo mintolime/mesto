@@ -1,13 +1,13 @@
 export default class UserInfo {
-  constructor(name, about) {
-    this._name = name;
-    this._about = about;
+constructor(nameSelector, aboutSelector) {
+    this._nameSelector = nameSelector;
+    this._aboutSelector = aboutSelector;
   }
 
-  getUserInfo() { return { name: this._name.textContent, about: this._about.textContent, } }
+  getUserInfo() { return { nameUser: this._nameSelector.textContent, aboutUser: this._aboutSelector.textContent, } }
 
   setUserInfo(data) {
-    this._name.textContent = data.nameUser;
-    this._about.textContent = data.aboutUser;
+    this._nameSelector.textContent = data.nameUser;
+    this._aboutSelector.textContent = data.aboutUser;
   }
 }
