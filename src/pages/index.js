@@ -35,11 +35,11 @@ function handleCardClick(name, img) {
 //получение класса UserInfo
 const userInfo = new UserInfo(profileName, profileAboutUser);
 //получение класса PopupWithImage с попапом картинки
-const popupNewCardImage = new PopupWithImage(popupImg)
+const popupNewCardImage = new PopupWithImage({popupSelector:('.popup_image')})
 
 //создание экземляра карточек
 const popupNewFormCard = new PopupWithForm({
-  popupSelector: popupCard,
+  popupSelector:('.popup_add-card'),
   submitCallback: ({ nameCard, linkCard }) => {
     const cardItem = { name: nameCard, link: linkCard };
     sectionCard.addItem(createCard(cardItem))
@@ -49,7 +49,7 @@ const popupNewFormCard = new PopupWithForm({
 
 //создание экземляра  формы
 const popupNewFormProfile = new PopupWithForm({
-  popupSelector: popupProfile,
+  popupSelector:('.popup_edit-profile'),
   submitCallback: (formValues) => {
     userInfo.setUserInfo(formValues);
     popupNewFormProfile.close();
@@ -62,7 +62,7 @@ const sectionCard = new Section({
   renderer: (item) => {
     sectionCard.addItem(createCard(item))
   }
-}, cardContainer);
+}, {containerSelector:('.cards__list')});
 
 //создания экзепмляра форм
 const validationFormPopupEdit = new FormValidator(formProfile, validationConfig);
