@@ -8,15 +8,11 @@ import FormValidator from '../components/FormValidator.js'
 import { initialCards } from '../utils/data-card.js'
 import { validationConfig } from '../utils/data-validation.js'
 import {
-  popupCard,
-  popupProfile,
-  popupImg,
   formProfile,
   formInputName,
   formAboutUser,
   profileName,
   profileAboutUser,
-  cardContainer,
   formCard,
   popupProfileEditButton,
   popupProfileAddButton,
