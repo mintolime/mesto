@@ -1,7 +1,5 @@
 //PROFILE
 const formProfile = document.querySelector('[name="formProfile"]');
-const profileName = document.querySelector('.profile__name');
-const profileAboutUser = document.querySelector('.profile__info');
 const formInputName = document.querySelector('.form__input_text_name');
 const formAboutUser = document.querySelector('.form__input_text_about');
 //CARD
@@ -14,8 +12,6 @@ export {
   formProfile,
   formInputName,
   formAboutUser,
-  profileName,
-  profileAboutUser,
   formCard,
   popupProfileEditButton,
   popupProfileAddButton,

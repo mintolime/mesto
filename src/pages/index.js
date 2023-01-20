@@ -11,8 +11,6 @@ import {
   formProfile,
   formInputName,
   formAboutUser,
-  profileName,
-  profileAboutUser,
   formCard,
   popupProfileEditButton,
   popupProfileAddButton,
@@ -29,13 +27,13 @@ function handleCardClick(name, img) {
 };
 
 //получение класса UserInfo
-const userInfo = new UserInfo(profileName, profileAboutUser);
+const userInfo = new UserInfo({ nameSelector: ('.profile__name'), aboutSelector: ('.profile__info') });
 //получение класса PopupWithImage с попапом картинки
-const popupNewCardImage = new PopupWithImage({popupSelector:('.popup_image')})
+const popupNewCardImage = new PopupWithImage({ popupSelector: ('.popup_image') })
 
 //создание экземляра карточек
 const popupNewFormCard = new PopupWithForm({
-  popupSelector:('.popup_add-card'),
+  popupSelector: ('.popup_add-card'),
   submitCallback: ({ nameCard, linkCard }) => {
     const cardItem = { name: nameCard, link: linkCard };
     sectionCard.addItem(createCard(cardItem))
@@ -45,7 +43,7 @@ const popupNewFormCard = new PopupWithForm({
 
 //создание экземляра  формы
 const popupNewFormProfile = new PopupWithForm({
-  popupSelector:('.popup_edit-profile'),
+  popupSelector: ('.popup_edit-profile'),
   submitCallback: (formValues) => {
     userInfo.setUserInfo(formValues);
     popupNewFormProfile.close();
@@ -58,7 +56,7 @@ const sectionCard = new Section({
   renderer: (item) => {
     sectionCard.addItem(createCard(item))
   }
-}, {containerSelector:('.cards__list')});
+}, { containerSelector: ('.cards__list') });
 
 //создания экзепмляра форм
 const validationFormPopupEdit = new FormValidator(formProfile, validationConfig);

@@ -1,6 +1,6 @@
 export default class Popup {
   constructor({popupSelector}) {
-    //не до конца поняла замечание по поводу селектора, необходим поиск в DOM через querySelector?
+    //переделала, спасибо!! 
     this._popupSelector = document.querySelector(popupSelector);
     this._handleEscClose = this._handleEscClose.bind(this);
   }
