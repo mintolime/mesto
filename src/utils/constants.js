@@ -9,6 +9,7 @@ const formCard = document.querySelector('[name="formCard"]');
 //BUTTON
 const popupProfileEditButton = document.querySelector('.button_type_edit');
 const popupProfileAddButton = document.querySelector('.button_type_add');
+const popupCardDeleteBtn = document.querySelector('.button_type_delete');
 
 export {
   formProfile,
@@ -19,4 +20,5 @@ export {
   formCard,
   popupProfileEditButton,
   popupProfileAddButton,
+  popupCardDeleteBtn,
 };

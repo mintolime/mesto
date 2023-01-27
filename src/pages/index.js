@@ -1,4 +1,5 @@
 import '../pages/index.css'
+import Popup from '../components/Popup'
 import UserInfo from '../components/UserInfo.js'
 import Section from '../components/Section.js'
 import PopupWithImage from '../components/PopupWithImage.js'
@@ -16,6 +17,7 @@ import {
   formCard,
   popupProfileEditButton,
   popupProfileAddButton,
+  popupCardDeleteBtn,
 } from '../utils/constants.js'
 
 //функции создания карточки с использованием класса Сard
@@ -31,11 +33,12 @@ function handleCardClick(name, img) {
 //получение класса UserInfo
 const userInfo = new UserInfo(profileName, profileAboutUser);
 //получение класса PopupWithImage с попапом картинки
-const popupNewCardImage = new PopupWithImage({popupSelector:('.popup_image')})
+const popupNewCardImage = new PopupWithImage({ popupSelector: ('.popup_image') })
+const popupConfirmDlt = new Popup({ popupSelector: ('.popup_confirm') })
 
 //создание экземляра карточек
 const popupNewFormCard = new PopupWithForm({
-  popupSelector:('.popup_add-card'),
+  popupSelector: ('.popup_add-card'),
   submitCallback: ({ nameCard, linkCard }) => {
     const cardItem = { name: nameCard, link: linkCard };
     sectionCard.addItem(createCard(cardItem))
@@ -45,7 +48,7 @@ const popupNewFormCard = new PopupWithForm({
 
 //создание экземляра  формы
 const popupNewFormProfile = new PopupWithForm({
-  popupSelector:('.popup_edit-profile'),
+  popupSelector: ('.popup_edit-profile'),
   submitCallback: (formValues) => {
     userInfo.setUserInfo(formValues);
     popupNewFormProfile.close();
@@ -58,7 +61,7 @@ const sectionCard = new Section({
   renderer: (item) => {
     sectionCard.addItem(createCard(item))
   }
-}, {containerSelector:('.cards__list')});
+}, { containerSelector: ('.cards__list') });
 
 //создания экзепмляра форм
 const validationFormPopupEdit = new FormValidator(formProfile, validationConfig);
@@ -80,8 +83,13 @@ popupProfileEditButton.addEventListener('click', () => {
   validationFormPopupEdit.resetErrorsForm();
 });
 
+// popupCardDeleteBtn.addEventListener('click', () => {
+//   // popupConfirmDlt.open()
+// });
+
 //вызовы всех функций
 sectionCard.renderItems();
+popupConfirmDlt.setEventListeners();
 popupNewCardImage.setEventListeners();
 popupNewFormProfile.setEventListeners();
 popupNewFormCard.setEventListeners();
