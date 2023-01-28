@@ -49,8 +49,8 @@
 /* @import url('../blocks'); шаблон*/
 
 
-.button_type_avatar{
-  /* background-image: url(); */
+.button_type_avatar_edit{
+  background-image: url('../images/icon/icon-edit-avatar.svg');
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -61,8 +61,8 @@
   transition: .9s ease;
 }
 
-.button_type_avatar:hover {
+.button_type_avatar_edit:hover {
   opacity: .8;
-  background-color: #000;
+  background-color:#000;
 }
 

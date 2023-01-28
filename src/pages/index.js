@@ -15,10 +15,12 @@ import {
   formAboutUser,
   profileName,
   profileAboutUser,
+  formAvatar,
   formCard,
   popupProfileEditButton,
   popupProfileAddButton,
   popupCardDeleteBtn,
+  popupAvatarBtn
 } from '../utils/constants.js'
 
 //функции создания карточки с использованием класса Сard
@@ -48,6 +50,7 @@ const userInfo = new UserInfo(profileName, profileAboutUser);
 //получение класса PopupWithImage с попапом картинки
 const popupNewCardImage = new PopupWithImage({ popupSelector: ('.popup_image') })
 const popupConfirmDlt = new Popup({ popupSelector: ('.popup_confirm') })
+const popupAvatar = new Popup({ popupSelector: ('.popup_avatar') })
 
 //создание экземляра карточек
 const popupNewFormCard = new PopupWithForm({
@@ -76,15 +79,17 @@ const sectionCard = new Section({
   }
 }, { containerSelector: ('.cards__list') });
 
-//создания экзепмляра форм
-const validationFormPopupEdit = new FormValidator(formProfile, validationConfig);
-const validationFormPopupAdd = new FormValidator(formCard, validationConfig);
+//создания экзепмляра всех  форм и их валидация
+const validFormPopupEdit = new FormValidator(formProfile, validationConfig);
+const validFormPopupAdd = new FormValidator(formCard, validationConfig);
+const validFormPopupAvatar = new FormValidator(formAvatar, validationConfig);
+
 
 //обработчики событий
 popupProfileAddButton.addEventListener('click', () => {
   popupNewFormCard.open();
-  validationFormPopupAdd.disableSubmitButton();
-  validationFormPopupAdd.resetErrorsForm();
+  validFormPopupAdd.disableSubmitButton();
+  validFormPopupAdd.resetErrorsForm();
 });
 
 popupProfileEditButton.addEventListener('click', () => {
@@ -92,19 +97,23 @@ popupProfileEditButton.addEventListener('click', () => {
   formInputName.value = profileInfo.nameUser;
   formAboutUser.value = profileInfo.aboutUser;
   popupNewFormProfile.open();
-  validationFormPopupEdit.disableSubmitButton();
-  validationFormPopupEdit.resetErrorsForm();
+  validFormPopupEdit.disableSubmitButton();
+  validFormPopupEdit.resetErrorsForm();
 });
 
-// popupCardDeleteBtn.addEventListener('click', () => {
-//   // popupConfirmDlt.open()
-// });
+popupAvatarBtn.addEventListener('click', () => {
+  popupAvatar.open();
+  validFormPopupAvatar.disableSubmitButton();
+  validFormPopupAvatar.resetErrorsForm();
+});
 
 //вызовы всех функций
 sectionCard.renderItems();
+popupAvatar.setEventListeners();
 popupConfirmDlt.setEventListeners();
 popupNewCardImage.setEventListeners();
 popupNewFormProfile.setEventListeners();
 popupNewFormCard.setEventListeners();
-validationFormPopupAdd.enableValidation();
-validationFormPopupEdit.enableValidation();
+validFormPopupAvatar.enableValidation();
+validFormPopupAdd.enableValidation();
+validFormPopupEdit.enableValidation();

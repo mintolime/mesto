@@ -21,7 +21,7 @@
     <!-- PROFILE -->
     <section class="profile">
       <img class="profile__photo" src="<%=require('./images//image-profile.png')%>" alt="фото профиля">
-      <button class="button button_type_avatar"></button>
+      <button class="button button_type_avatar_edit"></button>
       <div class="profile__content">
         <h1 class="profile__name" lang="en">Kim Nelson</h1>
         <button class="button button_type_edit"></button>
@@ -69,14 +69,14 @@
   </section>
 
   <!-- POPUP-AVATAR -->
-  <section class="popup popup_avatar popup_opened" aria-label="обновление аватара">
+  <section class="popup popup_avatar" aria-label="обновление аватара">
     <div class="popup__container">
       <h3 class="popup__title">Обновить аватар</h3>
          <form name="formAvatar" class="form" novalidate>
         <fieldset class="form__inner">
           <input class="form__input form__input_text_about" name="linkAvatar" type="url" id="input-avatar"
             aria-label="подпись"  required>
-          <span class='form__input-error input-link-error'></span>
+          <span class='form__input-error input-avatar-error'></span>
         </fieldset>
        <button class="button button_type_save button_type_save_load-avatar" type="submit" disabled>Сохранить</button>
       </form>
