@@ -1,4 +1,5 @@
 import '../pages/index.css'
+import Api from '../components/Api'
 import Popup from '../components/Popup'
 import UserInfo from '../components/UserInfo.js'
 import Section from '../components/Section.js'
@@ -29,6 +30,18 @@ function createCard(item) {
 function handleCardClick(name, img) {
   popupNewCardImage.open(name, img);
 };
+
+
+//получение апи с сервера
+const ariCardData = new Api({
+  url:'https://mesto.nomoreparties.co/v1/cohort-58',
+  headers:{
+    'Content-Type':'application/json',
+    authorization: '54338beb-6a3f-46f8-bd6b-cdb1bf1c9692'
+    }
+})
+
+ariCardData.getAllCards().then((res) => console.log(res))
 
 //получение класса UserInfo
 const userInfo = new UserInfo(profileName, profileAboutUser);
