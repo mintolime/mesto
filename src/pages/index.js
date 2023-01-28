@@ -7,7 +7,7 @@ import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js'
-import { initialCards } from '../utils/data-card.js'
+// import { initialCards } from '../utils/data-card.js'
 import { validationConfig } from '../utils/data-validation.js'
 import {
   formProfile,
@@ -43,7 +43,7 @@ const ariCardData = new Api({
     }
 })
 
-ariCardData.getAllCards().then((res) => console.log(res))
+ariCardData.getAllCards().then((res) => sectionCard.renderItems(res))
 
 //получение класса UserInfo
 const userInfo = new UserInfo(profileName, profileAboutUser);
@@ -62,6 +62,8 @@ const popupNewFormCard = new PopupWithForm({
   }
 });
 
+
+
 //создание экземляра  формы
 const popupNewFormProfile = new PopupWithForm({
   popupSelector: ('.popup_edit-profile'),
@@ -72,12 +74,12 @@ const popupNewFormProfile = new PopupWithForm({
 });
 
 //класс вставки разметки класса Card
-const sectionCard = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    sectionCard.addItem(createCard(item))
-  }
-}, { containerSelector: ('.cards__list') });
+// const sectionCard = new Section({
+//   items: data,
+//   renderer: (item) => {
+//     sectionCard.addItem(createCard(item))
+//   }
+// }, { containerSelector: ('.cards__list') });
 
 //создания экзепмляра всех  форм и их валидация
 const validFormPopupEdit = new FormValidator(formProfile, validationConfig);
