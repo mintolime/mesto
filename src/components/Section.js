@@ -12,7 +12,7 @@ export default class Section {
   //Заметка : если параметр forEach или другой функции один и тот же, что и у функции, которая вызывается внутри, то можно не использовать промежуточную анонимную функцию
   renderItems() {
     this._initialArray.forEach(this._renderer)
-    console.log(this._initialArray)
+    // console.log(this._initialArray)
   }
 }
 

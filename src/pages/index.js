@@ -38,7 +38,7 @@ function handleCardClick(name, img) {
 const apiCardData = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-58',
   headers: {
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json; charset=UTF-8',
     authorization: '54338beb-6a3f-46f8-bd6b-cdb1bf1c9692'
   }
 })
@@ -54,8 +54,21 @@ apiCardData.getAllCards().then((res) => {
   sectionCard.renderItems()
 });
 
+//вроде как работает, но ..только после перезагрузки
+const popupNewFormCard = new PopupWithForm({
+  popupSelector: ('.popup_add-card'),
+  submitCallback: ({ nameCard, linkCard }) => {
+    const cardItem = { name: nameCard, link: linkCard };
+    // sectionCard.addItem(createCard(cardItem))
+    apiCardData.createCards(cardItem)
+    popupNewFormCard.close()
+  }
+});
 
 
+
+
+// apiCardData.createCards().then((res)=>{console.log(res)})
 //получение класса UserInfo
 const userInfo = new UserInfo(profileName, profileAboutUser);
 //получение класса PopupWithImage с попапом картинки
@@ -64,14 +77,14 @@ const popupConfirmDlt = new Popup({ popupSelector: ('.popup_confirm') })
 const popupAvatar = new Popup({ popupSelector: ('.popup_avatar') })
 
 //создание экземляра карточек
-const popupNewFormCard = new PopupWithForm({
-  popupSelector: ('.popup_add-card'),
-  submitCallback: ({ nameCard, linkCard }) => {
-    const cardItem = { name: nameCard, link: linkCard };
-    sectionCard.addItem(createCard(cardItem))
-    popupNewFormCard.close()
-  }
-});
+// const popupNewFormCard = new PopupWithForm({
+//   popupSelector: ('.popup_add-card'),
+//   submitCallback: ({ nameCard, linkCard }) => {
+//     const cardItem = { name: nameCard, link: linkCard };
+//     sectionCard.addItem(createCard(cardItem))
+//     popupNewFormCard.close()
+//   }
+// });
 
 
 
@@ -122,11 +135,11 @@ popupAvatarBtn.addEventListener('click', () => {
 
 //вызовы всех функций
 // sectionCard.renderItems();
+popupNewFormCard.setEventListeners();
 popupAvatar.setEventListeners();
 popupConfirmDlt.setEventListeners();
 popupNewCardImage.setEventListeners();
 popupNewFormProfile.setEventListeners();
-popupNewFormCard.setEventListeners();
 validFormPopupAvatar.enableValidation();
 validFormPopupAdd.enableValidation();
 validFormPopupEdit.enableValidation();
