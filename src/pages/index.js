@@ -7,7 +7,7 @@ import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js'
-// import { initialCards } from '../utils/data-card.js'
+import { initialCards } from '../utils/data-card.js'
 import { validationConfig } from '../utils/data-validation.js'
 import {
   formProfile,
@@ -20,7 +20,7 @@ import {
   popupProfileEditButton,
   popupProfileAddButton,
   popupCardDeleteBtn,
-  popupAvatarBtn
+  popupAvatarBtn,
 } from '../utils/constants.js'
 
 //функции создания карточки с использованием класса Сard
@@ -35,15 +35,26 @@ function handleCardClick(name, img) {
 
 
 //получение апи с сервера
-const ariCardData = new Api({
-  url:'https://mesto.nomoreparties.co/v1/cohort-58',
-  headers:{
-    'Content-Type':'application/json',
+const apiCardData = new Api({
+  url: 'https://mesto.nomoreparties.co/v1/cohort-58',
+  headers: {
+    'Content-Type': 'application/json',
     authorization: '54338beb-6a3f-46f8-bd6b-cdb1bf1c9692'
-    }
+  }
 })
 
-ariCardData.getAllCards().then((res) => sectionCard.renderItems(res))
+
+apiCardData.getAllCards().then((res) => {
+  const sectionCard = new Section({
+    items: res,
+    renderer: (item) => {
+      sectionCard.addItem(createCard(item))
+    }
+  }, { containerSelector: ('.cards__list') });
+  sectionCard.renderItems()
+});
+
+
 
 //получение класса UserInfo
 const userInfo = new UserInfo(profileName, profileAboutUser);
@@ -73,9 +84,9 @@ const popupNewFormProfile = new PopupWithForm({
   }
 });
 
-//класс вставки разметки класса Card
+// класс вставки разметки класса Card
 // const sectionCard = new Section({
-//   items: data,
+//   items: initialCards,
 //   renderer: (item) => {
 //     sectionCard.addItem(createCard(item))
 //   }
@@ -110,7 +121,7 @@ popupAvatarBtn.addEventListener('click', () => {
 });
 
 //вызовы всех функций
-sectionCard.renderItems();
+// sectionCard.renderItems();
 popupAvatar.setEventListeners();
 popupConfirmDlt.setEventListeners();
 popupNewCardImage.setEventListeners();
