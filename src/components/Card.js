@@ -42,7 +42,7 @@ export default class Card {
 
   _handleLikeClick() { this._newCard.querySelector('.button_type_like').classList.toggle('button_type_like_active'); }
 
-  _handleLikeDelete() {
+  delete() {
     this._newCard.remove();
     this._newCard = null;
   }

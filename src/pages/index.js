@@ -28,18 +28,19 @@ import {
 function createCard(item) {
   const cardNew = new Card(item, ('#card-template'), handleCardClick,
     {
-      handleDelete: (id) => {
-        console.log(id)
-        apiCardData.deleteCard(id)
-        // .then(() => { cardNew._handleLikeDelete() })
-        // .then((res) => { console.log(res) })
+      handleDelete: (cardId) => {
+        // popupConfirmDlt.open()
+        console.log(cardId)
+        apiCardData.deleteCard(cardId)
+        .then(() => { cardNew.delete()})
+        // // .then((res) => { console.log(res) })
       }
     });
   return cardNew.generateCard();
 }
 
 // function handleDelete(id){
-  
+
 // }
 //открытие попапа с картинкой
 function handleCardClick(name, img) {
@@ -91,7 +92,7 @@ const popupNewFormCard = new PopupWithForm({
   }
 });
 
-//аватар меняется, но не сохраняет 
+//аватар меняется, но не сохраняет
 const popupNewFormAvatar = new PopupWithForm({
   popupSelector: ('.popup_avatar'),
   submitCallback: ({ linkAvatar }) => {
