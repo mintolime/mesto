@@ -18,6 +18,37 @@ export default class Api {
       headers: this.headers,
     })
       .then((res) => this._handleResponce(res))
+
+  }
+
+  getUserData() {
+    return fetch(`${this.url}/cards/users/me `, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+        name: owner.name,
+        about: owner.about
+      })
+    })
+      .then((res) => this._handleResponce(res))
+  }
+
+  changeAvatar(owner) {
+    fetch(`${this.url}/users/me/avatar`, {
+      method: 'PATCH',
+      body: JSON.stringify(
+        { avatar: owner.avatar }),
+      headers: this.headers,
+    })
+  }
+
+  deleteCard() {
+    return fetch(`${this.url}/cards/${id}`, {
+      method: 'DELETE',
+      headers: this.headers,
+    })
+      .catch((err) => { err })
+      .then((res) => this._handleResponce(res))
   }
 
   _handleResponce(res) {

@@ -15,6 +15,7 @@ import {
   formAboutUser,
   profileName,
   profileAboutUser,
+  profilePhotoUser,
   formAvatar,
   formCard,
   popupProfileEditButton,
@@ -25,9 +26,21 @@ import {
 
 //функции создания карточки с использованием класса Сard
 function createCard(item) {
-  const cardNew = new Card(item, '#card-template', handleCardClick);
+  const cardNew = new Card(item, ('#card-template'), handleCardClick,
+    {
+      handleDelete: (id) => {
+        console.log(id)
+        apiCardData.deleteCard(id)
+        // .then(() => { cardNew._handleLikeDelete() })
+        // .then((res) => { console.log(res) })
+      }
+    });
   return cardNew.generateCard();
 }
+
+// function handleDelete(id){
+  
+// }
 //открытие попапа с картинкой
 function handleCardClick(name, img) {
   popupNewCardImage.open(name, img);
@@ -52,23 +65,43 @@ apiCardData.getAllCards().then((res) => {
     }
   }, { containerSelector: ('.cards__list') });
   sectionCard.renderItems()
+  console.log(res)
 });
 
 //вроде как работает, но ..только после перезагрузки
+// const popupNewFormCard = new PopupWithForm({
+//   popupSelector: ('.popup_add-card'),
+//   submitCallback: ({ nameCard, linkCard }) => {
+//     // const cardItem = { name: nameCard, link: linkCard };
+//     // sectionCard.addItem(createCard(cardItem))
+//     // apiCardData.createCards(cardItem)
+//     popupNewFormCard.close()
+//   }
+// });
+
+
 const popupNewFormCard = new PopupWithForm({
   popupSelector: ('.popup_add-card'),
   submitCallback: ({ nameCard, linkCard }) => {
-    const cardItem = { name: nameCard, link: linkCard };
-    // sectionCard.addItem(createCard(cardItem))
-    apiCardData.createCards(cardItem)
+    apiCardData.createCards({ name: nameCard, link: linkCard }).then((data) => {
+      console.log(data)
+      createCard(data) //переделать?
+    })
     popupNewFormCard.close()
   }
 });
 
+//аватар меняется, но не сохраняет 
+const popupNewFormAvatar = new PopupWithForm({
+  popupSelector: ('.popup_avatar'),
+  submitCallback: ({ linkAvatar }) => {
+    profilePhotoUser.src = linkAvatar;
+    apiCardData.changeAvatar({ avatar: linkAvatar })
+    popupNewFormAvatar.close();
+  }
+});
 
 
-
-// apiCardData.createCards().then((res)=>{console.log(res)})
 //получение класса UserInfo
 const userInfo = new UserInfo(profileName, profileAboutUser);
 //получение класса PopupWithImage с попапом картинки
@@ -93,9 +126,11 @@ const popupNewFormProfile = new PopupWithForm({
   popupSelector: ('.popup_edit-profile'),
   submitCallback: (formValues) => {
     userInfo.setUserInfo(formValues);
+    // apiCardData.getUserData({name:nameUser, about:aboutUser})
     popupNewFormProfile.close();
   }
 });
+
 
 // класс вставки разметки класса Card
 // const sectionCard = new Section({
@@ -136,6 +171,7 @@ popupAvatarBtn.addEventListener('click', () => {
 //вызовы всех функций
 // sectionCard.renderItems();
 popupNewFormCard.setEventListeners();
+popupNewFormAvatar.setEventListeners()
 popupAvatar.setEventListeners();
 popupConfirmDlt.setEventListeners();
 popupNewCardImage.setEventListeners();
