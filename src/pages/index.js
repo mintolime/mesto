@@ -30,7 +30,7 @@ function createCard(item) {
     {
       handleDelete: (cardId) => {
         // popupConfirmDlt.open()
-        console.log(cardId)
+        // console.log(cardId)
         apiCardData.deleteCard(cardId)
         .then(() => { cardNew.delete()})
         // // .then((res) => { console.log(res) })
@@ -39,9 +39,6 @@ function createCard(item) {
   return cardNew.generateCard();
 }
 
-// function handleDelete(id){
-
-// }
 //открытие попапа с картинкой
 function handleCardClick(name, img) {
   popupNewCardImage.open(name, img);
@@ -85,7 +82,7 @@ const popupNewFormCard = new PopupWithForm({
   popupSelector: ('.popup_add-card'),
   submitCallback: ({ nameCard, linkCard }) => {
     apiCardData.createCards({ name: nameCard, link: linkCard }).then((data) => {
-      console.log(data)
+      // console.log(data)
       createCard(data) //переделать?
     })
     popupNewFormCard.close()

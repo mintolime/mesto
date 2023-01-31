@@ -49,7 +49,7 @@
 /* @import url('../blocks'); шаблон*/
 
 
-.button_type_avatar_edit{
+.button_type_avatar_edit {
   background-image: url('../images/icon/icon-edit-avatar.svg');
   width: 120px;
   height: 120px;
@@ -63,6 +63,18 @@
 
 .button_type_avatar_edit:hover {
   opacity: .8;
-  background-color:#000;
+  background-color: #000;
 }
 
+.cards__likes_items {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards__likes_score {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #000;
+}
