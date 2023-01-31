@@ -22,22 +22,17 @@ export default class Api {
   }
 
   getUserData() {
-    return fetch(`${this.url}/cards/users/me `, {
-      method: 'PATCH',
+    return fetch(`${this.url}/users/me `, {
       headers: this.headers,
-      body: JSON.stringify({
-        name: owner.name,
-        about: owner.about
-      })
     })
       .then((res) => this._handleResponce(res))
   }
 
-  changeAvatar(owner) {
+  changeAvatar(avatar) {
     fetch(`${this.url}/users/me/avatar`, {
       method: 'PATCH',
       body: JSON.stringify(
-        { avatar: owner.avatar }),
+        { avatar }),
       headers: this.headers,
     })
   }

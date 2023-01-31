@@ -43,7 +43,6 @@ function createCard(item) {
         // // .then((res) => { console.log(res) })
       }
     });
-    cardNew.fix()
   return cardNew.generateCard();
 }
 
@@ -70,7 +69,7 @@ apiData.getAllCards().then((res) => {
     }
   }, { containerSelector: ('.cards__list') });
   sectionCard.renderItems()
-  console.log(res)
+  // console.log(res)
 });
 
 //вроде как работает, но ..только после перезагрузки
@@ -89,7 +88,7 @@ const popupNewFormCard = new PopupWithForm({
   popupSelector: ('.popup_add-card'),
   submitCallback: ({ nameCard, linkCard }) => {
     apiData.createCards({ name: nameCard, link: linkCard }).then((data) => {
-      // console.log(data)
+      console.log(data)
       createCard(data) //переделать?
     })
     popupNewFormCard.close()
@@ -101,7 +100,8 @@ const popupNewFormAvatar = new PopupWithForm({
   popupSelector: ('.popup_avatar'),
   submitCallback: ({ linkAvatar }) => {
     profilePhotoUser.src = linkAvatar;
-    apiData.changeAvatar({ avatar: linkAvatar })
+    console.log(linkAvatar)
+    apiData.changeAvatar({ linkAvatar })
     popupNewFormAvatar.close();
   }
 });
@@ -184,3 +184,11 @@ popupNewFormProfile.setEventListeners();
 validFormPopupAvatar.enableValidation();
 validFormPopupAdd.enableValidation();
 validFormPopupEdit.enableValidation();
+
+apiData.getUserData()
+  .then((res)=>{
+    console.log(res)
+  profileName.textContent = res.name,
+  profileAboutUser.textContent = res.about
+}
+)
