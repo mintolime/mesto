@@ -1,6 +1,7 @@
 import '../pages/index.css'
 import Api from '../components/Api'
 import Popup from '../components/Popup'
+import PopupDltCard from '../components/PopupDltCard'
 import UserInfo from '../components/UserInfo.js'
 import Section from '../components/Section.js'
 import PopupWithImage from '../components/PopupWithImage.js'
@@ -28,11 +29,16 @@ import {
 function createCard(item) {
   const cardNew = new Card(item, ('#card-template'), handleCardClick,
     {
-      handleDelete: (cardId) => {
-        // popupConfirmDlt.open()
+      handleCardDelete: (cardId) => {
+        popupConfirmDlt.open()
+        popupConfirmDlt.handleDelete(() => {
+          apiData.deleteCard(cardId)
+            .then(() => { cardNew.delete() })
+        })
+        // popupConfirmDlt._checkDelete()
         // console.log(cardId)
-        apiCardData.deleteCard(cardId)
-        .then(() => { cardNew.delete()})
+        // apiData.deleteCard(cardId)
+        // .then(() => { cardNew.delete()})
         // // .then((res) => { console.log(res) })
       }
     });
@@ -46,7 +52,7 @@ function handleCardClick(name, img) {
 
 
 //получение апи с сервера
-const apiCardData = new Api({
+const apiData = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-58',
   headers: {
     'Content-Type': 'application/json; charset=UTF-8',
@@ -55,7 +61,7 @@ const apiCardData = new Api({
 })
 
 
-apiCardData.getAllCards().then((res) => {
+apiData.getAllCards().then((res) => {
   const sectionCard = new Section({
     items: res,
     renderer: (item) => {
@@ -63,7 +69,7 @@ apiCardData.getAllCards().then((res) => {
     }
   }, { containerSelector: ('.cards__list') });
   sectionCard.renderItems()
-  console.log(res)
+  // console.log(res)
 });
 
 //вроде как работает, но ..только после перезагрузки
@@ -72,7 +78,7 @@ apiCardData.getAllCards().then((res) => {
 //   submitCallback: ({ nameCard, linkCard }) => {
 //     // const cardItem = { name: nameCard, link: linkCard };
 //     // sectionCard.addItem(createCard(cardItem))
-//     // apiCardData.createCards(cardItem)
+//     // apiData.createCards(cardItem)
 //     popupNewFormCard.close()
 //   }
 // });
@@ -81,7 +87,7 @@ apiCardData.getAllCards().then((res) => {
 const popupNewFormCard = new PopupWithForm({
   popupSelector: ('.popup_add-card'),
   submitCallback: ({ nameCard, linkCard }) => {
-    apiCardData.createCards({ name: nameCard, link: linkCard }).then((data) => {
+    apiData.createCards({ name: nameCard, link: linkCard }).then((data) => {
       // console.log(data)
       createCard(data) //переделать?
     })
@@ -94,7 +100,7 @@ const popupNewFormAvatar = new PopupWithForm({
   popupSelector: ('.popup_avatar'),
   submitCallback: ({ linkAvatar }) => {
     profilePhotoUser.src = linkAvatar;
-    apiCardData.changeAvatar({ avatar: linkAvatar })
+    apiData.changeAvatar({ avatar: linkAvatar })
     popupNewFormAvatar.close();
   }
 });
@@ -104,7 +110,7 @@ const popupNewFormAvatar = new PopupWithForm({
 const userInfo = new UserInfo(profileName, profileAboutUser);
 //получение класса PopupWithImage с попапом картинки
 const popupNewCardImage = new PopupWithImage({ popupSelector: ('.popup_image') })
-const popupConfirmDlt = new Popup({ popupSelector: ('.popup_confirm') })
+const popupConfirmDlt = new PopupDltCard({ popupSelector: ('.popup_confirm') })
 const popupAvatar = new Popup({ popupSelector: ('.popup_avatar') })
 
 //создание экземляра карточек
@@ -124,7 +130,7 @@ const popupNewFormProfile = new PopupWithForm({
   popupSelector: ('.popup_edit-profile'),
   submitCallback: (formValues) => {
     userInfo.setUserInfo(formValues);
-    // apiCardData.getUserData({name:nameUser, about:aboutUser})
+    // apiData.getUserData({name:nameUser, about:aboutUser})
     popupNewFormProfile.close();
   }
 });
