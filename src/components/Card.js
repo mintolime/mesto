@@ -1,3 +1,5 @@
+import { data } from "autoprefixer";
+
 export default class Card {
   constructor(data, templateSelector, handleCardClick,{handleCardDelete}) {
     this._name = data.name;
@@ -6,6 +8,7 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handleCardDelete = handleCardDelete;
     this._id = data._id;
+    this._owner = data.owner._id;
   }
 
   _getTemplate() {
@@ -18,15 +21,30 @@ export default class Card {
     return cardElement;
   }
 
+  fix(){
+    console.log( this._id)
+    console.log(this._owner)
+  }
+
+  _checkBtnCart(){
+    //заменить цифры
+    if(this._owner !== 'fd3fb99a0ba9889077d4cd36'){
+    //  this.fix()
+     this._deleteBtn.classList.add('button_type_delete_inactive')
+    }
+  }
+
   generateCard() {
     this._newCard = this._getTemplate();
     this._setData();
+    this._checkBtnCart()
     this._setEventListeners();
 
     return this._newCard;
   }
 
   _setData() {
+    this._deleteBtn = this._newCard.querySelector('.button_type_delete')
     //данные для карточек
     this._cardImg = this._newCard.querySelector('.cards__image');
     this._newCard.querySelector('.cards__title').textContent = this._name;

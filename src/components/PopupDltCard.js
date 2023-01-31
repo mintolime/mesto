@@ -5,11 +5,7 @@ export default class PopupDltCard extends Popup {
     super(popupSelector);
     this._submitBtnDlt = this._popupSelector.querySelector('.button_type_save_confirm');
   }
-
-  _checkDelete() {
-    console.log(this._submitBtnDlt)
-  }
-
+  
   handleDelete(callback) {
     this._handleDelete = callback;
   }

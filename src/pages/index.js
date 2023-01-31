@@ -8,7 +8,7 @@ import PopupWithImage from '../components/PopupWithImage.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js'
-import { initialCards } from '../utils/data-card.js'
+// import { initialCards } from '../utils/data-card.js'
 import { validationConfig } from '../utils/data-validation.js'
 import {
   formProfile,
@@ -32,16 +32,18 @@ function createCard(item) {
       handleCardDelete: (cardId) => {
         popupConfirmDlt.open()
         popupConfirmDlt.handleDelete(() => {
+          console.log(cardId)
           apiData.deleteCard(cardId)
             .then(() => { cardNew.delete() })
         })
         // popupConfirmDlt._checkDelete()
-        // console.log(cardId)
+
         // apiData.deleteCard(cardId)
         // .then(() => { cardNew.delete()})
         // // .then((res) => { console.log(res) })
       }
     });
+    cardNew.fix()
   return cardNew.generateCard();
 }
 
@@ -60,7 +62,6 @@ const apiData = new Api({
   }
 })
 
-
 apiData.getAllCards().then((res) => {
   const sectionCard = new Section({
     items: res,
@@ -69,7 +70,7 @@ apiData.getAllCards().then((res) => {
     }
   }, { containerSelector: ('.cards__list') });
   sectionCard.renderItems()
-  // console.log(res)
+  console.log(res)
 });
 
 //вроде как работает, но ..только после перезагрузки

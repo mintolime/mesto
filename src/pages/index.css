@@ -78,3 +78,9 @@
   text-align: center;
   color: #000;
 }
+
+.button_type_delete_inactive{
+  visibility: hidden;
+  opacity: 0;
+}
+
