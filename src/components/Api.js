@@ -18,7 +18,6 @@ export default class Api {
       headers: this.headers,
     })
       .then((res) => this._handleResponce(res))
-
   }
 
   getUserData() {
@@ -28,11 +27,21 @@ export default class Api {
       .then((res) => this._handleResponce(res))
   }
 
-  changeAvatar(avatar) {
+  updateUserInfo({ name, about }) {
+    return fetch(`${this.url}/users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        about: about
+      })
+    });
+  };
+
+  changeAvatar({ avatar }) {
     fetch(`${this.url}/users/me/avatar`, {
       method: 'PATCH',
-      body: JSON.stringify(
-        { avatar }),
+      body: JSON.stringify({ avatar }),
       headers: this.headers,
     })
   }

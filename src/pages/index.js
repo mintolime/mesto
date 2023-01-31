@@ -32,15 +32,10 @@ function createCard(item) {
       handleCardDelete: (cardId) => {
         popupConfirmDlt.open()
         popupConfirmDlt.handleDelete(() => {
-          console.log(cardId)
+          // console.log(cardId)
           apiData.deleteCard(cardId)
             .then(() => { cardNew.delete() })
         })
-        // popupConfirmDlt._checkDelete()
-
-        // apiData.deleteCard(cardId)
-        // .then(() => { cardNew.delete()})
-        // // .then((res) => { console.log(res) })
       }
     });
   return cardNew.generateCard();
@@ -72,24 +67,14 @@ apiData.getAllCards().then((res) => {
   // console.log(res)
 });
 
-//вроде как работает, но ..только после перезагрузки
-// const popupNewFormCard = new PopupWithForm({
-//   popupSelector: ('.popup_add-card'),
-//   submitCallback: ({ nameCard, linkCard }) => {
-//     // const cardItem = { name: nameCard, link: linkCard };
-//     // sectionCard.addItem(createCard(cardItem))
-//     // apiData.createCards(cardItem)
-//     popupNewFormCard.close()
-//   }
-// });
-
-
 const popupNewFormCard = new PopupWithForm({
   popupSelector: ('.popup_add-card'),
   submitCallback: ({ nameCard, linkCard }) => {
     apiData.createCards({ name: nameCard, link: linkCard }).then((data) => {
-      console.log(data)
-      createCard(data) //переделать?
+      console.log({ data })
+      createCard(data)
+      // popupNewFormCard.addItem(createCard(data))
+      //переделать?
     })
     popupNewFormCard.close()
   }
@@ -99,13 +84,12 @@ const popupNewFormCard = new PopupWithForm({
 const popupNewFormAvatar = new PopupWithForm({
   popupSelector: ('.popup_avatar'),
   submitCallback: ({ linkAvatar }) => {
+    // console.log(linkAvatar)
+    apiData.changeAvatar({ avatar: linkAvatar })
     profilePhotoUser.src = linkAvatar;
-    console.log(linkAvatar)
-    apiData.changeAvatar({ linkAvatar })
-    popupNewFormAvatar.close();
+    popupNewFormAvatar.close()
   }
 });
-
 
 //получение класса UserInfo
 const userInfo = new UserInfo(profileName, profileAboutUser);
@@ -114,36 +98,22 @@ const popupNewCardImage = new PopupWithImage({ popupSelector: ('.popup_image') }
 const popupConfirmDlt = new PopupDltCard({ popupSelector: ('.popup_confirm') })
 const popupAvatar = new Popup({ popupSelector: ('.popup_avatar') })
 
-//создание экземляра карточек
-// const popupNewFormCard = new PopupWithForm({
-//   popupSelector: ('.popup_add-card'),
-//   submitCallback: ({ nameCard, linkCard }) => {
-//     const cardItem = { name: nameCard, link: linkCard };
-//     sectionCard.addItem(createCard(cardItem))
-//     popupNewFormCard.close()
-//   }
-// });
-
-
 
 //создание экземляра  формы
 const popupNewFormProfile = new PopupWithForm({
   popupSelector: ('.popup_edit-profile'),
   submitCallback: (formValues) => {
-    userInfo.setUserInfo(formValues);
-    // apiData.getUserData({name:nameUser, about:aboutUser})
+    userInfo.setUserInfo(formValues)
+    // console.log(formValues.nameUser)
+    // apiData.updateUserInfo({name: formValues.nameUser, about: formValues.aboutUser})
+    //  apiData.updateUserInfo({name,about}).then((data)=>{
+    //   console.log(data)
+    //  })
+
     popupNewFormProfile.close();
   }
 });
 
-
-// класс вставки разметки класса Card
-// const sectionCard = new Section({
-//   items: initialCards,
-//   renderer: (item) => {
-//     sectionCard.addItem(createCard(item))
-//   }
-// }, { containerSelector: ('.cards__list') });
 
 //создания экзепмляра всех  форм и их валидация
 const validFormPopupEdit = new FormValidator(formProfile, validationConfig);
@@ -186,9 +156,9 @@ validFormPopupAdd.enableValidation();
 validFormPopupEdit.enableValidation();
 
 apiData.getUserData()
-  .then((res)=>{
-    console.log(res)
-  profileName.textContent = res.name,
-  profileAboutUser.textContent = res.about
-}
-)
+  .then((res) => {
+    // console.log(res)
+    profileName.textContent = res.name
+    profileAboutUser.textContent = res.about
+    profilePhotoUser.src = res.avatar
+  })
