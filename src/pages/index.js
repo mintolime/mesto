@@ -24,6 +24,19 @@ import {
   popupAvatarBtn,
 } from '../utils/constants.js'
 
+//функция загрузки 
+function renderLoading(isLoading) {
+  const popupSbmtButton = document.querySelector('.button_type_save')
+  const confirmText = 'Сохранение...'
+  if (isLoading) {
+    popupSbmtButton.textContent = confirmText;
+  }
+  else {
+    popupSbmtButton.textContent = 'Сохранить'
+    
+  }
+}
+
 //функции создания карточки с использованием класса Сard
 function createCard(item) {
   const cardNew = new Card(item, ('#card-template'), handleCardClick,
@@ -70,10 +83,9 @@ const popupNewFormCard = new PopupWithForm({
   popupSelector: ('.popup_add-card'),
   submitCallback: ({ nameCard, linkCard }) => {
     apiData.createCards({ name: nameCard, link: linkCard }).then((data) => {
+      renderLoading(true)
       console.log({ data })
       createCard(data)
-      // popupNewFormCard.addItem(createCard(data))
-      //переделать?
     })
     popupNewFormCard.close()
   }
@@ -84,6 +96,7 @@ const popupNewFormAvatar = new PopupWithForm({
   popupSelector: ('.popup_avatar'),
   submitCallback: ({ linkAvatar }) => {
     // console.log(popupAvatar)
+    renderLoading(true)
     apiData.changeAvatar({ avatar: linkAvatar })
     profilePhotoUser.src = linkAvatar;
     popupNewFormAvatar.close()
@@ -102,8 +115,9 @@ const popupAvatar = new Popup({ popupSelector: ('.popup_avatar') })
 const popupNewFormProfile = new PopupWithForm({
   popupSelector: ('.popup_edit-profile'),
   submitCallback: (formValues) => {
+    renderLoading(true)
     userInfo.setUserInfo(formValues);
-    apiData.updateUserInfo(formInputName.value,formAboutUser.value)
+    apiData.updateUserInfo(formInputName.value, formAboutUser.value)
     popupNewFormProfile.close();
   }
 });
@@ -119,21 +133,24 @@ popupProfileAddButton.addEventListener('click', () => {
   popupNewFormCard.open();
   validFormPopupAdd.disableSubmitButton();
   validFormPopupAdd.resetErrorsForm();
+  renderLoading(false)
 });
 
 popupProfileEditButton.addEventListener('click', () => {
+  popupNewFormProfile.open();
   const profileInfo = userInfo.getUserInfo();
   formInputName.value = profileInfo.nameUser;
   formAboutUser.value = profileInfo.aboutUser;
-  popupNewFormProfile.open();
   validFormPopupEdit.disableSubmitButton();
   validFormPopupEdit.resetErrorsForm();
+  renderLoading(false)
 });
 
 popupAvatarBtn.addEventListener('click', () => {
   popupAvatar.open();
   validFormPopupAvatar.disableSubmitButton();
   validFormPopupAvatar.resetErrorsForm();
+  renderLoading(false);
 });
 
 //вызовы всех функций

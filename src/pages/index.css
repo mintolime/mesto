@@ -48,7 +48,6 @@
 
 /* @import url('../blocks'); шаблон*/
 
-
 .button_type_avatar_edit {
   background-image: url('../images/icon/icon-edit-avatar.svg');
   width: 120px;
@@ -79,8 +78,7 @@
   color: #000;
 }
 
-.button_type_delete_inactive{
+.button_type_delete_inactive {
   visibility: hidden;
   opacity: 0;
 }
-
