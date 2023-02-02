@@ -22,10 +22,7 @@ export default class Card {
     return cardElement;
   }
 
-  fix() {
-    console.log(this._id)
-    console.log(this._owner)
-  }
+ 
 
   _checkBtnCart() {
     //заменить цифры 

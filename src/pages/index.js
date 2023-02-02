@@ -70,9 +70,10 @@ const popupNewFormCard = new PopupWithForm({
   popupSelector: ('.popup_add-card'),
   submitCallback: ({ nameCard, linkCard }) => {
     apiData.createCards({ name: nameCard, link: linkCard }).then((data) => {
-      console.log({ data })
+      popupNewFormAvatar.renderLoading(true)
       createCard(data)
     })
+
     popupNewFormCard.close()
   }
 });
@@ -81,6 +82,7 @@ const popupNewFormCard = new PopupWithForm({
 const popupNewFormAvatar = new PopupWithForm({
   popupSelector: ('.popup_avatar'),
   submitCallback: ({ linkAvatar }) => {
+    popupNewFormAvatar.renderLoading(true)
     apiData.changeAvatar({ avatar: linkAvatar })
     profilePhotoUser.src = linkAvatar;
     popupNewFormAvatar.close()
@@ -92,7 +94,7 @@ const userInfo = new UserInfo(profileName, profileAboutUser);
 //получение класса PopupWithImage с попапом картинки
 const popupNewCardImage = new PopupWithImage({ popupSelector: ('.popup_image') })
 const popupConfirmDlt = new PopupWithConfirmation({ popupSelector: ('.popup_confirm') })
-const popupAvatar = new Popup({ popupSelector: ('.popup_avatar') })
+// const popupAvatar = new Popup({ popupSelector: ('.popup_avatar') })
 
 
 //создание экземляра  формы
@@ -114,12 +116,14 @@ const validFormPopupAvatar = new FormValidator(formAvatar, validationConfig);
 
 //обработчики событий
 popupProfileAddButton.addEventListener('click', () => {
+  popupNewFormCard.renderLoading(false)
   popupNewFormCard.open();
   validFormPopupAdd.disableSubmitButton();
   validFormPopupAdd.resetErrorsForm();
 });
 
 popupProfileEditButton.addEventListener('click', () => {
+  popupNewFormProfile.renderLoading(false)
   popupNewFormProfile.open();
   const profileInfo = userInfo.getUserInfo();
   formInputName.value = profileInfo.nameUser;
@@ -129,7 +133,8 @@ popupProfileEditButton.addEventListener('click', () => {
 });
 
 popupAvatarBtn.addEventListener('click', () => {
-  popupAvatar.open();
+  popupNewFormAvatar.renderLoading(false)
+  popupNewFormAvatar.open();
   validFormPopupAvatar.disableSubmitButton();
   validFormPopupAvatar.resetErrorsForm();
 });
@@ -138,7 +143,6 @@ popupAvatarBtn.addEventListener('click', () => {
 // sectionCard.renderItems();
 popupNewFormCard.setEventListeners();
 popupNewFormAvatar.setEventListeners()
-popupAvatar.setEventListeners();
 popupConfirmDlt.setEventListeners();
 popupNewCardImage.setEventListeners();
 popupNewFormProfile.setEventListeners();
