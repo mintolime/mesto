@@ -1,7 +1,7 @@
 import '../pages/index.css'
 import Api from '../components/Api'
 import Popup from '../components/Popup'
-import PopupDltCard from '../components/PopupDltCard'
+import PopupWithConfirmation from '../components/PopupWithConfirmation'
 import UserInfo from '../components/UserInfo.js'
 import Section from '../components/Section.js'
 import PopupWithImage from '../components/PopupWithImage.js'
@@ -21,7 +21,6 @@ import {
   formCard,
   popupProfileEditButton,
   popupProfileAddButton,
-  popupCardDeleteBtn,
   popupAvatarBtn,
 } from '../utils/constants.js'
 
@@ -64,7 +63,7 @@ apiData.getAllCards().then((res) => {
     }
   }, { containerSelector: ('.cards__list') });
   sectionCard.renderItems()
-  // console.log(res)
+  console.log(res)
 });
 
 const popupNewFormCard = new PopupWithForm({
@@ -80,11 +79,11 @@ const popupNewFormCard = new PopupWithForm({
   }
 });
 
-//аватар меняется, но не сохраняет
+//аватар меняется и работает без перезагрузки = сохраняет
 const popupNewFormAvatar = new PopupWithForm({
   popupSelector: ('.popup_avatar'),
   submitCallback: ({ linkAvatar }) => {
-    // console.log(linkAvatar)
+    // console.log(popupAvatar)
     apiData.changeAvatar({ avatar: linkAvatar })
     profilePhotoUser.src = linkAvatar;
     popupNewFormAvatar.close()
@@ -95,7 +94,7 @@ const popupNewFormAvatar = new PopupWithForm({
 const userInfo = new UserInfo(profileName, profileAboutUser);
 //получение класса PopupWithImage с попапом картинки
 const popupNewCardImage = new PopupWithImage({ popupSelector: ('.popup_image') })
-const popupConfirmDlt = new PopupDltCard({ popupSelector: ('.popup_confirm') })
+const popupConfirmDlt = new PopupWithConfirmation({ popupSelector: ('.popup_confirm') })
 const popupAvatar = new Popup({ popupSelector: ('.popup_avatar') })
 
 
@@ -103,17 +102,11 @@ const popupAvatar = new Popup({ popupSelector: ('.popup_avatar') })
 const popupNewFormProfile = new PopupWithForm({
   popupSelector: ('.popup_edit-profile'),
   submitCallback: (formValues) => {
-    userInfo.setUserInfo(formValues)
-    // console.log(formValues.nameUser)
-    // apiData.updateUserInfo({name: formValues.nameUser, about: formValues.aboutUser})
-    //  apiData.updateUserInfo({name,about}).then((data)=>{
-    //   console.log(data)
-    //  })
-
+    userInfo.setUserInfo(formValues);
+    apiData.updateUserInfo(formInputName.value,formAboutUser.value)
     popupNewFormProfile.close();
   }
 });
-
 
 //создания экзепмляра всех  форм и их валидация
 const validFormPopupEdit = new FormValidator(formProfile, validationConfig);

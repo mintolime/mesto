@@ -27,10 +27,10 @@ export default class Api {
       .then((res) => this._handleResponce(res))
   }
 
-  updateUserInfo({ name, about }) {
+  updateUserInfo(name, about) {
     return fetch(`${this.url}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: this.headers,
       body: JSON.stringify({
         name: name,
         about: about

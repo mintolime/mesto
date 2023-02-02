@@ -11,7 +11,6 @@ const formCard = document.querySelector('[name="formCard"]');
 //BUTTON
 const popupProfileEditButton = document.querySelector('.button_type_edit');
 const popupProfileAddButton = document.querySelector('.button_type_add');
-const popupCardDeleteBtn = document.querySelector('.button_type_delete');
 const popupAvatarBtn = document.querySelector('.button_type_avatar_edit');
 
 export {
@@ -25,6 +24,5 @@ export {
   formCard,
   popupProfileEditButton,
   popupProfileAddButton,
-  popupCardDeleteBtn,
   popupAvatarBtn
 };
