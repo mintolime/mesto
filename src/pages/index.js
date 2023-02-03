@@ -38,22 +38,8 @@ function createCard(item) {
       }
     },
     {
-      handleCardLike: (cardId) => {
-        cardNew.like()
-       console.log(cardId) //возвращает ID
-       console.log(cardNew.isLiked())//возвращает true
-      //  .then((data)=>{
-      //     console.log(data)
-      //  })
-      //лайки отображаются,но только после перезагрузки, нет активного лайка 
-      apiData.changeLikeCard({cardId, isLiked:true})
-      apiData.changeLikeCard({cardId, isLiked:false})
-      //    .then((data)=>{
-      //     console.log(data)
-      //  })
-
-      }
-    }
+      handleCardLike: () => { cardNew.like() }
+    }, apiData
   );
   return cardNew.generateCard();
 }

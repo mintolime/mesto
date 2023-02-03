@@ -90,4 +90,5 @@ export default class Api {
     }
     return Promise.reject(res.status);
   }
+  
 }
