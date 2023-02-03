@@ -46,8 +46,8 @@ export default class Api {
     })
   }
 
-  deleteCard(cardID) {
-    return fetch(`${this.url}/cards/${cardID}`, {
+  deleteCard(cardId) {
+    return fetch(`${this.url}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this.headers,
     })
@@ -55,23 +55,34 @@ export default class Api {
       .then((res) => this._handleResponce(res))
   }
 
-  addLike() {
-    return fetch(`${this.url}/cards/${cardID}/likes`, {
+  changeLikeCard({ cardId, isLiked }) {
+    if (isLiked == true) {
+     return this.addLike(cardId)
+    }
+    else{
+      return this.deleteLike(cardId)
+    }
+
+  }
+
+  addLike(cardId) {
+    return fetch(`${this.url}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: this.headers,
-      body: JSON.stringify({})
     })
+      .catch((err) => { err })
+      .then((res) => this._handleResponce(res))
   }
 
-  deleteLike(cardID) {
-    return fetch(`${this.url}/cards/${cardID}/likes`, {
+  deleteLike(cardId) {
+    return fetch(`${this.url}/cards/${cardId}/likes`, {
       method: 'DELETE',
       headers: this.headers,
     })
       .catch((err) => { err })
       .then((res) => this._handleResponce(res))
   }
-  
+
   _handleResponce(res) {
     if (res.ok) {
       // console.log(res)

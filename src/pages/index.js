@@ -36,7 +36,25 @@ function createCard(item) {
             .then(() => { cardNew.delete() })
         })
       }
-    });
+    },
+    {
+      handleCardLike: (cardId) => {
+        cardNew.like()
+       console.log(cardId) //возвращает ID
+       console.log(cardNew.isLiked())//возвращает true
+      //  .then((data)=>{
+      //     console.log(data)
+      //  })
+      //лайки отображаются,но только после перезагрузки, нет активного лайка 
+      apiData.changeLikeCard({cardId, isLiked:true})
+      apiData.changeLikeCard({cardId, isLiked:false})
+      //    .then((data)=>{
+      //     console.log(data)
+      //  })
+
+      }
+    }
+  );
   return cardNew.generateCard();
 }
 
@@ -63,17 +81,17 @@ apiData.getAllCards().then((res) => {
     }
   }, { containerSelector: ('.cards__list') });
   sectionCard.renderItems()
-  console.log(res)
+  // console.log(res)
 });
 
 const popupNewFormCard = new PopupWithForm({
   popupSelector: ('.popup_add-card'),
   submitCallback: ({ nameCard, linkCard }) => {
-    apiData.createCards({ name: nameCard, link: linkCard }).then((data) => {
-      popupNewFormAvatar.renderLoading(true)
-      createCard(data)
-    })
-
+    apiData.createCards({ name: nameCard, link: linkCard })
+      .then((data) => {
+        popupNewFormAvatar.renderLoading(true)
+        createCard(data)
+      })
     popupNewFormCard.close()
   }
 });
