@@ -4,13 +4,13 @@ export default class Card {
     this._data = data;
     this._name = data.name;
     this._image = data.link;
+    this._id = data._id;
+    this._owner = data.owner._id;
+    this._likeLenght = this._data.likes.length
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._handleCardDelete = handleCardDelete;
-    this._handleCardLike = handleCardLike;
-    this._id = data._id;
-    this._owner = data.owner._id;
-    this._like = data.likes
+    // this._handleCardLike = handleCardLike;
   }
 
   _getTemplate() {
@@ -23,14 +23,14 @@ export default class Card {
     return cardElement;
   }
 
- _viewLike(){
-  const cardArray = document.querySelector('.cards__likes_score');
-  cardArray.textContent = this._data.likes
-  console.log(this._data.likes)
- }
+  //функция отображения количества лайков
+  _viewLikes() {
+    this._cardArray.textContent = this._likeLenght;
+    console.log(this._cardArray.textContent)
+  }
 
   _checkBtnCart() {
-    //заменить цифры 
+    //заменить цифры
     if (this._owner !== 'fd3fb99a0ba9889077d4cd36') {
       //  this.fix()
       this._deleteBtn.classList.add('button_type_delete_inactive')
@@ -41,15 +41,17 @@ export default class Card {
     this._newCard = this._getTemplate();
     this._setData();
     this._checkBtnCart()
-    this._viewLike();
+    this._viewLikes();
     this._setEventListeners();
 
     return this._newCard;
   }
 
   _setData() {
+    //поиск по селекторам других элементов DOM для дальнейшего взаимодействия
+    this._cardArray = this._newCard.querySelector('.cards__likes_score');
     this._deleteBtn = this._newCard.querySelector('.button_type_delete')
-    this.likeBtn = this._newCard.querySelector('.button_type_like') 
+    this.likeBtn = this._newCard.querySelector('.button_type_like')
     //данные для карточек
     this._cardImg = this._newCard.querySelector('.cards__image');
     this._newCard.querySelector('.cards__title').textContent = this._name;
