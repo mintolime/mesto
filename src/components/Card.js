@@ -1,15 +1,16 @@
-import { data } from "autoprefixer";
 
 export default class Card {
   constructor(data, templateSelector, handleCardClick, { handleCardDelete }) {
+    this._data = data;
     this._name = data.name;
     this._image = data.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._handleCardDelete = handleCardDelete;
-    // this._handleCardLike = handleCardLike;
+    this._handleCardLike = handleCardLike;
     this._id = data._id;
     this._owner = data.owner._id;
+    this._like = data.likes
   }
 
   _getTemplate() {
@@ -22,7 +23,11 @@ export default class Card {
     return cardElement;
   }
 
- 
+ _viewLike(){
+  const cardArray = document.querySelector('.cards__likes_score');
+  cardArray.textContent = this._data.likes
+  console.log(this._data.likes)
+ }
 
   _checkBtnCart() {
     //заменить цифры 
@@ -36,6 +41,7 @@ export default class Card {
     this._newCard = this._getTemplate();
     this._setData();
     this._checkBtnCart()
+    this._viewLike();
     this._setEventListeners();
 
     return this._newCard;
