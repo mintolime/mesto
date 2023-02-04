@@ -68,7 +68,6 @@ export default class Api {
       method: 'PUT',
       headers: this.headers,
     })
-      .catch((err) => { err })
       .then((res) => this._handleResponce(res))
   }
 

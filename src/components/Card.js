@@ -8,6 +8,7 @@ export default class Card {
     this._owner = data.owner._id;
     this._likeArray = data.likes;
     this._userId = userId;
+
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._handleCardLike = handleCardLike;
@@ -47,7 +48,6 @@ export default class Card {
 
   //проверка кнопки корзины на принадлежность
   _checkBtnCart() {
-    //заменены цифры
     if (this._owner !== this._userId) {
       this._deleteBtn.classList.add('button_type_delete_inactive')
     }
@@ -99,11 +99,9 @@ export default class Card {
     this._newCard.remove();
     this._newCard = null;
   }
-  like() {
-    this._likeBtn.classList.add('button_type_like_active');
-  }
-  dislike() {
-    this._likeBtn.classList.remove('button_type_like_active');
-  }
+
+  like() { this._likeBtn.classList.add('button_type_like_active') }
+
+  dislike() { this._likeBtn.classList.remove('button_type_like_active') }
 }
 

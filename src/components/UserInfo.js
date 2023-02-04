@@ -16,7 +16,6 @@ export default class UserInfo {
   setUserInfo(data) {
     this._nameSelector.textContent = data.name;
     this._aboutSelector.textContent = data.about;
-    // this._avatarSelector.src = data.avatar;
   }
 
   setAvatarLink(data) {

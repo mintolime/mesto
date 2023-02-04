@@ -1,6 +1,5 @@
 import '../pages/index.css'
 import Api from '../components/Api'
-import Popup from '../components/Popup'
 import PopupWithConfirmation from '../components/PopupWithConfirmation'
 import UserInfo from '../components/UserInfo.js'
 import Section from '../components/Section.js'
@@ -13,16 +12,12 @@ import {
   formProfile,
   formInputName,
   formAboutUser,
-  profileName,
-  profileAboutUser,
-  profilePhotoUser,
   formAvatar,
   formCard,
   popupProfileEditButton,
   popupProfileAddButton,
   popupAvatarBtn,
 } from '../utils/constants.js'
-
 
 //функции создания карточки с использованием класса Сard
 const createCard = (item) => {
@@ -31,6 +26,7 @@ const createCard = (item) => {
     userId: userId,
     templateSelector: '#card-template',
     handleCardClick: (name, img) => { popupNewCardImage.open(name, img) },
+    
     handleCardDelete: (cardId) => {
       popupConfirmDlt.open()
       popupConfirmDlt.handleDelete(() => {
@@ -39,7 +35,6 @@ const createCard = (item) => {
       })
     },
 
-    //лайк ставиться, то активного статуса нет - переделано
     handleCardLike: (cardId) => {
       apiData.addLike(cardId)
         .then((data) => { cardNew.viewLikes(data) })
@@ -51,10 +46,9 @@ const createCard = (item) => {
         .then((data) => { cardNew.viewLikes(data) })
         .catch((err) => { console.log(err) })
     },
-  });
-
+  })
   return cardNew.generateCard();
-}
+};
 
 //получение апи с сервера
 const apiData = new Api({
@@ -63,7 +57,7 @@ const apiData = new Api({
     'Content-Type': 'application/json; charset=UTF-8',
     authorization: '54338beb-6a3f-46f8-bd6b-cdb1bf1c9692'
   }
-})
+});
 
 const sectionCard = new Section({
   renderer: (item) => { sectionCard.addItemAppend(createCard(item)) }
@@ -73,7 +67,6 @@ const sectionCard = new Section({
 const popupNewFormCard = new PopupWithForm({
   popupSelector: ('.popup_add-card'),
   submitCallback: (cardData) => {
-    console.log(cardData)
     popupNewFormCard.renderLoading(true)
     apiData.createCards(cardData)
       .then((cardData) => {
@@ -81,7 +74,7 @@ const popupNewFormCard = new PopupWithForm({
         popupNewFormCard.close()
       })
       .catch((err) => console.log(err))
-    // .finally(() => popupNewFormCard.renderLoading(false))
+      .finally(() => popupNewFormCard.renderLoading(false))
   }
 });
 
@@ -105,10 +98,10 @@ const userInfo = new UserInfo({
   aboutSelector: ('.profile__info'),
   avatarSelector: ('.profile__photo'),
 });
+
 //получение класса PopupWithImage с попапом картинки
 const popupNewCardImage = new PopupWithImage({ popupSelector: ('.popup_image') })
 const popupConfirmDlt = new PopupWithConfirmation({ popupSelector: ('.popup_confirm') })
-
 
 const popupNewFormProfile = new PopupWithForm({
   popupSelector: ('.popup_edit-profile'),
@@ -120,18 +113,18 @@ const popupNewFormProfile = new PopupWithForm({
         popupNewFormProfile.close();
       })
       .catch((err) => {
-        console.log(`Ошибка: ${err}`);
+        console.log(err);
       })
       .finally(() => {
         popupNewFormProfile.renderLoading(false);
       })
   }
 });
+
 //создания экзепмляра всех  форм и их валидация
 const validFormPopupEdit = new FormValidator(formProfile, validationConfig);
 const validFormPopupAdd = new FormValidator(formCard, validationConfig);
 const validFormPopupAvatar = new FormValidator(formAvatar, validationConfig);
-
 
 //обработчики событий
 popupProfileAddButton.addEventListener('click', () => {
@@ -156,7 +149,6 @@ popupAvatarBtn.addEventListener('click', () => {
 });
 
 //вызовы всех функций
-// sectionCard.renderItems();
 popupNewFormCard.setEventListeners();
 popupNewFormAvatar.setEventListeners()
 popupConfirmDlt.setEventListeners();
@@ -166,6 +158,7 @@ validFormPopupAvatar.enableValidation();
 validFormPopupAdd.enableValidation();
 validFormPopupEdit.enableValidation();
 
+//получения промиссов для отображения данных на странице
 let userId;
 
 apiData.getAllData()
@@ -174,10 +167,7 @@ apiData.getAllData()
     userInfo.setAvatarLink(userData);
     userId = userData._id;
     sectionCard.renderItems(initialCards)
-    console.log(initialCards)
   })
-  .catch((err) => {
-    console.log(err);
-  });
+  .catch((err) => { console.log(err) });
 
 
