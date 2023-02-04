@@ -25,48 +25,35 @@ import {
 
 
 //функции создания карточки с использованием класса Сard
-function createCard(item) {
+const createCard = (item) => {
   const cardNew = new Card({
     data: item,
     userId: userId,
     templateSelector: '#card-template',
-    handleCardClick: (name, img) => {
-      popupNewCardImage.open(name, img);
-    },
+    handleCardClick: (name, img) => { popupNewCardImage.open(name, img) },
     handleCardDelete: (cardId) => {
       popupConfirmDlt.open()
       popupConfirmDlt.handleDelete(() => {
         apiData.deleteCard(cardId)
-          .then(() => { cardNew.delete() })
+          .then(() => { cardNew.deleteCard() })
       })
     },
+
     //лайк ставиться, то активного статуса нет - переделано
     handleCardLike: (cardId) => {
-      // console.log(cardId)
       apiData.addLike(cardId)
-        .then((data) => {
-          cardNew.viewLikes(data)
-          // console.log(data)
-          console.log('лайк')
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+        .then((data) => { cardNew.viewLikes(data) })
+        .catch((err) => { console.log(err) })
     },
+
     handleCardDislike: (cardId) => {
       apiData.deleteLike(cardId)
-        .then((data) => {
-          cardNew.viewLikes(data)
-          console.log('дизлайк')
-          // console.log(data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+        .then((data) => { cardNew.viewLikes(data) })
+        .catch((err) => { console.log(err) })
     },
   });
-  const cardElement = cardNew.generateCard();
-  return cardElement
+
+  return cardNew.generateCard();
 }
 
 //получение апи с сервера
@@ -79,46 +66,32 @@ const apiData = new Api({
 })
 
 const sectionCard = new Section({
-  renderer: (item) => {
-    sectionCard.addItem(createCard(item))
-  }
+  renderer: (item) => { sectionCard.addItemAppend(createCard(item)) }
 }, { containerSelector: ('.cards__list') });
 
 //работает
 const popupNewFormCard = new PopupWithForm({
   popupSelector: ('.popup_add-card'),
   submitCallback: (cardData) => {
+    console.log(cardData)
     popupNewFormCard.renderLoading(true)
     apiData.createCards(cardData)
       .then((cardData) => {
-        sectionCard.addItem(createCard(cardData))
+        sectionCard.addItemPrepend(createCard(cardData))
         popupNewFormCard.close()
       })
       .catch((err) => console.log(err))
-      .finally(() => popupNewFormCard.renderLoading(false))
+    // .finally(() => popupNewFormCard.renderLoading(false))
   }
 });
-
-//аватар меняется и работает без перезагрузки = сохраняет
-// const popupNewFormAvatar = new PopupWithForm({
-//   popupSelector: ('.popup_avatar'),
-//   submitCallback: ({ linkAvatar }) => {
-//     popupNewFormAvatar.renderLoading(true)
-//     apiData.changeAvatar({ avatar: linkAvatar })
-//     profilePhotoUser.src = linkAvatar;
-//     popupNewFormAvatar.close()
-//   }
-// });
 
 const popupNewFormAvatar = new PopupWithForm({
   popupSelector: ('.popup_avatar'),
   submitCallback: (data) => {
-    console.log(data)
     popupNewFormAvatar.renderLoading(true)
-    apiData.changeAvatar(data)//мб останавливается здесь
+    apiData.changeAvatar(data)
       .then((data) => {
         userInfo.setAvatarLink(data)
-        console.log(data)
         popupNewFormAvatar.close()
       })
       .catch((err) => console.log(err))
@@ -127,7 +100,11 @@ const popupNewFormAvatar = new PopupWithForm({
 });
 
 //получение класса UserInfo
-const userInfo = new UserInfo({ nameSelector: ('.profile__name'), aboutSelector: ('.profile__info'), avatarSelector: ('.profile__photo') });
+const userInfo = new UserInfo({
+  nameSelector: ('.profile__name'),
+  aboutSelector: ('.profile__info'),
+  avatarSelector: ('.profile__photo'),
+});
 //получение класса PopupWithImage с попапом картинки
 const popupNewCardImage = new PopupWithImage({ popupSelector: ('.popup_image') })
 const popupConfirmDlt = new PopupWithConfirmation({ popupSelector: ('.popup_confirm') })
@@ -197,10 +174,10 @@ apiData.getAllData()
     userInfo.setAvatarLink(userData);
     userId = userData._id;
     sectionCard.renderItems(initialCards)
-    console.log(userData)
+    console.log(initialCards)
   })
   .catch((err) => {
-    console.log(`Ошибка: ${err}`);
+    console.log(err);
   });
 
 

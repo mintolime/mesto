@@ -18,11 +18,11 @@ export default class Api {
   createCards(data) {
     return fetch(`${this.url}/cards`, {
       method: 'POST',
+      headers: this.headers,
       body: JSON.stringify({
         name: data.nameCard,
         link: data.linkCard
       }),
-      headers: this.headers,
     })
       .then((res) => this._handleResponce(res))
   }
@@ -46,18 +46,10 @@ export default class Api {
       .then((res) => this._handleResponce(res))
   };
 
-  // changeAvatar({ avatar }) {
-  //   fetch(`${this.url}/users/me/avatar`, {
-  //     method: 'PATCH',
-  //     body: JSON.stringify({ avatar }),
-  //     headers: this.headers,
-  //   })
-  //     .then((res) => this._handleResponce(res))
-  // }
-    changeAvatar(data) {
+  changeAvatar(data) {
     return fetch(`${this.url}/users/me/avatar`, {
       method: 'PATCH',
-      body: JSON.stringify({ avatar: data.linkAvatar}),
+      body: JSON.stringify({ avatar: data.linkAvatar }),
       headers: this.headers,
     })
       .then((res) => this._handleResponce(res))
@@ -68,7 +60,6 @@ export default class Api {
       method: 'DELETE',
       headers: this.headers,
     })
-      .catch((err) => { err })
       .then((res) => this._handleResponce(res))
   }
 
@@ -86,13 +77,11 @@ export default class Api {
       method: 'DELETE',
       headers: this.headers,
     })
-      .catch((err) => { err })
       .then((res) => this._handleResponce(res))
   }
 
   _handleResponce(res) {
     if (res.ok) {
-      // console.log(res)
       return res.json()
     }
     return Promise.reject(res.status);

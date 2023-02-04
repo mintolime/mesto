@@ -28,20 +28,20 @@ export default class Card {
   //функция отображения количества лайков
   viewLikes(arr) {
     this._likeLenght = arr.likes.length;
+    this._likeScore.textContent = this._likeLenght;
     //если лайков нет, то 0 отображаться не будет
     if (this._likeLenght < 1) {
       this._likeScore.textContent = ''
     }
-    this._likeScore.textContent = this._likeLenght;
   }
 
   //проверяем лайкнул ли карточку юзер
   _isLiked() {
     if (this._likeArray.some(i => i._id === this._userId)) {
-     this.like()
+      this.like()
     }
     else {
-     this.dislike()
+      this.dislike()
     }
   }
 
@@ -53,6 +53,7 @@ export default class Card {
     }
   }
 
+  //генерация карточки
   generateCard() {
     this._newCard = this._getTemplate();
     this._setData();
@@ -64,6 +65,7 @@ export default class Card {
     return this._newCard;
   }
 
+  //получение всех данных
   _setData() {
     //поиск по селекторам других элементов DOM для дальнейшего взаимодействия
     this._likeScore = this._newCard.querySelector('.cards__likes_score');
@@ -93,7 +95,7 @@ export default class Card {
     }
   }
 
-  delete() {
+  deleteCard() {
     this._newCard.remove();
     this._newCard = null;
   }
