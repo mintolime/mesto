@@ -40,9 +40,9 @@ function createCard(item) {
           .then(() => { cardNew.delete() })
       })
     },
-    //лайк ставиться, то активного статуса нет - переделать
+    //лайк ставиться, то активного статуса нет - переделано
     handleCardLike: (cardId) => {
-      console.log(cardId)
+      // console.log(cardId)
       apiData.addLike(cardId)
         .then((data) => {
           cardNew.viewLikes(data)
@@ -65,7 +65,8 @@ function createCard(item) {
         })
     },
   });
-  return cardNew.generateCard();
+  const cardElement = cardNew.generateCard();
+  return cardElement
 }
 
 //получение апи с сервера
@@ -83,32 +84,45 @@ const sectionCard = new Section({
   }
 }, { containerSelector: ('.cards__list') });
 
-
+//работает
 const popupNewFormCard = new PopupWithForm({
   popupSelector: ('.popup_add-card'),
-  submitCallback: ({ nameCard, linkCard }) => {
-    apiData.createCards({ name: nameCard, link: linkCard })
-      .then((data) => {
-        popupNewFormCard.renderLoading(true)
-        sectionCard.addItem(createCard(data))
-        console.log(data)
-        // createCard(data)
+  submitCallback: (cardData) => {
+    popupNewFormCard.renderLoading(true)
+    apiData.createCards(cardData)
+      .then((cardData) => {
+        sectionCard.addItem(createCard(cardData))
+        popupNewFormCard.close()
       })
       .catch((err) => console.log(err))
       .finally(() => popupNewFormCard.renderLoading(false))
-
-    popupNewFormCard.close()
   }
 });
 
 //аватар меняется и работает без перезагрузки = сохраняет
+// const popupNewFormAvatar = new PopupWithForm({
+//   popupSelector: ('.popup_avatar'),
+//   submitCallback: ({ linkAvatar }) => {
+//     popupNewFormAvatar.renderLoading(true)
+//     apiData.changeAvatar({ avatar: linkAvatar })
+//     profilePhotoUser.src = linkAvatar;
+//     popupNewFormAvatar.close()
+//   }
+// });
+
 const popupNewFormAvatar = new PopupWithForm({
   popupSelector: ('.popup_avatar'),
-  submitCallback: ({ linkAvatar }) => {
+  submitCallback: (data) => {
+    console.log(data)
     popupNewFormAvatar.renderLoading(true)
-    apiData.changeAvatar({ avatar: linkAvatar })
-    profilePhotoUser.src = linkAvatar;
-    popupNewFormAvatar.close()
+    apiData.changeAvatar(data)//мб останавливается здесь
+      .then((data) => {
+        userInfo.setAvatarLink(data)
+        console.log(data)
+        popupNewFormAvatar.close()
+      })
+      .catch((err) => console.log(err))
+      .finally(() => popupNewFormAvatar.renderLoading(false))
   }
 });
 
@@ -119,29 +133,21 @@ const popupNewCardImage = new PopupWithImage({ popupSelector: ('.popup_image') }
 const popupConfirmDlt = new PopupWithConfirmation({ popupSelector: ('.popup_confirm') })
 
 
-//создание экземляра  формы
-// const popupNewFormProfile = new PopupWithForm({
-//   popupSelector: ('.popup_edit-profile'),
-//   submitCallback: (formValues) => {
-//     popupNewFormProfile.renderLoading(true)
-//     userInfo.setUserInfo(formValues);
-//     apiData.updateUserInfo(formInputName.value, formAboutUser.value)
-//     popupNewFormProfile.close();
-//   }
-// });
-
 const popupNewFormProfile = new PopupWithForm({
   popupSelector: ('.popup_edit-profile'),
-  submitCallback: ({ formValues }) => {
-    // console.log(form)
-    popupNewFormProfile.renderLoading(true)
-    apiData.updateUserInfo({ formValues }).then((items) => {
-      userInfo.setUserInfo(items);
-      console.log(items)
-    })
-      .catch((err) => console.log(err))
-      .finally(() => popupNewFormCard.renderLoading(false))
-    popupNewFormProfile.close();
+  submitCallback: (data) => {
+    popupNewFormProfile.renderLoading(true);
+    apiData.updateUserInfo(data)
+      .then((data) => {
+        userInfo.setUserInfo(data);
+        popupNewFormProfile.close();
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      })
+      .finally(() => {
+        popupNewFormProfile.renderLoading(false);
+      })
   }
 });
 //создания экзепмляра всех  форм и их валидация
@@ -158,7 +164,6 @@ popupProfileAddButton.addEventListener('click', () => {
 });
 
 popupProfileEditButton.addEventListener('click', () => {
-  popupNewFormProfile.renderLoading(false)
   popupNewFormProfile.open();
   const profileInfo = userInfo.getUserInfo();
   formInputName.value = profileInfo.nameUser;
@@ -168,7 +173,6 @@ popupProfileEditButton.addEventListener('click', () => {
 });
 
 popupAvatarBtn.addEventListener('click', () => {
-  popupNewFormAvatar.renderLoading(false)
   popupNewFormAvatar.open();
   validFormPopupAvatar.disableSubmitButton();
   validFormPopupAvatar.resetErrorsForm();
@@ -190,9 +194,10 @@ let userId;
 apiData.getAllData()
   .then(([initialCards, userData]) => {
     userInfo.setUserInfo(userData);
+    userInfo.setAvatarLink(userData);
     userId = userData._id;
     sectionCard.renderItems(initialCards)
-    console.log(initialCards)
+    console.log(userData)
   })
   .catch((err) => {
     console.log(`Ошибка: ${err}`);

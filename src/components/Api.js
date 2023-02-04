@@ -15,10 +15,13 @@ export default class Api {
       .then((res) => this._handleResponce(res))
   }
 
-  createCards({ name, link }) {
+  createCards(data) {
     return fetch(`${this.url}/cards`, {
       method: 'POST',
-      body: JSON.stringify({ name, link }),
+      body: JSON.stringify({
+        name: data.nameCard,
+        link: data.linkCard
+      }),
       headers: this.headers,
     })
       .then((res) => this._handleResponce(res))
@@ -31,33 +34,33 @@ export default class Api {
       .then((res) => this._handleResponce(res))
   }
 
-  // updateUserInfo({name, about}) {
-  //   return fetch(`${this.url}/users/me`, {
-  //     method: 'PATCH',
-  //     headers: this.headers,
-  //     body: JSON.stringify({
-  //       name: name,
-  //       about: about
-  //     })
-  //   })
-  //   .then((res) => this._handleResponce(res))
-  // };
-    updateUserInfo(data) {
+  updateUserInfo(data) {
     return fetch(`${this.url}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
-      body: JSON.stringify(data)
+      body: JSON.stringify({
+        name: data.nameUser,
+        about: data.aboutUser
+      })
     })
-    .then((res) => this._handleResponce(res))
+      .then((res) => this._handleResponce(res))
   };
 
-  changeAvatar({ avatar }) {
-    fetch(`${this.url}/users/me/avatar`, {
+  // changeAvatar({ avatar }) {
+  //   fetch(`${this.url}/users/me/avatar`, {
+  //     method: 'PATCH',
+  //     body: JSON.stringify({ avatar }),
+  //     headers: this.headers,
+  //   })
+  //     .then((res) => this._handleResponce(res))
+  // }
+    changeAvatar(data) {
+    return fetch(`${this.url}/users/me/avatar`, {
       method: 'PATCH',
-      body: JSON.stringify({ avatar }),
+      body: JSON.stringify({ avatar: data.linkAvatar}),
       headers: this.headers,
     })
-    .then((res) => this._handleResponce(res))
+      .then((res) => this._handleResponce(res))
   }
 
   deleteCard(cardId) {
@@ -68,15 +71,6 @@ export default class Api {
       .catch((err) => { err })
       .then((res) => this._handleResponce(res))
   }
-
-  // changeLikeCard({ cardId, isLiked }) {
-  //   if (isLiked == true) {
-  //    return this.addLike(cardId)
-  //   }
-  //   else{
-  //     return this.deleteLike(cardId)
-  //   }
-  // }
 
   addLike(cardId) {
     return fetch(`${this.url}/cards/${cardId}/likes`, {
