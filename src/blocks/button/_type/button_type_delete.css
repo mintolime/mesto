@@ -6,6 +6,8 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  visibility: visible;
+  opacity: 1;
 }
 
 .button_type_delete:hover {

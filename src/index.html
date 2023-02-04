@@ -20,11 +20,12 @@
   <main class="main root__container">
     <!-- PROFILE -->
     <section class="profile">
-      <img class="profile__photo" src="<%=require('./images//image-profile.png')%>" alt="фото профиля">
+      <img class="profile__photo" src="#" alt="фото профиля">
+      <button class="button button_type_avatar_edit"></button>
       <div class="profile__content">
-        <h1 class="profile__name" lang="en">Kim Nelson</h1>
+        <h1 class="profile__name"></h1>
         <button class="button button_type_edit"></button>
-        <p class="profile__info">Тревел-блогер,фотограф</p>
+        <p class="profile__info"></p>
       </div>
       <button class="button button_type_add" type="button"></button>
     </section>
@@ -39,7 +40,7 @@
     <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
   </footer>
 
-  <!-- POPUP -->
+  <!-- POPUP-FORM -->
   <section class="popup popup_edit-profile">
     <div class="popup__container">
       <h3 class="popup__title">Редактировать профиль</h3>
@@ -52,12 +53,38 @@
             aria-label="подпись" placeholder="О себе" minlength="2" maxlength="200" required>
           <span class='form__input-error input-about-error'></span>
         </fieldset>
-        <button class="button button_type_save" type="submit" disabled>Сохранить</button>
+        <button class="button button_type_save" type="submit" >Сохранить</button>
+
       </form>
       <button type="button" class=" button button_type_close"></button>
     </div>
   </section>
 
+  <!-- POPUP-CONFIRM-DLT -->
+  <section class="popup popup_confirm" aria-label="подтверждение удаления">
+    <div class="popup__container">
+      <h3 class="popup__title">Вы уверены?</h3>
+      <button class="button button_type_save button_type_save_confirm" type="submit">Да</button>
+      <button type="button" class=" button button_type_close"></button>
+    </div>
+  </section>
+
+  <!-- POPUP-AVATAR -->
+  <section class="popup popup_avatar" aria-label="обновление аватара">
+    <div class="popup__container">
+      <h3 class="popup__title">Обновить аватар</h3>
+      <form name="formAvatar" class="form" novalidate>
+        <fieldset class="form__inner">
+          <input class="form__input" name="linkAvatar" type="url" id="input-avatar" aria-label="подпись" required>
+          <span class='form__input-error input-avatar-error'></span>
+        </fieldset>
+        <button class="button button_type_save button_type_save_load-avatar" type="submit" >Сохранить</button>
+      </form>
+      <button type="button" class=" button button_type_close"></button>
+    </div>
+  </section>
+
+  <!-- POPUP-CARD -->
   <section class="popup popup_add-card" aria-label="добавление карточек">
     <div class="popup__container">
       <h3 class="popup__title">Новое место</h3>
@@ -70,12 +97,13 @@
             aria-label="подпись" placeholder="Ссылка на картинку" required>
           <span class='form__input-error input-link-error'></span>
         </fieldset>
-        <button class="button button_type_save" type="submit" disabled>Создать</button>
+        <button class="button button_type_save" type="submit" >Создать</button>
       </form>
       <button type="button" class=" button button_type_close"></button>
     </div>
   </section>
 
+  <!-- POPUP-IMAGE -->
   <section class="popup popup_image" aria-label="фотографии карточек">
     <div class="popup__container popup__container_image ">
       <figure class="figure">
@@ -91,9 +119,12 @@
       <img class="cards__image" src="#" alt="#">
       <div class="cards__inner">
         <h2 class="cards__title"></h2>
-        <button class="button button_type_like" type="button"></button>
+        <div class="cards__likes_items">
+          <button class="button button_type_like" type="button"></button>
+          <span class="cards__likes_score"></span>
+        </div>
       </div>
-      <button class="button button_type_delete"></button>
+      <button class="button button_type_delete "></button>
     </li>
   </template>
 </body>
