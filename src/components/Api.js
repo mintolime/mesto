@@ -4,6 +4,10 @@ export default class Api {
     this.headers = headers;
   }
 
+  getAllData() {
+    return Promise.all([this.getAllCards(), this.getUserData()])
+  }
+
   getAllCards() {
     return fetch(`${this.url}/cards`, {
       headers: this.headers
@@ -27,15 +31,24 @@ export default class Api {
       .then((res) => this._handleResponce(res))
   }
 
-  updateUserInfo(name, about) {
+  // updateUserInfo({name, about}) {
+  //   return fetch(`${this.url}/users/me`, {
+  //     method: 'PATCH',
+  //     headers: this.headers,
+  //     body: JSON.stringify({
+  //       name: name,
+  //       about: about
+  //     })
+  //   })
+  //   .then((res) => this._handleResponce(res))
+  // };
+    updateUserInfo(data) {
     return fetch(`${this.url}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
-      body: JSON.stringify({
-        name: name,
-        about: about
-      })
-    });
+      body: JSON.stringify(data)
+    })
+    .then((res) => this._handleResponce(res))
   };
 
   changeAvatar({ avatar }) {
@@ -44,6 +57,7 @@ export default class Api {
       body: JSON.stringify({ avatar }),
       headers: this.headers,
     })
+    .then((res) => this._handleResponce(res))
   }
 
   deleteCard(cardId) {
@@ -55,15 +69,14 @@ export default class Api {
       .then((res) => this._handleResponce(res))
   }
 
-  changeLikeCard({ cardId, isLiked }) {
-    if (isLiked == true) {
-     return this.addLike(cardId)
-    }
-    else{
-      return this.deleteLike(cardId)
-    }
-
-  }
+  // changeLikeCard({ cardId, isLiked }) {
+  //   if (isLiked == true) {
+  //    return this.addLike(cardId)
+  //   }
+  //   else{
+  //     return this.deleteLike(cardId)
+  //   }
+  // }
 
   addLike(cardId) {
     return fetch(`${this.url}/cards/${cardId}/likes`, {
@@ -90,5 +103,5 @@ export default class Api {
     }
     return Promise.reject(res.status);
   }
-  
+
 }
