@@ -22,4 +22,5 @@
 
 .button_type_save:hover {
   opacity: .8;
+  transform: scale(0.98);
 }
