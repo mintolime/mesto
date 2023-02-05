@@ -8,7 +8,7 @@ const formCard = document.querySelector('[name="formCard"]');
 //BUTTON
 const popupProfileEditButton = document.querySelector('.button_type_edit');
 const popupProfileAddButton = document.querySelector('.button_type_add');
-const popupAvatarBtn = document.querySelector('.button_type_avatar_edit');
+const popupAvatarBtn = document.querySelector('.button_type_avatar-edit');
 
 export {
   formProfile,

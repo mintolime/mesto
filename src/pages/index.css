@@ -48,10 +48,6 @@
 @import url('../blocks/button/_type/button_type_delete.css');
 @import url('../blocks/button/_type/button_type_disable.css');
 @import url('../blocks/button/_type/button_type_delete_inactive.css');
-@import url('../blocks/button/_type/button_type_avatar_edit.css');
+@import url('../blocks/button/_type/button_type_avatar-edit.css');
 
 /* @import url('../blocks'); шаблон*/
-
-
-
-
