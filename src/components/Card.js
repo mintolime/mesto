@@ -27,7 +27,7 @@ export default class Card {
   }
 
   //функция отображения количества лайков
-  viewLikes(arr) {
+  updateLikesView(arr) {
     this._likeLenght = arr.likes.length;
     this._likeScore.textContent = this._likeLenght;
     //если лайков нет, то 0 отображаться не будет
@@ -39,10 +39,7 @@ export default class Card {
   //проверяем лайкнул ли карточку юзер
   _isLiked() {
     if (this._likeArray.some(i => i._id === this._userId)) {
-      this.like()
-    }
-    else {
-      this.dislike()
+      return true
     }
   }
 
@@ -59,7 +56,7 @@ export default class Card {
     this._setData();
     this._checkBtnCart();
     this._isLiked();
-    this.viewLikes(this._data)
+    this.updateLikesView(this._data)
     this._setEventListeners();
 
     return this._newCard;
@@ -85,13 +82,13 @@ export default class Card {
   }
 
   _handleLike() {
-    if (this._likeBtn.classList.contains('button_type_like_active')) {
-      this._handleCardDislike(this._id);
-      this.dislike()
+    if (this._isLiked == true || !this._likeBtn.classList.contains('button_type_like_active')) {
+      this._handleCardLike(this._id);
+      this._likeBtn.classList.add('button_type_like_active')
     }
     else {
-      this._handleCardLike(this._id);
-      this.like()
+      this._handleCardDislike(this._id);
+      this._likeBtn.classList.remove('button_type_like_active')
     }
   }
 
@@ -100,8 +97,4 @@ export default class Card {
     this._newCard = null;
   }
 
-  like() { this._likeBtn.classList.add('button_type_like_active') }
-
-  dislike() { this._likeBtn.classList.remove('button_type_like_active') }
 }
-

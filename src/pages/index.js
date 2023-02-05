@@ -32,19 +32,21 @@ const createCard = (item) => {
       popupConfirmDlt.handleDelete(() => {
         apiData.deleteCard(cardId)
           .then(() => { cardNew.deleteCard() })
+          .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
+          popupConfirmDlt.close()
       })
     },
 
     handleCardLike: (cardId) => {
       apiData.addLike(cardId)
-        .then((data) => { cardNew.viewLikes(data) })
-        .catch((err) => { console.log(err) })
+        .then((data) => { cardNew.updateLikesView(data) })
+        .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
     },
 
     handleCardDislike: (cardId) => {
       apiData.deleteLike(cardId)
-        .then((data) => { cardNew.viewLikes(data) })
-        .catch((err) => { console.log(err) })
+        .then((data) => { cardNew.updateLikesView(data) })
+        .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
     },
   })
   return cardNew.generateCard();
@@ -73,7 +75,7 @@ const popupNewFormCard = new PopupWithForm({
         sectionCard.addItemPrepend(createCard(cardData))
         popupNewFormCard.close()
       })
-      .catch((err) => console.log(err))
+      .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
       .finally(() => popupNewFormCard.renderLoading(false))
   }
 });
@@ -87,7 +89,7 @@ const popupNewFormAvatar = new PopupWithForm({
         userInfo.setAvatarLink(data)
         popupNewFormAvatar.close()
       })
-      .catch((err) => console.log(err))
+      .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
       .finally(() => popupNewFormAvatar.renderLoading(false))
   }
 });
@@ -112,12 +114,8 @@ const popupNewFormProfile = new PopupWithForm({
         userInfo.setUserInfo(data);
         popupNewFormProfile.close();
       })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        popupNewFormProfile.renderLoading(false);
-      })
+    .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
+    .finally(() => { popupNewFormProfile.renderLoading(false)})
   }
 });
 
@@ -168,6 +166,6 @@ apiData.getAllData()
     userId = userData._id;
     sectionCard.renderItems(initialCards)
   })
-  .catch((err) => { console.log(err) });
+  .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
 
 

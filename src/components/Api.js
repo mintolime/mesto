@@ -13,6 +13,7 @@ export default class Api {
       headers: this.headers
     })
       .then((res) => this._handleResponce(res))
+      .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
   }
 
   createCards(data) {
@@ -25,6 +26,7 @@ export default class Api {
       }),
     })
       .then((res) => this._handleResponce(res))
+      .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
   }
 
   getUserData() {
@@ -32,6 +34,7 @@ export default class Api {
       headers: this.headers,
     })
       .then((res) => this._handleResponce(res))
+      .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
   }
 
   updateUserInfo(data) {
@@ -44,6 +47,7 @@ export default class Api {
       })
     })
       .then((res) => this._handleResponce(res))
+      .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
   };
 
   changeAvatar(data) {
@@ -53,6 +57,7 @@ export default class Api {
       headers: this.headers,
     })
       .then((res) => this._handleResponce(res))
+      .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
   }
 
   deleteCard(cardId) {
@@ -61,6 +66,7 @@ export default class Api {
       headers: this.headers,
     })
       .then((res) => this._handleResponce(res))
+      .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
   }
 
   addLike(cardId) {
@@ -69,6 +75,7 @@ export default class Api {
       headers: this.headers,
     })
       .then((res) => this._handleResponce(res))
+      .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
   }
 
   deleteLike(cardId) {
@@ -77,6 +84,7 @@ export default class Api {
       headers: this.headers,
     })
       .then((res) => this._handleResponce(res))
+      .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
   }
 
   _handleResponce(res) {
