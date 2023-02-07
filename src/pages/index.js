@@ -33,13 +33,13 @@ const createCard = (item) => {
         apiData.deleteCard(cardId)
           .then(() => { cardNew.deleteCard() })
           .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
-          popupConfirmDlt.close()
+        popupConfirmDlt.close()
       })
     },
 
     handleCardLike: (cardId) => {
       apiData.addLike(cardId)
-         .then((data) => { cardNew.setLikes(data.likes) })
+        .then((data) => { cardNew.setLikes(data.likes) })
         .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
     },
 
@@ -114,8 +114,8 @@ const popupNewFormProfile = new PopupWithForm({
         userInfo.setUserInfo(data);
         popupNewFormProfile.close();
       })
-    .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
-    .finally(() => { popupNewFormProfile.renderLoading(false)})
+      .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
+      .finally(() => { popupNewFormProfile.renderLoading(false) })
   }
 });
 
