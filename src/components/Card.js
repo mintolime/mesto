@@ -1,4 +1,4 @@
-
+//Спасибо за практические советы. если верно поняла ваши замечания, все должно корректно работать
 export default class Card {
   constructor({ data, userId, templateSelector, handleCardClick, handleCardDelete, handleCardLike, handleCardDislike }) {
     this._data = data;
@@ -26,14 +26,31 @@ export default class Card {
     return cardElement;
   }
 
-  //функция отображения количества лайков
-  updateLikesView(arr) {
-    this._likeLenght = arr.likes.length;
+  //функция отображения количества лайков и смены состояния лайка
+  _updateLikesView() {
+    this._likeLenght = this._likeArray.length;
     this._likeScore.textContent = this._likeLenght;
-    //если лайков нет, то 0 отображаться не будет
-    if (this._likeLenght < 1) {
-      this._likeScore.textContent = ''
+
+// возращает true, что значит карточка лайкнута и нужно сделать её активной
+    if (this._isLiked()) {
+      this._like()
     }
+
+    // //если лайков нет, то 0 отображаться не будет + также убираем активный класс
+    else if (this._likeLenght < 1) {
+      this._likeScore.textContent = ''
+      this._dislike()
+    }
+
+    else {
+      this._dislike()
+    }
+  }
+
+  setLikes(likes) { // метод принимает массив с лайками (из объекта карточки от сервера)
+    this._likeArray = likes // перезаписываем текущий массив с лайками на новый
+    this._updateLikesView() // обновляем отображение лайков. _updateLikesView
+    // возьмет лайки из this._likeArray
   }
 
   //проверяем лайкнул ли карточку юзер
@@ -51,11 +68,16 @@ export default class Card {
     this._newCard = this._getTemplate();
     this._setData();
     this._checkBtnCart();
-    this._isLiked();
-    this.updateLikesView(this._data)
+    this._updateLikesView();
     this._setEventListeners();
 
     return this._newCard;
+  }
+
+  setLikes(err) { // метод принимает массив с лайками (из объекта карточки от сервера)
+    this._likeArray = err // перезаписываем текущий массив с лайками на новый
+    this._updateLikesView() // обновляем отображение лайков. _updateLikesView
+    // возьмет лайки из this._likeArray
   }
 
   //получение всех данных
@@ -78,13 +100,15 @@ export default class Card {
   }
 
   _handleLike() {
-    if (this._isLiked === true || this._likeBtn.classList.contains('button_type_like_active')) {
+    // если на карточке есть лайк пользователя, то:
+    // вызываем коллбэк, который отправит на сервер запрос удалить лайк
+    if (this._isLiked()) {
       this._handleCardDislike(this._id);
-      this._likeBtn.classList.remove('button_type_like_active')
     }
+    // иначе:
+    // вызываем коллбэк, который отправит запрос поставить лайк
     else {
       this._handleCardLike(this._id);
-      this._likeBtn.classList.add('button_type_like_active')
     }
   }
 
@@ -93,4 +117,10 @@ export default class Card {
     this._newCard = null;
   }
 
+  _like() {
+    this._likeBtn.classList.add('button_type_like_active')
+  }
+  _dislike() {
+    this._likeBtn.classList.remove('button_type_like_active')
+  }
 }

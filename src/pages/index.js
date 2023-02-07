@@ -39,13 +39,13 @@ const createCard = (item) => {
 
     handleCardLike: (cardId) => {
       apiData.addLike(cardId)
-        .then((data) => { cardNew.updateLikesView(data) })
+         .then((data) => { cardNew.setLikes(data.likes) })
         .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
     },
 
     handleCardDislike: (cardId) => {
       apiData.deleteLike(cardId)
-        .then((data) => { cardNew.updateLikesView(data) })
+        .then((data) => { cardNew.setLikes(data.likes) })
         .catch(err => console.log(`Ошибка: что-то пошло не так: ${err}`))
     },
   })
