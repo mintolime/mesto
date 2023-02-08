@@ -29,17 +29,11 @@ export default class Card {
   //функция отображения количества лайков и смены состояния лайка
   _updateLikesView() {
     this._likeLenght = this._likeArray.length;
-    this._likeScore.textContent = this._likeLenght;
+    this._likeScore.textContent = this._likeLenght ? this._likeLenght : ''
 
 // возращает true, что значит карточка лайкнута и нужно сделать её активной
     if (this._isLiked()) {
       this._like()
-    }
-
-    // //если лайков нет, то 0 отображаться не будет + также убираем активный класс
-    else if (this._likeLenght < 1) {
-      this._likeScore.textContent = ''
-      this._dislike()
     }
 
     else {
