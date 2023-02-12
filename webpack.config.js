@@ -15,9 +15,10 @@ module.exports = {
   devtool: 'eval-source-map',
   devServer: {
     static: path.resolve(__dirname, './dist'), // путь, куда "смотрит" режим разработчика
+    watchFiles: ['src/*.html'],
+    hot: true,
     compress: true, // это ускорит загрузку в режиме разработки
     port: 8081, // порт, чтобы открывать сайт по адресу localhost:8080, но можно поменять порт
-
     open: true // сайт будет открываться сам при запуске npm run dev
   },
   module: {
